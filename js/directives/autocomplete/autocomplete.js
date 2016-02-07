@@ -31,10 +31,10 @@ app.directive('autocomplete', ['$document', '$timeout', function($document, $tim
             // we don't want to send to the server requests every time when new letter typed. We can minimize requests count for that users, that type fast. We make timeout in 300 milliseconds for each typed letter. If there will be more typed letters in 300 milliseconds - no request is being make. Otherwise, if in 300 milliseconds there will be no more typed letters - make a request. typedCount variable is for that purpose.
             var typedCount = 0;
             scope.$watch('searchStr', function(newVal, oldVal) {
+                scope.areResultsVisible = false;
                 if(newVal === oldVal || newVal==='' || selectedStr === newVal) {
                     return;
                 }
-                scope.areResultsVisible = false;
                 ++typedCount;
                 $timeout(function() {
                     --typedCount;
