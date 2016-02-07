@@ -10,6 +10,7 @@ app.directive('autocomplete', ['$document', '$timeout', function($document, $tim
         link: function(scope, elem, attrs, cntrl) {
             var selectedStr; // 
             var searchbox = angular.element(elem[0].querySelector('.searchbox'));
+            var resbox = angular.element(elem[0].querySelector('.results'));
             scope.results = []; // results that are showing in results box
             scope.areResultsVisible = false; // show/hide results box
             if(!attrs.getResToShow) {
@@ -41,19 +42,18 @@ app.directive('autocomplete', ['$document', '$timeout', function($document, $tim
             
 
             scope.selectElem = function(selectedElem) {
-                selectedStr = scope.getResToShow(selectedElem)
+                selectedStr = scope.getResToShow(selectedElem);
                 scope.searchStr = selectedStr;
                 scope.selectedData = selectedElem;
                 scope.areResultsVisible = false; // hide results box
                 $timeout(function() {
                     scope.onSelect();
-                    scope.$apply();
                 }, 0);
             }
 
             searchbox.bind('blur', function(e) {
-                console.log('blur');
                 scope.areResultsVisible = false;
+                scope.$apply();
             })
 
             
