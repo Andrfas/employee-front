@@ -86,14 +86,11 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-offset-1 col-md-2">
-									<h3><span class="label label-default">Vinnitsa</span></h3>
-								</div>
-								<div class="col-md-offset-1 col-md-2">
-									<h3><span class="label label-default">Kyiv</span></h3>
-								</div>
-								<div class="col-md-offset-1 col-md-1">
-									<h3><span class="label label-default">Zhitomir</span></h3>
+								<div class="col-md-12">
+									<div class="col-md-offset-1 col-md-2" ng-repeat="city in cities">
+										<h3><span class="label label-default">{{city}}</span><span ng-click="removeCity($index)">X</span></h3>
+
+									</div>
 								</div>
 							</div>
 							<div class="row" style="line-height: 0px;">
@@ -356,13 +353,19 @@
 <script type="text/ng-template" id="selCityModal.html">
 <div class="myModal">
 	<div class="modal-header">
-        <h3 class="modal-title">I'm a modal!</h3>
+        <h3 class="modal-title">Select city</h3>
     </div>
-    <div class="modal-body">
-        <autocomplete get-search-res="getCities(searchStr)" on-select="selectCity()" selected-data="selectedCity"></autocomplete>
+    <div class="modal-body row">
+    	<div class="col-md-12">
+	        <autocomplete get-search-res="getCities(searchStr)" on-select="selectCity()" selected-data="selectedCity" search-str="searchStr" no-res-msg="No cities found!" delay="0" autofocus="true"></autocomplete>
+	    </div>
+	    <div>
+	    	<div class="col-md-3" ng-repeat="city in selectedCities track by $index">{{city}}</div>
+	    </div>
     </div>
     <div class="modal-footer">
-        modal footer
+        <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>
 
