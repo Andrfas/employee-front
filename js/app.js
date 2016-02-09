@@ -35,7 +35,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                     '/js/controllers/RegisterMainCntrl.js',
                     '/js/controllers/RegCompanyCntrl.js',
                     '/js/controllers/RegEmployeeCntrl.js',
-                    '/js/controllers/SelCityModalCntrl.js'
+                    '/js/controllers/SelCityModalCntrl.js',
+                    '/js/services/RegCompanySrvc.js'
                 ])}
             })
 
