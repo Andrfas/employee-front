@@ -1,4 +1,4 @@
-app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', function($scope, $uibModal, FileUploader) {
+app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'ConfigSrvc', function($scope, $uibModal, FileUploader, ConfigSrvc) {
     $scope.cities = [];
 
 
@@ -28,7 +28,7 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', functi
     // $scope.openSelectCityWindow();
 
     var uploader = $scope.uploader = new FileUploader({
-        url: 'http://localhost:1337/image',
+        url: ConfigSrvc.API_URL+'/image',
         method: 'PUT',
         autoUpload: true,
         queueLimit: 1
