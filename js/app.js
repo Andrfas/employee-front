@@ -39,6 +39,14 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                     '/js/services/RegCompanySrvc.js'
                 ])}
             })
+            .when('/proposal', {
+                templateUrl: '/templates/proposal_list.html',
+                controller: 'ProposalCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/ProposalCntrl.js'
+                ])}
+            })
 
         //$locationProvider.html5Mode({
         //    enabled: true,
