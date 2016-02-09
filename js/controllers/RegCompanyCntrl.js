@@ -1,4 +1,4 @@
-app.controller('RegCompanyCntrl', ['$scope', '$uibModal', function($scope, $uibModal) {
+app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', function($scope, $uibModal, FileUploader) {
     $scope.cities = [];
 
 
@@ -26,6 +26,21 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', function($scope, $uibM
         $scope.cities.splice(index, 1);
     }
     // $scope.openSelectCityWindow();
+
+    var uploader = $scope.uploader = new FileUploader({
+        url: 'http://localhost:1337/image',
+        method: 'PUT',
+        autoUpload: true,
+        queueLimit: 1
+    });
+
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
 
     $scope.page = 1;
     $scope.changePage = function(page) {

@@ -1,4 +1,4 @@
-var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap']);
+var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload']);
 
 app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
     function($routeProvider, $controllerProvider, $locationProvider) {
