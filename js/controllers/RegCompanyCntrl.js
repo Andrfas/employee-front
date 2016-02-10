@@ -27,6 +27,7 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'Confi
     }
     // $scope.openSelectCityWindow();
 
+    // for uploading images
     var uploader = $scope.uploader = new FileUploader({
         url: ConfigSrvc.API_URL+'/image',
         method: 'PUT',
