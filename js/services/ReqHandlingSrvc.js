@@ -8,10 +8,10 @@ app.service('ReqHandlingSrvc', ['ConfigSrvc', '$http', '$q', function (ConfigSrv
             $http({
                 method: 'GET',
                 url: request,
-                headers: {'X-api-key': JSON.parse(localStorage.getItem('userInfo')).AccessKey},
+                headers: getHeaders(),
                 params: params
             }).then(function (res) {
-                call.resolve(res);
+                call.resolve(res.data);
             }, function (err) {
                 call.reject(err);
             });
@@ -24,10 +24,10 @@ app.service('ReqHandlingSrvc', ['ConfigSrvc', '$http', '$q', function (ConfigSrv
             $http({
                 method: 'POST',
                 url: request,
-                headers: {'X-api-key': JSON.parse(localStorage.getItem('userInfo')).AccessKey},
+                headers: getHeaders(),
                 data: data
             }).then(function (res) {
-                call.resolve(res);
+                call.resolve(res.data);
             }, function (err) {
                 call.reject(err);
             });
@@ -40,10 +40,10 @@ app.service('ReqHandlingSrvc', ['ConfigSrvc', '$http', '$q', function (ConfigSrv
             $http({
                 method: 'PUT',
                 url: request,
-                headers: {'X-api-key': JSON.parse(localStorage.getItem('userInfo')).AccessKey},
+                headers: getHeaders(),
                 data: data
             }).then(function (res) {
-                call.resolve(res);
+                call.resolve(res.data);
             }, function (err) {
                 call.reject(err);
             });
@@ -56,10 +56,10 @@ app.service('ReqHandlingSrvc', ['ConfigSrvc', '$http', '$q', function (ConfigSrv
             $http({
                 method: 'PATCH',
                 url: request,
-                headers: {'X-api-key': JSON.parse(localStorage.getItem('userInfo')).AccessKey},
+                headers: getHeaders(),
                 data: data
             }).success(function (res) {
-                call.resolve(res);
+                call.resolve(res.data);
             }, function (err) {
                 call.reject(err);
             });
@@ -72,10 +72,10 @@ app.service('ReqHandlingSrvc', ['ConfigSrvc', '$http', '$q', function (ConfigSrv
             $http({
                 method: 'DELETE',
                 url: request,
-                headers: {'X-api-key': JSON.parse(localStorage.getItem('userInfo')).AccessKey},
+                headers: getHeaders(),
                 data: data
             }).success(function (res) {
-                call.resolve(res);
+                call.resolve(res.data);
             }, function (err) {
                 call.reject(err);
             });
@@ -83,3 +83,12 @@ app.service('ReqHandlingSrvc', ['ConfigSrvc', '$http', '$q', function (ConfigSrv
         } 
     }
 }]);
+
+function getHeaders() {
+    var res = {};
+    if(localStorage.getItem('token')) {
+        res['authorization'] = localStorage.getItem('token');
+    }
+    return res;
+}
+//JSON.parse(localStorage.getItem('userInfo')).AccessKey},
