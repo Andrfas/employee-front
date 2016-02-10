@@ -36,7 +36,7 @@
     </head>
 
     <body ng-app="EmployeeApp">
-        <nav class="navbar navbar-inverse navbar-default" role="navigation">
+        <nav class="navbar navbar-inverse navbar-default" ng-controller="HeaderCntrl" role="navigation" ng-cloak>
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -61,12 +61,51 @@
                             <a href="/#/proposal">Proposals</a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-hide="isLoggedIn">
+                        <li>
+                            <a href="#" ng-click="openSignInModal()">SignIn</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
+                        <li>
+                            <a href="#">Profile</a>
+                        </li>
+                        <li>                            
+                            <a href="#" ng-click="signout()">SignOut</a>
+                        </li>
+                    </ul>
+
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container -->
         </nav>
         <ng-view></ng-view>
+        <script type="text/ng-template" id="signInModal.html">
+        <div class="myModal">
+            <div class="modal-header">
+                <h3 class="modal-title">Sign in</h3>
+            </div>
+            <div class="modal-body row">
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-2">
+                        <input type="email" ng-model="mail" placeholder="email"></input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2">
+                        <input type="password" ng-model="password" placeholder="password"></input>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit" ng-click="signIn()">Sign in</button>
+            </div>
+        </div>
+
+        </script>
+
 
 
         <!--
@@ -129,6 +168,9 @@
         <script src="/js/directives/ng-thumb.js"></script>
         <script src="/js/services/ConfigSrvc.js"></script>
         <script src="/js/services/ReqHandlingSrvc.js"></script>
+        <script src="/js/services/AuthorizationSrvc.js"></script>
+        <script src="/js/controllers/HeaderCntrl.js"></script>
+        <script src="/js/controllers/SignInCntrl.js"></script>
         <!--SCRIPTS END-->
     </body>
 </html>
