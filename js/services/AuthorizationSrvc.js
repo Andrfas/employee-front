@@ -33,9 +33,9 @@ app.service('AuthorizationSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingS
         ReqHandlingSrvc.post(url, data)
             .then(function(res) {
                 if(res.success) {
-                    localStorage.setItem('token', null);
-                    localStorage.setItem('clientId', null);
-                    localStorage.setItem('clientType', null);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('clientId');
+                    localStorage.removeItem('clientType');
                     self.isAuthorized = false;
                     call.resolve(res);
                 } else {
@@ -53,7 +53,7 @@ app.service('AuthorizationSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingS
     }
 
     function isTokenSet() {
-        if(localStorage.getItem('token') !== 'null') {
+        if(localStorage.getItem('token')) {
             return true;
         } else {
             return false;

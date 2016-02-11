@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', function($scope) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uibModal) {
     $scope.studInfo = {
       name: '',
       lastName: '',
@@ -16,12 +16,21 @@ app.controller('RegEmployeeCntrl', ['$scope', function($scope) {
             if ($scope.checkPasswords()) {
                 $scope.stud = person;
             }
-            else{
-                document.getElementById("errorField").innerHTML = "Different passwords"
-            }
         }
             else {
             $scope.stud = person;
         }
+    }
+
+    $scope.openSelectLanguageWindow = function(){
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard:true,
+            templateUrl: '../templates/modals/selLanguageModal.html',
+            controller: 'SelLanguageModalCntrl'
+
+        })
+
     }
 }])
