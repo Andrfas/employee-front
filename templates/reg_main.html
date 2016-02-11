@@ -26,43 +26,74 @@
 				<div class="row">
 					<div class="panel panel-default" style="background-color: #C0C0C0">
 						<div class="panel-body">
-							<div class="row">
-								<div class="progress col-md-offset-2 col-md-8" style="margin-top: 10px;">
-							  		<div class="progress-bar progress-bar-striped active" role="progressbar"
-							  		aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-							  		70%
-							  		</div>
+							<!-- First Stap of Company Registration -->
+							<form name="regCompanyStep1" novalidate ng-submit="regCompanyStep1.$valid && changePage(2)">
+								<!-- PROGRESS -->
+								<div class="row">
+									<div class="progress col-md-offset-2 col-md-8" style="margin-top: 10px;">
+								  		<div class="progress-bar progress-bar-striped active" role="progressbar"
+								  		aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+								  		70%
+								  		</div>
+									</div>
 								</div>
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-1">Name*</h3>
-							</div>
-							<div class="row">
-								<input type="text" class="col-md-10 col-md-offset-1" id="Name" ng-model="name">
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-1">Website*</h3>
-							</div>
-							<div class="row">
-								<input type="text" class="col-md-10 col-md-offset-1" id="Website">
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-1">Email*</h3>
-							</div>
-							<div class="row">
-								<input type="text" class="col-md-10 col-md-offset-1" id="Email">
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-4">Password</h3>
-								<h3 class="col-md-offset-1 col-md-4">Password Again</h3>
-							</div>
-							<div class="row">
-								<input type="text" class="col-md-4 col-md-offset-1" id="Pass">
-								<input type="text" class="col-md-5 col-md-offset-1" id="PassAgain">
-							</div>
-							<div class="row" style="margin-top:20px;">
-								<button type="button" class="btn btn-primary col-md-offset-9 btn-lg" ng-click="changePage(2)">Next Step</button>
-							</div>
+								<!-- NAME -->
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.name.$invalid && !regCompanyStep1.name.$pristine }">			
+									<div class="row" style="line-height: 0px;">
+										<h3 class="col-md-offset-1 col-md-1">Name*</h3>
+									</div>
+									<div class="row">
+										<input name="name" type="text" class="col-md-10 col-md-offset-1" id="Name" ng-model="company.name" required>
+										<p ng-show="regCompanyStep1.name.$invalid && !regCompanyStep1.name.$pristine" 
+											class="help-block" style="margin-bottom:-10px;">Company Name is required.</p>
+									</div>
+								</div>
+								<!-- WEBSITE -->
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.website.$invalid && !regCompanyStep1.website.$pristine }">			
+									<div class="row" style="line-height: 0px;">
+										<h3 class="col-md-offset-1 col-md-1">Website*</h3>
+									</div>
+									<div class="row">
+										<input name="website" type="url" class="col-md-10 col-md-offset-1" id="Website" ng-model="company.website" required>
+										<p ng-show="regCompanyStep1.website.$invalid && !regCompanyStep1.website.$pristine"  
+											class="help-block col-md-6 col-md-offset-1" style="margin-bottom:-10px;">Enter a valid Company Website.</p>
+									</div>
+								</div>
+								<!-- EMAIL -->
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.email.$invalid && !regCompanyStep1.email.$pristine }">			
+									<div class="row" style="line-height: 0px;">
+										<h3 class="col-md-offset-1 col-md-1">Email*</h3>
+									</div>
+									<div class="row">
+										<input name="email" type="email" class="col-md-10 col-md-offset-1" id="Email" ng-model="company.email" required>
+										<p ng-show="regCompanyStep1.email.$invalid && !regCompanyStep1.email.$pristine" 
+											class="help-block col-md-6 col-md-offset-1" style="margin-bottom:-10px;">Enter a valid Company Email.</p>
+									</div>
+								</div>
+								<!-- PASSWORD -->
+								<div class="form-group" ng-class="{ 
+									'has-error' : (regCompanyStep1.password.$invalid && !regCompanyStep1.password.$pristine) 
+												|| (regCompanyStep1.passAgain.$invalid && !regCompanyStep1.passAgain.$pristine)}">
+									<div class="row" style="line-height: 0px;">
+										<h3 class="col-md-offset-1 col-md-4">Password</h3>
+										<h3 class="col-md-offset-1 col-md-4">Password Again</h3>
+									</div>
+									<div class="row">
+										<input name="password" type="password" ng-minlength="6" class="col-md-5 col-md-offset-1" id="Pass" ng-model="company.password" required>
+										<input name="passAgain" type="password" class="col-md-5 col-md-offset-0.7" id="PassAgain" ng-model="company.passAgain" required>
+									</div>
+									<div class="row">	
+										<p ng-show="regCompanyStep1.password.$error.minlength"class="help-block col-md-5 col-md-offset-1" style="color:#737373;">Enter at least 6 symbols.</p>
+										<p ng-show="regCompanyStep1.password.$invalid && !regCompanyStep1.password.$pristine && !regCompanyStep1.password.$error.minlength" 
+											class="help-block col-md-5 col-md-offset-1" style="margin-bottom:-10px;">Enter valid password.</p>
+										<p ng-show="!checkPassword() && !regCompanyStep1.passAgain.$pristine" 
+											class="help-block col-md-5 col-md-offset-1" style="margin-bottom:-10px;">Passwords didn't matched.</p>
+									</div>
+									<div class="row" style="margin-top:20px;">
+										<button type="submit" class="btn btn-primary col-md-offset-9 btn-lg" ng-disabled="regCompanyStep1.$invalid" >Next Step</button>
+									</div>
+								</div>
+						</form>
 						</div>
 					</div>
 				</div>
@@ -75,62 +106,73 @@
 			<div class="container col-md-12">
 				<div class="row">
 					<div class="panel panel-default" style="background-color: #C0C0C0">
-						<div class="panel-body">
-							<div class="row">
-								<div class="progress col-md-offset-2 col-md-8" style="margin-top: 10px;">
-							  		<div class="progress-bar progress-bar-striped active" role="progressbar"
-							  		aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-							  		70%
-							  		</div>
+					<!-- Second Stap of Company Registration -->
+						<form name="regCompanyStep2" novalidate ng-submit="regCompanyStep2.$valid && submit()">
+							<div class="panel-body">
+								<!-- PROGRESS -->
+								<div class="row">
+									<div class="progress col-md-offset-2 col-md-8" style="margin-top: 10px;">
+										<div class="progress-bar progress-bar-striped active" role="progressbar"
+										aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+										70%
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-4">Add City</h3>
-							</div>
-							<div class="row">
-								<div class="col-md-4 col-md-offset-1">
-									<button class="btn btn-default btn-block" ng-click="openSelectCityWindow()">Add City</button>
+								<!-- CITY -->
+								<div class="row" style="line-height: 0px;">
+									<h3 class="col-md-offset-1 col-md-4">Add City</h3>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="col-md-offset-1 col-md-2" ng-repeat="city in cities">
-										<h3><span class="label label-default">{{city}}</span><span ng-click="removeCity($index)">X</span></h3>
+								<div class="row">
+									<div class="col-md-4 col-md-offset-1">
+										<button class="btn btn-default btn-block" ng-click="openSelectCityWindow()">Add City</button>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="col-md-offset-1 col-md-2" ng-repeat="city in cities" ng-model="company.cityArr">
+											<h3><span class="label label-default">{{city}}</span><span ng-click="removeCity($index)">X</span></h3>
 
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-4">Description</h3>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-1 col-md-10">
-									<textarea class="form-control" rows="5"></textarea>
-								</div>
-							</div>
-							<div class="row" style="margin-top:25px;">
-								<div class="col-md-offset-1 col-md-3">
-									<img src="" class="img-rounded" alt="ImgEmploy">
-								</div>
-								<div class="col-md-6">
-									<div class="input-group">
-								        <ul>
-								            <li ng-repeat="item in uploader.queue">
-								                <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
-								            </li>
-								        </ul>
-										<span class="input-group-btn">
-											<input class="btn btn-default" type="file" nv-file-select uploader="uploader">Browse...</input>
-										</span>
+								<!-- DESCRIPTION -->
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep2.description.$invalid && !regCompanyStep2.description.$pristine }">	
+									<div class="row" style="line-height: 0px;">
+										<h3 class="col-md-offset-1 col-md-4">Description</h3>
+									</div>
+									<div class="row">
+										<div class="col-md-offset-1 col-md-10">
+											<textarea name="description" type="text" class="form-control" rows="5" ng-model="company.description" required></textarea>
+											<p ng-show="regCompanyStep2.description.$invalid && !regCompanyStep2.description.$pristine"  
+												class="help-block" style="margin-bottom:-10px;">Company Description is required.</p>
+										</div>
 									</div>
 								</div>
+								<!-- LOGO -->
+								<div class="row" style="margin-top:25px;">
+									<div class="col-md-offset-1 col-md-3">
+										<img src="" class="img-rounded" alt="ImgEmploy">
+									</div>
+									<div class="col-md-6">
+										<div class="input-group">
+											<ul>
+												<li ng-repeat="item in uploader.queue">
+													<div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+												</li>
+											</ul>
+											<span class="input-group-btn">
+												<input class="btn btn-default" type="file" nv-file-select uploader="uploader">Browse...</input>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="row" style="margin-top:25px;">
+									<button type="button" class="btn btn-primary col-md-offset-9 btn-lg" ng-click="changePage(1)">Prev Step</button>
+									<button type="submit" class="btn btn-primary col-md-offset-9 btn-lg" ng-disabled="regCompanyStep2.$invalid">
+									Get Started</button>
+								</div>
 							</div>
-							<div class="row" style="margin-top:25px;">
-								<button type="button" class="btn btn-primary col-md-offset-9 btn-lg" ng-click="changePage(1)">Prev Step</button>
-								<button type="button" class="btn btn-primary col-md-offset-9 btn-lg">
-								Get Started</button>
-							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -154,48 +196,47 @@
 								</div>
 								<div class="row" style="line-height: 0px;">
 									<h3 class="col-md-offset-1 col-md-4">First Name*</h3>
-                  <h3 class="col-md-offset-1 col-md-4">Last Name*</h3>
+                  					<h3 class="col-md-offset-1 col-md-4">Last Name*</h3>
 								</div>
 								<div class="row">
-                  <!--form groups with error messages-->
-                  <div class="form-group col-md-4 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.name.$invalid && !regStudForm1.name.$pristine }">
-									  <input type="text" name="name" id="StudName" ng-model="studInfo.name" required>
-                    <p ng-show="regStudForm1.name.$invalid && !regStudForm1.name.$pristine" class="help-block">Your name is required.</p>
-                  </div>
-                  <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.lastName.$invalid && !regStudForm1.lastName.$pristine }">
-                    <input type="text" name="lastName" id="StudLastName" ng-model="studInfo.lastName" required>
-                    <p ng-show="regStudForm1.lastName.$invalid && !regStudForm1.lastName.$pristine" class="help-block">Your last name is required.</p>
-                  </div>
+					                <!--form groups with error messages-->
+					                <div class="form-group col-md-4 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.name.$invalid && !regStudForm1.name.$pristine }">
+										<input type="text" name="name" id="StudName" ng-model="studInfo.name" required>
+                    					<p ng-show="regStudForm1.name.$invalid && !regStudForm1.name.$pristine" class="help-block">Your name is required.
+                    					</p>
+                  					</div>
+					                <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.lastName.$invalid && !regStudForm1.lastName.$pristine }">
+					                    <input type="text" name="lastName" id="StudLastName" ng-model="studInfo.lastName" required>
+					                    <p ng-show="regStudForm1.lastName.$invalid && !regStudForm1.lastName.$pristine" class="help-block">Your last name is required.
+					                    </p>
+					                </div>
 								</div>
 								<div class="row" style="line-height: 0px;">
 									<h3 class="col-md-offset-1 col-md-1">Email</h3>
 								</div>
 								<div class="row">
-                  <div class="form-group col-md-10 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.email.$invalid && !regStudForm1.email.$pristine }">
-                    <input type="email" class="form-control" name="email" id="StudEmail" ng-model="studInfo.email" required>
-                    <p ng-show="regStudForm1.email.$invalid && !regStudForm1.email.$pristine" class="help-block">Input valid email.</p>
-                  </div>
-
+				                	<div class="form-group col-md-10 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.email.$invalid && !regStudForm1.email.$pristine }">
+				                    	<input type="email" class="form-control" name="email" id="StudEmail" ng-model="studInfo.email" required>
+				                    	<p ng-show="regStudForm1.email.$invalid && !regStudForm1.email.$pristine" class="help-block">Input valid email.</p>
+				                  	</div>
 								</div>
 								<div class="row" style="line-height: 0px;">
 									<h3 class="col-md-offset-1 col-md-4">Password</h3>
 									<h3 class="col-md-offset-1 col-md-4">Password Again</h3>
 								</div>
 								<div class="row">
-                  <div class="form-group col-md-4 col-md-offset-1" ng-class="{'has-error' : regStudForm1.pass.$invalid && !regStudForm1.pass.$pristine }">
-                    <input type="password" name="pass" id="StudPass" ng-model="studInfo.password" ng-minlength="6" required>
-                    <p ng-show="regStudForm1.pass.$error.minlength" class="help-block">Enter at least 6 symbols.</p>
-                    <p ng-show="regStudForm1.pass.$invalid && !regStudForm1.pass.$pristine && !regStudForm1.pass.$error.minlength" class="help-block">Enter valid password.</p>
-                  </div>
+					                <div class="form-group col-md-4 col-md-offset-1" ng-class="{'has-error' : regStudForm1.pass.$invalid && !regStudForm1.pass.$pristine }">
+					                    <input type="password" name="pass" id="StudPass" ng-model="studInfo.password" ng-minlength="6" required>
+					                    <p ng-show="regStudForm1.pass.$error.minlength" class="help-block">Enter at least 6 symbols.</p>
+					                    <p ng-show="regStudForm1.pass.$invalid && !regStudForm1.pass.$pristine && !regStudForm1.pass.$error.minlength" class="help-block">Enter valid password.</p>
+					                </div>
 
-                  <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.repPass.$invalid && !regStudForm1.repPass.$pristine }">
-                    <input type="password" name="repPass" id="StudPassAgain" ng-model="studInfo.repeatPass" required>
-                    <p ng-show="!checkPasswords() && !regStudForm1.repPass.$pristine" class="help-block">Passwords didn't matched.</p>
-                  </div>
-
+					                <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.repPass.$invalid && !regStudForm1.repPass.$pristine }">
+					                    <input type="password" name="repPass" id="StudPassAgain" ng-model="studInfo.repeatPass" required>
+					                    <p ng-show="!checkPasswords() && !regStudForm1.repPass.$pristine" class="help-block">Passwords didn't matched.</p>
+					                </div>
 								</div>
 								<div class="row" style="margin-top:20px;">
-
 									<button type="submit" class="btn btn-primary col-md-offset-8 btn-lg">Next Step</button>
 								</div>
 								</form>
