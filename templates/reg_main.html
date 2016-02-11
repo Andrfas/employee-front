@@ -265,7 +265,7 @@
 							</div>
 							<div class="row" style="margin-top: 25px;">
 								<div class="col-md-offset-2 col-md-4">
-									<button type="button" class="btn btn-default btn-block">Add Language</button>
+									<button type="button" class="btn btn-default btn-block" ng-click="openSelectLanguageWindow()">Add Language</button>
 								</div>
 								<div class="col-md-offset-1 col-md-4">
 									<button type="button" class="btn btn-default btn-block">Add Higher Education</button>
@@ -390,23 +390,4 @@
 	<button type="button" class="btn btn-link btn-xs" style="color:black;" >About us</button>|<button type="button" class="btn btn-link btn-xs" style="color:black;">Contact Us</button>
 </div>
 
-<script type="text/ng-template" id="selCityModal.html">
-<div class="myModal">
-	<div class="modal-header">
-        <h3 class="modal-title">Select city</h3>
-    </div>
-    <div class="modal-body row">
-    	<div class="col-md-12">
-	        <autocomplete get-search-res="getCities(searchStr)" on-select="selectCity()" selected-data="selectedCity" search-str="searchStr" no-res-msg="No cities found!" delay="0" autofocus="true"></autocomplete>
-	    </div>
-	    <div>
-	    	<div class="col-md-3" ng-repeat="city in selectedCities track by $index">{{city}}</div>
-	    </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-    </div>
-</div>
 
-</script>

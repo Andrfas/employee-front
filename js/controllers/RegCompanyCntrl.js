@@ -7,7 +7,7 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'Confi
             animation: true,
             backdrop: 'static',
             keyboard:true,
-            templateUrl: 'selCityModal.html',
+            templateUrl: '../templates/modals/selCityModal.html',
             controller: 'SelCityModalCntrl',
             resolve: {
                 cities: function () {
