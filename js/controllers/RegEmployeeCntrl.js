@@ -21,7 +21,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
             $scope.stud = person;
         }
     }
-
+    //opening modals
     $scope.openSelectLanguageWindow = function(){
         var instance = $uibModal.open({
             animation: true,
@@ -31,6 +31,16 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
             controller: 'SelLanguageModalCntrl'
 
         })
+    }
 
+    $scope.openSelectEducationWindow = function(){
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard:true,
+            templateUrl: '../templates/modals/addEducationModal.html',
+            controller: 'SelEducationModalCntrl'
+
+        })
     }
 }])

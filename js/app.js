@@ -37,6 +37,7 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                     '/js/controllers/RegEmployeeCntrl.js',
                     '/js/controllers/SelCityModalCntrl.js',
                     '/js/controllers/SelLanguageModalCntrl.js',
+                    '/js/controllers/SelEducationModalCntrl.js',
                     '/js/services/RegCompanySrvc.js'
                 ])}
             })
