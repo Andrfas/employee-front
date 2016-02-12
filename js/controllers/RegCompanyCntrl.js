@@ -47,4 +47,23 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'Confi
     $scope.changePage = function(page) {
         $scope.page = page;
     }
+
+   $scope.company = {
+        name: '',
+        website: '',
+        email: '',
+        password: '',
+        passAgain: '',
+        cityArr: [],
+        description: '',
+    };
+
+    $scope.checkPassword = function(){
+        return $scope.company.password === $scope.company.passAgain; 	
+    }
+
+    $scope.submit = function(){
+        this.company.cityArr = this.cities;
+        console.log(this.company);
+    }
 }])
