@@ -43,4 +43,37 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
 
         })
     }
+    $scope.openAddSkillWindow = function(){
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard:true,
+            templateUrl: '../templates/modals/addSkillModal.html',
+            controller: 'AddSkillModalCntrl'
+
+        })
+    }
+
+    $scope.openAddExperienceWindow = function(){
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard:true,
+            templateUrl: '../templates/modals/addExperienceModal.html',
+            controller: 'AddExperienceModalCntrl'
+
+    })
+  }
+
+  $scope.openAddPortfolioWindow = function(){
+    var instance = $uibModal.open({
+      animation: true,
+      backdrop: 'static',
+      keyboard:true,
+      templateUrl: '../templates/modals/addPortfolioModal.html',
+      controller: 'AddPortfolioModalCntrl'
+
+    })
+  }
+
 }])

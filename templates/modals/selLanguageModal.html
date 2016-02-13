@@ -2,13 +2,12 @@
     <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()">&times;</button>
         <h3 class="modal-title">Add Language</h3>
-
     </div>
     <div class="modal-body">
-        <div class="input-group col-md-12">
-            <h3>Language</h3>
-            <input type="text" class="form-control" >
-
+         <div class="input-group col-md-12">
+                <h3>Language</h3>
+                <input type="text" name="lang" id="lang" class="form-control"  >
+            </div>
             <h3 style="margin-top: 70px">Proficienty</h3>
             <div class="radio">
                 <label><input type="radio" name="optradio">Basic</label><br>
@@ -27,7 +26,6 @@
                 <label>I have complete command of this language, including breadth of vocabulary, idioms and colloquialisms</label>
             </div>
 
-        </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>

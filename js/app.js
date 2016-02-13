@@ -38,6 +38,9 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                     '/js/controllers/SelCityModalCntrl.js',
                     '/js/controllers/SelLanguageModalCntrl.js',
                     '/js/controllers/SelEducationModalCntrl.js',
+                    '/js/controllers/AddSkillModalCntrl.js',
+                    '/js/controllers/AddExperienceModalCntrl.js',
+                    '/js/controllers/AddPortfolioModalCntrl.js',
                     '/js/services/RegCompanySrvc.js'
                 ])}
             })
