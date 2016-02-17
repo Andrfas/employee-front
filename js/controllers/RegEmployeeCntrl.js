@@ -1,79 +1,74 @@
 app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uibModal) {
     $scope.studInfo = {
-      name: '',
-      lastName: '',
-      email: '',
-      password: '',
-      repeatPass:''
+        name: '',
+        lastName: '',
+        email: '',
+        password: '',
+        repeatPass: ''
     };
-    $scope.checkPasswords = function(){
+
+    $scope.isConfirmPasswordMatch = function() {
         return $scope.studInfo.password === $scope.studInfo.repeatPass;
     }
-    $scope.stud = 'stud1';
-    $scope.changeEmplSelect = function(person, direction){ //direction next or prev
 
-        if (direction === 'next'){
-            if ($scope.checkPasswords()) {
-                $scope.stud = person;
-            }
-        }
-            else {
-            $scope.stud = person;
-        }
+    $scope.page = 1;
+    $scope.changePage = function(page) {
+        $scope.page = page;            
     }
-    //opening modals
-    $scope.openSelectLanguageWindow = function(){
+
+        //opening modals
+    $scope.openSelectLanguageWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/selLanguageModal.html',
             controller: 'SelLanguageModalCntrl'
 
         })
     }
 
-    $scope.openSelectEducationWindow = function(){
+    $scope.openSelectEducationWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/addEducationModal.html',
             controller: 'SelEducationModalCntrl'
 
         })
     }
-    $scope.openAddSkillWindow = function(){
+    $scope.openAddSkillWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/addSkillModal.html',
             controller: 'AddSkillModalCntrl'
 
         })
     }
 
-    $scope.openAddExperienceWindow = function(){
+    $scope.openAddExperienceWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/addExperienceModal.html',
             controller: 'AddExperienceModalCntrl'
 
-    })
-  }
+        })
+    }
 
-  $scope.openAddPortfolioWindow = function(){
-    var instance = $uibModal.open({
-      animation: true,
-      backdrop: 'static',
-      keyboard:true,
-      templateUrl: '../templates/modals/addPortfolioModal.html',
-      controller: 'AddPortfolioModalCntrl'
+    $scope.openAddPortfolioWindow = function() {
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard: true,
+            templateUrl: '../templates/modals/addPortfolioModal.html',
+            controller: 'AddPortfolioModalCntrl'
 
-    })
-  }
+        })
+    }
 
 }])
