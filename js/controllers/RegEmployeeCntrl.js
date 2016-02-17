@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uibModal) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'RegEmployeeSrvc', function($scope, $uibModal, RegEmployeeSrvc) {
     $scope.studInfo = {
         name: '',
         lastName: '',
@@ -9,6 +9,22 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
 
     $scope.isConfirmPasswordMatch = function() {
         return $scope.studInfo.password === $scope.studInfo.repeatPass;
+    }
+
+    $scope.createEmployee = function() {
+        var data = {
+            firstName: $scope.studInfo.name,
+            lastName: $scope.studInfo.lastName,
+            email: $scope.studInfo.email,
+            password: $scope.studInfo.password
+        };
+        RegEmployeeSrvc.createEmployee(data)
+            .then(function(res) {
+                console.log('createEmployee', res)
+            })
+            .catch(function(err) {
+                console.error('createEmployee', err)
+            })
     }
 
     $scope.page = 1;
