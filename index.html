@@ -87,20 +87,25 @@
                 <h3 class="modal-title">Sign in</h3>
             </div>
             <div class="modal-body row">
-                <div class="row">
-                    <div class="col-md-12 col-md-offset-2">
-                        <input type="email" ng-model="mail" placeholder="email"></input>
+                <form name="signInFrom" novalidate id="signinForm" class="form-group">
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-2">
+                            <input type="email" ng-model="mail" name="mail" ng-class="{'has-error' : signInFrom.$submitted || signInFrom.mail.$touched}"  placeholder="email" required=""></input>
+                            <div ng-show="signInFrom.$submitted || signInFrom.mail.$touched">
+                                <div ng-show="signInFrom.mail.$error.required">Tell us your name.</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-2">
-                        <input type="password" ng-model="password" placeholder="password"></input>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                            <input type="password" ng-model="password" class="form-control" placeholder="password" required=""></input>
+                        </div>
+                        
                     </div>
-                    
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="submit" ng-click="signIn()">Sign in</button>
+                <button class="btn btn-primary" type="submit" ng-click="signIn()" form="signinForm">Sign in</button>
             </div>
         </div>
 
@@ -171,6 +176,8 @@
         <script src="/js/services/AuthorizationSrvc.js"></script>
         <script src="/js/controllers/HeaderCntrl.js"></script>
         <script src="/js/controllers/SignInCntrl.js"></script>
+        <script src="/js/services/RegCompanySrvc.js"></script>
+        <script src="/js/services/RegEmployeeSrvc.js"></script>
         <!--SCRIPTS END-->
     </body>
 </html>
