@@ -1,5 +1,5 @@
-<input class="searchbox" type="text" ng-change="getResults()" ng-model="searchStr" />
-<div class="results" ng-show="areResultsVisible">
+<input class="searchbox form-control" type="text" ng-change="getResults()" ng-model="searchStr"  />
+<div class="results col-md-12" ng-show="areResultsVisible">
     <span ng-show="results.length==0">{{noResMsg}}</span>
     <div class="result" ng-repeat="result in results track by $index" ng-mousedown="selectElem(result)">{{getResToShow(result)}}</div>
 </div>

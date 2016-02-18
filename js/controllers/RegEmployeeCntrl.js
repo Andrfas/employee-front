@@ -1,10 +1,12 @@
 app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uibModal) {
+    $scope.languages = [];
     $scope.studInfo = {
       name: '',
       lastName: '',
       email: '',
       password: '',
-      repeatPass:''
+      repeatPass:'',
+      languagesArr:[]
     };
     $scope.checkPasswords = function(){
         return $scope.studInfo.password === $scope.studInfo.repeatPass;
@@ -21,6 +23,9 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
             $scope.stud = person;
         }
     }
+    $scope.removeLanguage = function(index){
+        $scope.languages.splice(index,1);
+    }
     //opening modals
     $scope.openSelectLanguageWindow = function(){
         var instance = $uibModal.open({
@@ -30,7 +35,12 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
             templateUrl: '../templates/modals/selLanguageModal.html',
             controller: 'SelLanguageModalCntrl'
 
-        })
+        });
+        instance.result.then(function (language) {
+            $scope.languages.push(language);
+            console.log(typeof $scope.languages);
+        }, function () {//dismiss
+        });
     }
 
     $scope.openSelectEducationWindow = function(){

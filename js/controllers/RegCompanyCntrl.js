@@ -17,7 +17,9 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'Confi
         });
 
         instance.result.then(function (cities) {
+            console.log(typeof cities);
             $scope.cities = cities.slice();
+            console.log(typeof $scope.cities);
         }, function () {//dismiss
         });
     }

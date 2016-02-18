@@ -1,6 +1,7 @@
 app.controller('SelCityModalCntrl', ['$scope', '$uibModalInstance', 'cities', function($scope, $uibModalInstance, cities) {
     $scope.selectedCities = cities.slice();
     $scope.searchStr = '';
+    console.log(cities + $scope.cities);
     $scope.getCities = function(name) {
         name = name.toLowerCase();
         var res = [];

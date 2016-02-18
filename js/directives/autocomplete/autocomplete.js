@@ -1,6 +1,6 @@
 app.directive('autocomplete', ['$document', '$timeout', function($document, $timeout) {
     return {
-        templateUrl: "/templates/autocomplete.html",
+        templateUrl: "/templates/directives/autocomplete.html",
         scope: {
             selectedData: '=selectedData', // elements that is selected in resultBox
             onSelect: '&onSelect', // function to be called after eleme selected
