@@ -1,5 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uibModal) {
-    $scope.languages = [];
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'RegEmployeeSrvc', function($scope, $uibModal, RegEmployeeSrvc) {
     $scope.studInfo = {
       name: '',
       lastName: '',
@@ -8,20 +7,30 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
       repeatPass:'',
       languagesArr:[]
     };
-    $scope.checkPasswords = function(){
+
+    $scope.isConfirmPasswordMatch = function() {
         return $scope.studInfo.password === $scope.studInfo.repeatPass;
     }
-    $scope.stud = 'stud1';
-    $scope.changeEmplSelect = function(person, direction){ //direction next or prev
 
-        if (direction === 'next'){
-            if ($scope.checkPasswords()) {
-                $scope.stud = person;
-            }
-        }
-            else {
-            $scope.stud = person;
-        }
+    $scope.createEmployee = function() {
+        var data = {
+            firstName: $scope.studInfo.name,
+            lastName: $scope.studInfo.lastName,
+            email: $scope.studInfo.email,
+            password: $scope.studInfo.password
+        };
+        RegEmployeeSrvc.createEmployee(data)
+            .then(function(res) {
+                console.log('createEmployee', res)
+            })
+            .catch(function(err) {
+                console.error('createEmployee', err)
+            })
+    }
+
+    $scope.page = 1;
+    $scope.changePage = function(page) {
+        $scope.page = page;
     }
     $scope.removeLanguage = function(index){
         $scope.languages.splice(index,1);
@@ -31,7 +40,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/selLanguageModal.html',
             controller: 'SelLanguageModalCntrl'
 
@@ -43,47 +52,47 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', function($scope, $uib
         });
     }
 
-    $scope.openSelectEducationWindow = function(){
+    $scope.openSelectEducationWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/addEducationModal.html',
             controller: 'SelEducationModalCntrl'
 
         })
     }
-    $scope.openAddSkillWindow = function(){
+    $scope.openAddSkillWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/addSkillModal.html',
             controller: 'AddSkillModalCntrl'
 
         })
-    }
+    };
 
-    $scope.openAddExperienceWindow = function(){
+    $scope.openAddExperienceWindow = function() {
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard:true,
+            keyboard: true,
             templateUrl: '../templates/modals/addExperienceModal.html',
             controller: 'AddExperienceModalCntrl'
 
-    })
-  }
+        })
+    };
 
-  $scope.openAddPortfolioWindow = function(){
-    var instance = $uibModal.open({
-      animation: true,
-      backdrop: 'static',
-      keyboard:true,
-      templateUrl: '../templates/modals/addPortfolioModal.html',
-      controller: 'AddPortfolioModalCntrl'
+    $scope.openAddPortfolioWindow = function() {
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard: true,
+            templateUrl: '../templates/modals/addPortfolioModal.html',
+            controller: 'AddPortfolioModalCntrl'
 
-    })
-  }
+        })
+    }
 
 }])

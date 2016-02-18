@@ -40,8 +40,7 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                     '/js/controllers/SelEducationModalCntrl.js',
                     '/js/controllers/AddSkillModalCntrl.js',
                     '/js/controllers/AddExperienceModalCntrl.js',
-                    '/js/controllers/AddPortfolioModalCntrl.js',
-                    '/js/services/RegCompanySrvc.js'
+                    '/js/controllers/AddPortfolioModalCntrl.js'
                 ])}
             })
             .when('/proposal', {
