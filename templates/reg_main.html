@@ -199,14 +199,14 @@
 								</div>
 								<div class="row">
 					                <!--form groups with error messages-->
-					                <div class="form-group col-md-4 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.$submitted && regStudForm1.name.$error.required }">
+					                <div class="form-group col-md-4 col-md-offset-1" ng-class="{ 'has-error' : (regStudForm1.$submitted || regStudForm1.name.$touched) && regStudForm1.name.$error.required }">
 										<input type="text" name="name" id="StudName" ng-model="studInfo.name" class="form-control" required="">
-                    					<p ng-show="regStudForm1.$submitted && regStudForm1.name.$error.required" class="help-block">Your name is required.
+                    					<p ng-show="(regStudForm1.$submitted || regStudForm1.name.$touched) && regStudForm1.name.$error.required" class="help-block">Your name is required.
                     					</p>
                   					</div>
-					                <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.$submitted && regStudForm1.lastName.$error.required }">
+					                <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : (regStudForm1.$submitted || regStudForm1.lastName.$touched) && regStudForm1.lastName.$error.required }">
 					                    <input type="text" name="lastName" id="StudLastName" ng-model="studInfo.lastName" class="form-control" required="">
-					                    <p ng-show="regStudForm1.$submitted && regStudForm1.lastName.$error.required" class="help-block">Your last name is required.
+					                    <p ng-show="(regStudForm1.$submitted || regStudForm1.lastName.$touched) && regStudForm1.lastName.$error.required" class="help-block">Your last name is required.
 					                    </p>
 					                </div>
 								</div>
@@ -214,10 +214,10 @@
 									<h3 class="col-md-offset-1 col-md-1">Email</h3>
 								</div>
 								<div class="row">
-				                	<div class="form-group col-md-10 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.$submitted && (regStudForm1.email.$error.required || regStudForm1.email.$error.email)}">
+				                	<div class="form-group col-md-10 col-md-offset-1" ng-class="{ 'has-error' : (regStudForm1.$submitted || regStudForm1.email.$touched) && (regStudForm1.email.$error.required || regStudForm1.email.$error.email)}">
 				                    	<input type="email" class="form-control" name="email" id="StudEmail" ng-model="studInfo.email" required="">
-				                    	<p ng-show="regStudForm1.$submitted && regStudForm1.email.$error.required" class="help-block">Email is required</p>
-				                    	<p ng-show="regStudForm1.$submitted && regStudForm1.email.$error.email" class="help-block">Input valid email</p>
+				                    	<p ng-show="(regStudForm1.$submitted || regStudForm1.email.$touched) && regStudForm1.email.$error.required" class="help-block">Email is required</p>
+				                    	<p ng-show="(regStudForm1.$submitted || regStudForm1.email.$touched) && regStudForm1.email.$error.email" class="help-block">Input valid email</p>
 				                  	</div>
 								</div>
 								<div class="row" style="line-height: 0px;">
@@ -225,15 +225,15 @@
 									<h3 class="col-md-offset-1 col-md-4">Password Again</h3>
 								</div>
 								<div class="row">
-					                <div class="form-group col-md-4 col-md-offset-1" ng-class="{'has-error' : (regStudForm1.pass.$touched && regStudForm1.pass.$error.minlength) || (regStudForm1.$submitted && (regStudForm1.pass.$error.minlength || regStudForm1.pass.$error.required)) }">
+					                <div class="form-group col-md-4 col-md-offset-1" ng-class="{'has-error' : (regStudForm1.$submitted || regStudForm1.pass.$touched) && (regStudForm1.pass.$error.minlength || regStudForm1.pass.$error.required) }">
 					                    <input type="password" name="pass" id="StudPass" ng-model="studInfo.password" class="form-control" ng-minlength="6" required="">
-					                    <p ng-show="regStudForm1.pass.$touched && regStudForm1.pass.$error.minlength" class="help-block">Enter at least 6 symbols.</p>
-					                    <p ng-show="regStudForm1.$submitted && regStudForm1.pass.$error.required" class="help-block">Password is required</p>
+					                    <p ng-show="(regStudForm1.$submitted || regStudForm1.pass.$touched) && regStudForm1.pass.$error.minlength" class="help-block">Enter at least 6 symbols.</p>
+					                    <p ng-show="(regStudForm1.$submitted || regStudForm1.pass.$touched) && regStudForm1.pass.$error.required" class="help-block">Password is required</p>
 					                </div>
 
-					                <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : regStudForm1.repPass.$touched && !isConfirmPasswordMatch() }">
+					                <div class="form-group col-md-5 col-md-offset-1" ng-class="{ 'has-error' : (regStudForm1.$submitted || regStudForm1.repPass.$touched) && !isConfirmPasswordMatch() }">
 					                    <input type="password" name="repPass" id="StudPassAgain" ng-model="studInfo.repeatPass" class="form-control" required="">
-					                    <p ng-show="regStudForm1.repPass.$touched && !isConfirmPasswordMatch()" class="help-block">Passwords didn't matched.</p>
+					                    <p ng-show="(regStudForm1.$submitted || regStudForm1.repPass.$touched) && !isConfirmPasswordMatch()" class="help-block">Passwords didn't matched.</p>
 					                </div>
 								</div>
 								<div class="row" style="margin-top:20px;">
