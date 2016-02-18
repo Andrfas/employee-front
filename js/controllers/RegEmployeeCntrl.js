@@ -1,4 +1,5 @@
 app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'RegEmployeeSrvc', function($scope, $uibModal, RegEmployeeSrvc) {
+    $scope.languages = [];
     $scope.studInfo = {
       name: '',
       lastName: '',
@@ -40,7 +41,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'RegEmployeeSrvc', fu
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
-            keyboard: true,
+            keyboard:true,
             templateUrl: '../templates/modals/selLanguageModal.html',
             controller: 'SelLanguageModalCntrl'
 
