@@ -41,6 +41,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInsta
     }
 
     $scope.cancel = function () {
+        $rootScope.languages.push($scope.selectedLanguage);
         $uibModalInstance.dismiss('cancel');
     };
 
