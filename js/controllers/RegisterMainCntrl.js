@@ -1,8 +1,12 @@
-app.controller('RegisterMainCntrl', ['$scope', function($scope) {
+app.controller('RegisterMainCntrl', ['$scope', '$rootScope', function($scope, $rootScope) {
 	$scope.choose = ['employee', 'company'];
+	$rootScope.languages = ['Ukrainian', 'Russian', 'English', 'German', 'French'];
     $scope.clientType;
   	$scope.changeClientSelect = function(person){
-        // console.log(person);
   		$scope.clientType = person;
   	}
+
+	$rootScope.removeLanguage = function(index){
+		$scope.languages.splice(index, 1);
+	}
 }])

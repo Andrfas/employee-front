@@ -1,5 +1,5 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'RegEmployeeSrvc', function($scope, $uibModal, RegEmployeeSrvc) {
-    $scope.languages = [];
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal','$rootScope', 'RegEmployeeSrvc', function($scope, $uibModal, $rootScope, RegEmployeeSrvc) {
+    $scope.languages = []; //fields name, level
     $scope.studInfo = {
       name: '',
       lastName: '',
@@ -34,6 +34,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'RegEmployeeSrvc', fu
         $scope.page = page;
     }
     $scope.removeLanguage = function(index){
+        $rootScope.languages.push($scope.languages[index].name);
         $scope.languages.splice(index,1);
     }
     //opening modals

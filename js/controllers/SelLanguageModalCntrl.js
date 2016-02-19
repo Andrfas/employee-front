@@ -1,7 +1,7 @@
-app.controller('SelLanguageModalCntrl', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
+app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInstance', function($scope, $rootScope, $uibModalInstance) {
   $scope.errMessage=''; //message, if somehing isn't filled
 
-  var languages = ['Украинский', 'Русский', 'Английський', 'Немецкий', 'Французский'];
+
     $scope.language = {
       name: '',
       level: ''
@@ -10,7 +10,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$uibModalInstance', function
     $scope.getLanguages = function(name) {
         name = name.toLowerCase();
         var res = [];
-        languages.forEach(function(language) {
+        $scope.languages.forEach(function(language) {
             if (language.toLowerCase().indexOf(name) !== -1) {
                 res.push(language);
             }
@@ -21,12 +21,11 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$uibModalInstance', function
     $scope.selectedLanguage;
     $scope.levelOfKnowledge;
     $scope.selectLanguage = function() {
+        $rootScope.removeLanguage($rootScope.languages.indexOf($scope.selectedLanguage));
         $scope.searchStr = '';
     }
 
     $scope.save = function(){
-      //alert($scope.selectedLanguage + $scope.levelOfKnowledge);
-
       $scope.language.name = $scope.selectedLanguage;
       //if all fields are filled - close, else show message
       if ($scope.language.name && $scope.language.level) {
