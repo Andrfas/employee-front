@@ -53,9 +53,10 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', '$rootScope', 'RegEmp
             controller: 'SelLanguageModalCntrl'
 
         });
-        instance.result.then(function (language) {
-            $scope.languages.push(language);
+        instance.result.then(function (languages) {
+            $scope.languages = $scope.languages.concat(languages);
             console.log(typeof $scope.languages);
+            console.log($scope.languages);
         }, function () {//dismiss
         });
     }

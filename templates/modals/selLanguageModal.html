@@ -6,8 +6,13 @@
     <div class="modal-body">
          <div class="form-group col-md-12">
              <h3>Language</h3>
-             <autocomplete get-search-res="getLanguages(searchStr)" on-select="selectLanguage()" selected-data="selectedLanguage" search-str="searchStr" no-res-msg="No languages found!" delay="0" autofocus="true" class="col-md-12"></autocomplete>
-             <label class="col-md-4" style="margin-top: 15px" ng-show="selectedLanguage">{{selectedLanguage}}</label>
+             <autocomplete get-search-res="getLanguages(searchStr)" on-select="selectLanguage()" selected-data="selectedLanguage" search-str="searchStr" no-res-msg="No languages found!" delay="0" autofocus="true" class="col-md-10"></autocomplete>
+             <button class="btn btn-default btn-large col-md-2" ng-click="add()" type="button">Add</button>
+
+             <label class="col-md-12" style="margin-top: 15px; text-align: center" ng-repeat="language in selectedLanguages">
+                 {{language.name}}: {{language.level}}
+             </label>
+
          </div>
         <h3 style="margin-top: 70px">Proficienty</h3>
         <div class="radio">
@@ -19,7 +24,7 @@
             <label>I know this language well enough to verbally discuss project details with client</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="optradio" ng-model="language.level" value="Fluent">Fluent</label><br>
+            <label><input type="radio" name="optradio" unchecked="" ng-model="language.level" value="Fluent">Fluent</label><br>
             <label>I have complete command of this language with perfect grammar</label>
         </div>
         <div class="radio">
@@ -30,9 +35,9 @@
     </div>
     <div class="modal-footer">
       <div class="row">
-        <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>
-        <button class="btn btn-default col-md-5" type="button">Save And Add More</button>
-        <button class="btn btn-link col-md-4" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-success col-md-offset-1 col-md-2" type="button" ng-click="save()">Save</button>
+
+        <button class="btn btn-link col-md-offset-5 col-md-4" type="button" ng-click="cancel()">Cancel</button>
       </div>
       <div class="row">
         <span  ng-show="!selectedLanguage || !language.level">{{errMessage}}</span>
