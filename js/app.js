@@ -51,6 +51,22 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/ProposalCntrl.js'
                 ])}
             })
+            .when('/company/:profileId', {
+                templateUrl: '/templates/company_profile.html',
+                controller: 'CompanyProfileCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/CompanyProfileCntrl.js'
+                ])}
+            })
+            .when('/employee/:profileId', {
+                templateUrl: '/templates/employee_profile.html',
+                controller: 'EmployeeProfileCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/EmployeeProfileCntrl.js'
+                ])}
+            })
 
         //$locationProvider.html5Mode({
         //    enabled: true,
