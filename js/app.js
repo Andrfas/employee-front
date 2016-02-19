@@ -1,4 +1,4 @@
-var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload']);
+var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload', 'toaster', 'ngAnimate']);
 
 app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
     function($routeProvider, $controllerProvider, $locationProvider) {
