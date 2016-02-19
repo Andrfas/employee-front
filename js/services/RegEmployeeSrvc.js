@@ -5,10 +5,10 @@ app.service('RegEmployeeSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrv
             var call = $q.defer();
             ReqHandlingSrvc.put(url, data)
                 .then(function(res) {
-                    console.log(res);
+                    call.resolve(res);
                 })
                 .catch(function(err) {
-                    console.error(err);
+                    call.reject(err);
                 })
             return call.promise;
         }

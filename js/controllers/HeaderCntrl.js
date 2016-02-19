@@ -25,4 +25,20 @@ app.controller('HeaderCntrl', ['$scope', '$uibModal', 'AuthorizationSrvc', funct
                 
             });
     }
+
+    $scope.getProfileLink = function() {
+        if(!AuthorizationSrvc.isAuthorized) {
+            return null;
+        }
+        var link = '/#/';
+        var clientType = localStorage.getItem('clientType');
+        var clientId = localStorage.getItem('clientId');
+
+        if(clientType === 'company') {
+            link += 'company/'+clientId;
+        } else if(clientType === 'employee') {
+            link += 'employee/'+clientId;
+        }
+        return link;
+    }
 }])

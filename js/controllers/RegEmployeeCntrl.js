@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal','$rootScope', 'RegEmployeeSrvc', function($scope, $uibModal, $rootScope, RegEmployeeSrvc) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', '$rootScope', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, $rootScope, RegEmployeeSrvc, PopUpSrvc) {
     $scope.languages = []; //fields name, level
     $scope.studInfo = {
       name: '',
@@ -22,10 +22,16 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal','$rootScope', 'RegEmpl
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
-                console.log('createEmployee', res)
+                console.log('createEmployee', res);
+                if(res.success) {
+                    PopUpSrvc.success('Registration', 'Activation link has been sent to your email')
+                } else {
+                    PopUpSrvc.error('Registration', res.msg);               
+                }
             })
             .catch(function(err) {
-                console.error('createEmployee', err)
+                console.error('createEmployee', err);
+                PopUpSrvc.error('Registration', err); 
             })
     }
 

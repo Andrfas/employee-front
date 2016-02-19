@@ -1,4 +1,4 @@
-var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload']);
+var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload', 'toaster', 'ngAnimate']);
 
 app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
     function($routeProvider, $controllerProvider, $locationProvider) {
@@ -49,6 +49,22 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 resolve: {
                     deps: app.resolveScriptDeps([
                         'js/controllers/ProposalCntrl.js'
+                ])}
+            })
+            .when('/company/:profileId', {
+                templateUrl: '/templates/company_profile.html',
+                controller: 'CompanyProfileCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/CompanyProfileCntrl.js'
+                ])}
+            })
+            .when('/employee/:profileId', {
+                templateUrl: '/templates/employee_profile.html',
+                controller: 'EmployeeProfileCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/EmployeeProfileCntrl.js'
                 ])}
             })
 
