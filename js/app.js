@@ -67,6 +67,14 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/EmployeeProfileCntrl.js'
                 ])}
             })
+            .when('/create/adwert', {
+                templateUrl: '/templates/create_advert.html',
+                controller: 'CreateAdvertCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/CreateAdvertCntrl.js'
+                ])}
+            })
 
         //$locationProvider.html5Mode({
         //    enabled: true,
