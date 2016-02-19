@@ -4,7 +4,7 @@
     </div>
     <div class="modal-body row">
         <div class="col-md-12">
-            <autocomplete get-search-res="getCities(searchStr)" on-select="selectCity()" selected-data="selectedCity" search-str="searchStr" no-res-msg="No cities found!" delay="0" autofocus="true"></autocomplete>
+            <input type="text" ng-model="searchStr" typeahead-on-select="selectCity($item, $model, $label, $event)" uib-typeahead="city for city in cities | filter:$viewValue" class="form-control">
         </div>
         <div>
             <div class="col-md-3" ng-repeat="city in selectedCities track by $index">{{city}}</div>
@@ -12,6 +12,5 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>
