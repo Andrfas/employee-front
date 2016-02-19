@@ -1,4 +1,4 @@
-app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc', function($scope, $uibModalInstance, AuthorizationSrvc) {
+app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc', 'PopUpSrvc', function($scope, $uibModalInstance, AuthorizationSrvc, PopUpSrvc) {
     $scope.mail = '';
     $scope.password = '';
 
@@ -7,8 +7,10 @@ app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc
             .then(function(res) {
                 if(res.success) {
                     $uibModalInstance.close();
+                    PopUpSrvc.success('Hello', 'You signed in!');
                 } else {
-                    console.log(res)
+                    console.log('SignIn', res)
+                    PopUpSrvc.error('SignIn failed', res.msg);
                 }
             })
             .catch(function(err) {
