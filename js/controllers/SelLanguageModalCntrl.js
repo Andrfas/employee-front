@@ -76,7 +76,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInsta
     $scope.save = function(){
         //if all fields are filled - close, else show message
         $scope.validate();
-        if (!$scope.errMessage || $scope.isLanguageEmpty()) {
+        if (!$scope.errMessage || ($scope.isLanguageEmpty() && $scope.selectedLanguages.length!=0)) {
             if(!$scope.isLanguageEmpty()) {
                 $scope.selectedLanguages.push($scope.language);
             }
