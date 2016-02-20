@@ -8,16 +8,16 @@
     <div class="row" >
         <div class="col-md-7">
             <div class="block">
-                <input class="form-control" type="text" placeholder="Name" style="margin: 10px 0px 10px">
+                <input class="form-control" ng-model="advertData.title" type="text" placeholder="Title" style="margin: 10px 0px 10px">
             </div>
             <div class="block">
                 <div class="text-left" style="margin: 10px 0px 10px">
-                    <select class="form-control">
-                        <option >Closing Date For Application</option>
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                    </select>
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="dd.MM.yyyy" ng-model="advertData.dateSelEnd" is-open="isDatepickerOpen" close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openDatepicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
                 </div>
 
             </div>
@@ -25,11 +25,11 @@
             <div class="block">
                 <p class="form-control text-left">Salary / Grants</p>
                 <div class="form-group">
-                    <div class="checkbox">
-                        <label><input type="checkbox" checked >Have</label>
+                    <div class="radio">
+                        <label><input type="radio" name="grants" value="true" ng-model="advertData.paid">Have</label>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox">Don't Have</label>
+                    <div class="radio">
+                        <label><input type="radio" name="grants" value="false" ng-model="advertData.paid">Don't Have</label>
                     </div>
                 </div>
             </div>
@@ -37,11 +37,11 @@
             <div class="block">
                 <p class="form-control text-left">Course</p>
                 <div class="form-group">
-                    <div class="checkbox">
-                        <label><input type="checkbox" checked >Free</label>
+                    <div class="radio">
+                        <label><input type="radio" name="needPay" value="false" ng-model="advertData.needPay" >Free</label>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox">Not Free</label>
+                    <div class="radio">
+                        <label><input type="radio" name="needPay" value="true" model="advertData.needPay">Not Free</label>
                     </div>
                 </div>
             </div>
@@ -49,49 +49,52 @@
             <div class="block">
                 <p class="form-control text-left">Type Of Employment</p>
                 <div class="form-group">
-                    <div class="checkbox">
-                        <label><input type="checkbox" checked >Full Employment</label>
+                    <div class="radio">
+                        <label><input type="radio" name="emplType" value="fulltime" ng-model="advertData.emplType" checked >Full Employment</label>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox">Underemployment</label>
+                    <div class="radio">
+                        <label><input type="radio" name="emplType" value="underemployment" ng-model="advertData.emplType">Underemployment</label>
                     </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox">Distant Work</label>
+                    <div class="radio">
+                        <label><input type="radio" name="emplType" value="distant_work" ng-model="advertData.emplType">Distant Work</label>
+                    </div>
+                </div>
+            </div>
+            <!--hoursPerWeek-->
+            <div class="block">
+                <p class="form-control text-left">Hours per week</p>
+                <div class="form-group">
+                    <div class="radio">
+                        <label><input type="radio" name="hoursPerWeek" value="more_than_30" ng-model="advertData.hoursPerWeek" checked >More than 30</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="hoursPerWeek" value="less_than_30" ng-model="advertData.hoursPerWeek">Less than 30</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="hoursPerWeek" value="of_necessity" ng-model="advertData.hoursPerWeek">Of necessity</label>
                     </div>
                 </div>
             </div>
             <!--description-->
             <div class="block">
-                <textarea class="form-control" placeholder="Description" style="margin: 10px 0px 10px"></textarea>
+                <textarea class="form-control" ng-model="advertData.description" placeholder="Description" style="margin: 10px 0px 10px"></textarea>
             </div>
         </div>
         <div class="col-md-5">
             <!--citySelect-->
             <div class="block">
-                <div class="row">
+                <div class="row">                    
                     <button type="button" class="btn btn-primary btn-lg col-md-offset-2" style="width: 200px; border-bottom: 2px solid #1e009e">Select City</button>
                 </div>
+                <div class="row">
+                    <input type="text" ng-model="searchCityStr" typeahead-on-select="selectCity($item, $model, $label, $event)" uib-typeahead="city for city in cities | filter:$viewValue" class="form-control">
+                </div>
                 <div class="row" style="margin-top: 5px">
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >Vinnitsa</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-md-5 text-center " ng-repeat="city in advertData.cities track by $index" style="background-color: #EAEFF2; margin: 5px">
+                        <label >{{city}}</label>
+                        <button type="button" class="close" ng-click="removeCity($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >Kyiv</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >Rivne</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >Lviv</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >Zhitomir</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
+                    
                 </div>
             </div>
             <!--categorySelect-->
@@ -99,11 +102,11 @@
                 <div class="row">
                     <button type="button" class="btn btn-primary btn-lg col-md-offset-2" style="width: 200px; border-bottom: 2px solid #1e009e">Select Category</button>
                 </div>
-                <select class="form-control" style="margin:5px 0px">
-                  <option>Web Development</option>
+                <select class="form-control" ng-model="advertData.category" style="margin:5px 0px">
+                  <option value="IT">IT</option>
                 </select>
-                <select class="form-control" style="margin:5px 0px">
-                  <option>Network & System</option>
+                <select class="form-control" ng-model="advertData.subcategory" style="margin:5px 0px">
+                  <option value="Web development">Web development</option>
                 </select>
             </div>
             <!--skills select-->
@@ -111,34 +114,32 @@
                 <div class="row">
                     <button type="button" class="btn btn-primary btn-lg col-md-offset-2" style="width: 200px; border-bottom: 2px solid #1e009e">Select Skills</button>
                 </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <input type="text" ng-model="searchSkillStr" typeahead-on-select="selectSkill($item.name, false)" uib-typeahead="skill.name for skill in getSkills($viewValue)" class="form-control">
+                    </div>
+                    <div class="col-xs-4">
+                        <button class="btn btn-info" ng-click="selectSkill(searchSkillStr, true)">Create skill</button>
+                    </div>
+                        
+                </div>
                 <div class="row" style="margin: 5px -5px">
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >JavaScript</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="col-md-5 text-center " ng-repeat="skill in advertData.skills track by $index" style="background-color: #EAEFF2; margin: 5px">
+                        <label >{{skill.name}}</label>
+                        <button type="button" class="close" ng-click="removeSkill($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >HTML</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >MySQL</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >CSS3</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="col-md-5 text-center " style="background-color: #EAEFF2; margin: 5px">
-                        <label >jQuery</label>
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
+                    
                 </div>
             </div>
 
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <button class="btn btn-success" ng-click="createAdvert()">Create Advert</button>
+        </div>
+    </div>
 </div>
-<script type="text/javascript" src="../js/bootstrap.js"></script>
 
 
