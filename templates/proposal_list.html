@@ -98,81 +98,37 @@
 					Of Necessity
 				</label>
 			</div> 
-			<button ng-click="searchAdverts()" style="margin-top:25px" class="btn btn-primary btn-block">Search</button>
+			<button ng-click="applyFilter()" style="margin-top:25px" class="btn btn-primary btn-block">Search</button>
 		</div>
-		<div class="col-md-8" style=" overflow-y: scroll; height: 890px; background-color: #fefeeb">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Front Counter Supervision</h2>
+		<div class="col-md-8" style="background-color: #fefeeb">
+			<div class="row" ng-repeat="advert in adverts">
+				<div class="col-xs-12">
+					<div class="row">
+						<div class="col-md-12">
+							<h2>{{advert.title}}</h2>
+						</div>
+					</div>
+					<div class="row">
+						<h3 class="col-md-3"><strong>Company`s Name</strong></h3>
+						<h3 class="col-md-offset-8">{{advert.emplType}} - {{advert.hoursPerWeek}}</h3>
+					</div>
+					<div class="row col-md-12">
+						<h4>
+							{{advert.description}}
+						</h4>
+					</div>
+					<div class="row col-md-12">
+						<h4>Cities: <strong><span ng-repeat="city in advert.cities">{{city}} </span></strong></h4>
+					</div>
+					<div class="row">
+						<h4 class="col-md-1">Skills:</h4>
+						<h4 ng-repeat="skill in advert.skills" class="label label-default col-md-1">{{skill}}</h4>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<h3 class="col-md-3"><strong>Company`s Name</strong></h3>
-				<h3 class="col-md-offset-8">Full Employment - 30 Hours Per Week</h3>
-			</div>
-			<div class="row col-md-12">
-				<h4>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum... <a href="">more</a>
-				</h4>
-			</div>
-			<div class="row col-md-12">
-				<h4>Cities: <strong>Kyiv Poltava Kherson</strong></h4>
-			</div>
-			<div class="row">
-				<h4 class="col-md-1">Skills:</h4>
-				<h4 class="label label-default col-md-1">JavaScript</h4>
-				<h4 class="label label-default col-md-1">AngularJs</h4>
-				<h4 class="label label-default col-md-1">MySQL</h4>
-				<h4 class="label label-default col-md-1">CSS3</h4>
-				<h4 class="label label-default col-md-1">HTML5</h4>
 			</div>
 			<hr>
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Backend MEAN Stack Development</h2>
-				</div>
-			</div>
-			<div class="row">
-				<h3 class="col-md-3"><strong>Company`s Name</strong></h3>
-				<h3 class="col-md-offset-8">Distant Work - 20 Hours Per Week</h3>
-			</div>
-			<div class="row col-md-12">
-				<h4>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... <a href="">more</a>
-				</h4>
-			</div>
-			<div class="row col-md-12">
-				<h4>Cities: <strong>Kyiv</strong></h4>
-			</div>
-			<div class="row">
-				<h4 class="col-md-1">Skills:</h4>
-				<h4 class="label label-default col-md-1">AngularJs</h4>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Frontend Development</h2>
-				</div>
-			</div>
-			<div class="row">
-				<h3 class="col-md-3"><strong>Company`s Name</strong></h3>
-				<h3 style="float:right;">Underemployment - 30 Hours Per Week</h3>
-			</div>
-			<div class="row col-md-12">
-				<h4>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat... <a href="">more</a>
-				</h4>
-			</div>
-			<div class="row col-md-12">
-				<h4>Cities: <strong>Lviv Rivne Ternopil</strong></h4>
-			</div>
-			<div class="row">
-				<h4 class="col-md-1">Skills:</h4>
-				<h4 class="label label-default col-md-1">JavaScript</h4>
-				<h4 class="label label-default col-md-1">AngularJs</h4>
-				<h4 class="label label-default col-md-1">WordPress</h4>
-			</div>
-			<button type="button" style="float:right; margin-top:150px;" class="btn btn-link btn-sm">Show more</button>
+			
+			<button ng-click="showMore()" type="button" style="float:right; margin-top:150px;" class="btn btn-link btn-sm">Show more</button>
 		</div>
 	</div>
 	<div class="row" style="margin-top:100px;">

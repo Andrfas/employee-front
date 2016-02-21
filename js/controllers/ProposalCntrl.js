@@ -8,12 +8,14 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.selectedNeedPay = [];
     $scope.selectedHoursPerWeek = [];
 
+    $scope.adverts = [];
+
     $scope.pager = {
         page:1,
-        count: 10
+        count: 2
     }
 
-    $scope.searchAdverts = function() {
+    $scope.getAdverts = function() {
         var reqObj = {
             page:$scope.pager.page,
             count:$scope.pager.count,
@@ -29,7 +31,20 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
         AdvertSrvc.getAdverts(reqObj)
             .then(function(res) {
                 console.log('adverts', res);
+                $scope.adverts = $scope.adverts.concat(res.data);
             })
+    }
+    $scope.getAdverts();
+
+    $scope.showMore = function() {
+        $scope.pager.page++;
+        $scope.getAdverts();
+    }
+
+    $scope.applyFilter = function() {
+        $scope.pager.page = 1;
+        $scope.adverts = [];
+        $scope.getAdverts();
     }
 
 
