@@ -1,4 +1,4 @@
-app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInstance', 'PopUpSrvc', function($scope, $rootScope, $uibModalInstance, PopUpSrvc) {
+app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalInstance', 'PopUpSrvc', function($scope, StaticDataSrvc, $uibModalInstance, PopUpSrvc) {
   $scope.errMessage='';     //message, if something isn't filled
 
     $scope.language = {     //last selected
@@ -15,7 +15,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInsta
     $scope.getLanguages = function(name) {
         name = name.toLowerCase();
         var res = [];
-        $scope.languages.forEach(function(language) {
+        StaticDataSrvc.languages.forEach(function(language) {
             if (language.toLowerCase().indexOf(name) !== -1) {
                 res.push(language);
             }
@@ -32,7 +32,8 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInsta
             }
             $scope.selectedLanguages.push(language);
             $scope.clearModal();
-            $rootScope.removeLanguage($rootScope.languages.indexOf($scope.selectedLanguage)); //delete from baseArr
+            StaticDataSrvc.removeLanguage(StaticDataSrvc.languages.indexOf($scope.selectedLanguage)); //delete from baseArr
+            $scope.selectedLanguage = '';
 
         } else {
             PopUpSrvc.error('Error', $scope.errMessage);
@@ -80,7 +81,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInsta
             if(!$scope.isLanguageEmpty()) {
                 $scope.selectedLanguages.push($scope.language);
             }
-            $rootScope.removeLanguage($rootScope.languages.indexOf($scope.selectedLanguage)); //delete from baseArr
+            StaticDataSrvc.removeLanguage(StaticDataSrvc.languages.indexOf($scope.selectedLanguage)); //delete from baseArr
             $uibModalInstance.close($scope.selectedLanguages);
 
         } else {
@@ -90,7 +91,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', '$rootScope', '$uibModalInsta
 
     $scope.cancel = function () {
         for (var i = 0; i < $scope.selectedLanguages.length; i++) {
-            $rootScope.languages.push($scope.selectedLanguages[i].name);
+          StaticDataSrvc.languages.push($scope.selectedLanguages[i].name);
         }
         $uibModalInstance.dismiss('cancel');
     };

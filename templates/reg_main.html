@@ -318,7 +318,9 @@
 										<label class="col-md-offset-4 col-md-8 label label-default" style="margin-top: 10px" >
                       <span >
                         {{language.name}} : {{language.level}}
-                        <span ng-click="removeLanguage($index)">&times</span>
+                        <button type="button" class="close" ng-click="removeLanguage($index)" aria-label="Close">
+							<span aria-hidden="true">&times</span>
+						</button>
                       </span>
 										</label>
 									</h5>

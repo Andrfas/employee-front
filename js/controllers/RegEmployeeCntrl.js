@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', '$rootScope', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, $rootScope, RegEmployeeSrvc, PopUpSrvc) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc) {
     $scope.languages = []; //fields name, level
     $scope.studInfo = {
       name: '',
@@ -40,7 +40,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', '$rootScope', 'RegEmp
         $scope.page = page;
     }
     $scope.removeLanguage = function(index){
-        $rootScope.languages.push($scope.languages[index].name);
+        StaticDataSrvc.languages.push($scope.languages[index].name);
         $scope.languages.splice(index,1);
     }
     //opening modals
