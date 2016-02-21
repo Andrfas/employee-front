@@ -21,6 +21,7 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
             .then(function(res) {
                 if(res.success) {
                     console.log('CreateAdvertSuccess', res);
+                    PopUpSrvc.success('Success', 'Avert is created');
                 } else {
                     PopUpSrvc.error('Creating advert failed', res.msg);
                 }
