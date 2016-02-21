@@ -1,4 +1,4 @@
-app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'AdvertSrvc', function($scope, SkillsSrvc, PopUpSrvc, AdvertSrvc){
+app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'AdvertSrvc', '$uibModal', function($scope, SkillsSrvc, PopUpSrvc, AdvertSrvc, $uibModal){
     $scope.advertData = {
         company: localStorage.getItem('clientId'),
         category:null,
@@ -14,6 +14,7 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
         dateSelEnd:null
     }
 
+
     $scope.createAdvert = function() {
         console.log('advert', $scope.advertData);
         AdvertSrvc.createAdvert($scope.advertData)
@@ -28,6 +29,29 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
                 PopUpSrvc.error('Creating advert failed', err);
             })
     }
+
+    var selectedCategory = null;
+    $scope.openSelectCategoryModal = function() {
+        var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/SelectCategoryModal.html',
+            controller: 'SelectCategoryModalCntrl',
+            resolve: {
+                category: function () {
+                    return selectedCategory;
+                }
+            }
+        });
+
+        instance.result.then(function (category) {
+            if(!category) return;
+            selectedCategory = category;
+            $scope.advertData.category = category.categ;
+            $scope.advertData.subcategory = category.subCateg;
+        });
+    }
+
 
     $scope.searchCityStr;
     $scope.advertData.cities = [];

@@ -72,7 +72,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 controller: 'CreateAdvertCntrl',
                 resolve: {
                     deps: app.resolveScriptDeps([
-                        'js/controllers/CreateAdvertCntrl.js'
+                        'js/controllers/CreateAdvertCntrl.js',
+                        'js/controllers/SelectCategoryModalCntrl.js'
                 ])}
             })
 
