@@ -6,19 +6,23 @@
 		<h2 class="col-md-offset-2 col-md-2"><strong>Search result</strong></h2>
 	</div>
 	<div class="row">
-		<h2 class="col-md-2"><small>Select categories</small></h2>
-	</div>
-	<div class="row">
 		<div class="col-md-2">
-			<button type="button" class="btn btn-default btn-block">Add Category</button>	
-			<h4><span style="display:block;" class="label label-default">Web development</span></h4>
-			<h4><span style="display:block;" class="label label-default">Network $ System</span></h4>
+
+			<h2 style="margin-top:20px;"><small>Select categories</small></h2>
+			<button type="button" ng-click="openSelectCategoryModal()" class="btn btn-default btn-block">Add Category</button>	
+			<h4 ng-repeat="categ in selectedCategories"><span style="display:block;" class="label label-default">{{categ}}</span></h4>
+
+
 			<h2 style="margin-top:20px;"><small>Select City</small></h2>
 			<button class="btn btn-default btn-block">Add City</button>
 			<h4><span class="label label-default">Kiev</span><span class="label label-default col-md-offset-1">Poltava</span></h4>	
+
+
 			<h2 style="margin-top:20px;"><small>Select Type</small></h2>
 			<button class="btn btn-default btn-block">Add Type</button>	
 			<h4><span style="display:block;" class="label label-default">Course</span></h4>
+
+
 			<h2 style="margin-top:20px;"><small>Type Of Employment</small></h2>
 			<div class="checkbox">
 				<label>
@@ -38,6 +42,8 @@
 					Distant Work
 				</label>
 			</div>
+
+
 			<h2 style="margin-top:20px;"><small>Salary / Grants</small></h2>
 			<div class="checkbox">
 				<label>
@@ -51,6 +57,8 @@
 					Don`t Have
 				</label>
 			</div>
+
+
 			<h2 style="margin-top:20px;"><small>Course</small></h2>
 			<div class="checkbox">
 				<label>
@@ -64,6 +72,8 @@
 					Not Free
 				</label>
 			</div>
+
+			
 			<h2 style="margin-top:20px;"><small>Number Of Hours Per Week</small></h2>
 			<div class="checkbox">
 				<label>

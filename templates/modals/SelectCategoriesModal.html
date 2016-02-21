@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="save()">&times;</button>
+    <h3 class="modal-title">Select category</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row" ng-repeat="category in categories">
+                <div class="col-xs-12">
+                    <h3>{{category.name}}</h3>
+                    <div class="form-group">
+                        <div class="checkbox" ng-repeat="subCat in category.subcategories">
+                            <label><input type="checkbox" ng-model="tmpCategories[subCat.subCateg]" ng-change="categChanged(subCat.subCateg)">{{subCat.subCateg}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>
+</div>

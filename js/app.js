@@ -48,7 +48,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 controller: 'ProposalCntrl',
                 resolve: {
                     deps: app.resolveScriptDeps([
-                        'js/controllers/ProposalCntrl.js'
+                        'js/controllers/ProposalCntrl.js',
+                        'js/controllers/SelectCategoriesModalCntrl.js'
                 ])}
             })
             .when('/company/:profileId', {
