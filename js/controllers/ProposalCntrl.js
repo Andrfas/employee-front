@@ -12,7 +12,7 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
 
     $scope.pager = {
         page:1,
-        count: 2
+        count: 10
     }
 
     $scope.getAdverts = function() {
