@@ -5,45 +5,71 @@
     </div>
     <div class="modal-body">
         <div class="input-group col-md-12" >
+          <form id="eduForm" name="eduForm" novalidate ng-submit="eduForm.$valid && save()">
             <label for="eduInst">Educational Institution</label>
-            <div class="input-group col-md-12" id="eduInst" style="margin-bottom: 25px">
-                <input type="text" class="form-control" >
+            <div class="input-group col-md-12" id="eduInst" style="margin-bottom: 25px" ng-class="{ 'has-error' : (eduForm.$submitted || eduForm.institution.$touched) && eduForm.institution.$error.required }">
+                <input type="text" name="institution" ng-model="education.institution" class="form-control" required>
+                <p ng-show="(eduForm.$submitted || eduForm.institution.$touched) && eduForm.institution.$error.required" class="help-block">
+                    Enter institution
+                </p>
             </div>
 
             <label for="yearsOfStudy"><span>Years Attended</span></label>
-            <div class="input-group col-md-12" id="yearsOfStudy" style="margin-bottom: 15px">
-
-                <select class="form-inline col-md-5" >
-                    <option disabled selected>From</option>
-                    <option>2012</option>
-                    <option>2013</option>
-                </select>
-                <select class="form-inline col-md-5 col-md-offset-1">
-                    <option disabled selected>To</option>
-                    <option>2017</option>
-                    <option>2018</option>
-                </select>
+            <div class="row" id="yearsOfStudy" style="margin-bottom: 15px">
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="text" class="form-control" required
+                               uib-datepicker-popup="yyyy"
+                               min-mode="mode"
+                               date-disabled="startDisabled(date,mode)"
+                               ng-model="startYear"
+                               close-text="close"
+                               is-open="startPopup.opened" />
+                        <span class="input-group-btn">
+                            <button class="btn btn default1" type="button" ng-click="openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+              <div class="col-md-5 col-md-offset-1">
+                    <div class="input-group">
+                        <input type="text" class="form-control" required
+                               uib-datepicker-popup="yyyy"
+                               min-mode="mode"
+                               date-disabled="finishDisabled(date,mode)"
+                               ng-model="finishYear"
+                               close-text="close"
+                               is-open="finishPopup.opened" />
+                        <span class="input-group-btn">
+                            <button class="btn btn default1" type="button" ng-click="openFinish()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+              </div>
             </div>
             <label for="faculty">Faculty</label>
-            <div class="input-group col-md-12" id="faculty" style="margin-bottom: 15px">
-                <input type="text" class="form-control" >
+            <div class="input-group col-md-12" id="faculty" style="margin-bottom: 15px" ng-class="{ 'has-error' : (eduForm.$submitted || eduForm.faculty.$touched) && eduForm.faculty.$error.required }">
+                <input type="text" name="faculty" ng-model="education.faculty" class="form-control" required >
+                <p ng-show="(eduForm.$submitted || eduForm.faculty.$touched) && eduForm.faculty.$error.required" class="help-block">
+                  Enter faculty
+                </p>
             </div>
 
             <label for="degree">Degree</label>
-            <div class="input-group col-md-12" id="degree" style="margin-bottom: 15px">
-                <select class="form-control" >
-                    <option></option>
-                    <option>Bachelor</option>
-                    <option>Master</option>
+            <div class="input-group col-md-12" id="degree" style="margin-bottom: 15px" ng-class="{ 'has-error' : (eduForm.$submitted || eduForm.degree.$touched) && eduForm.degree.$error.required }">
+                <select ng-model="education.degree" name="degree" class="form-control" required>
+                    <option disabled selected></option>
+                    <option value="Bachelor">Bachelor</option>
+                    <option value="Master">Master</option>
                 </select>
+                <p ng-show="(eduForm.$submitted || eduForm.degree.$touched) && eduForm.degree.$error.required" class="help-block">
+                  Select degree
+                </p>
             </div>
-
+          </form>
 
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>
-        <button class="btn btn-default col-md-5" type="button">Save And Add More</button>
+        <button class="btn btn-success col-md-2" type="submit" form="eduForm">Save</button>
         <button class="btn btn-link col-md-4" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>
