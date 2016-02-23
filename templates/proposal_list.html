@@ -1,137 +1,251 @@
-<div class="container col-md-offset-1 col-md-12" >
+<div class="container">
 	<div class="row">
-		<h2 class="col-md-2">Proposal List</h2>
-	</div>
-	<div class="row">
-		<h2 class="col-md-offset-2 col-md-2"><strong>Search result</strong></h2>
-	</div>
-	<div class="row">
-		<div class="col-md-2">
-
-			<h2 style="margin-top:20px;"><small>Select categories</small></h2>
-			<button type="button" ng-click="openSelectCategoryModal()" class="btn btn-default btn-block">Add Category</button>	
-			<h4 ng-repeat="categ in selectedCategories"><span style="display:block;" class="label label-default">{{categ}}</span></h4>
-
-
-			<h2 style="margin-top:20px;"><small>Select Cities</small></h2>
-			<input type="text" ng-model="citySearchStr" typeahead-on-select="selectCity($item, $model, $label, $event)" uib-typeahead="city for city in cities | filter:$viewValue" class="form-control">
-			<div class="col-md-12 text-center " ng-repeat="city in selectedCities track by $index" style="background-color: #EAEFF2; margin: 5px">
-                <label >{{city}}</label>
-                <button type="button" class="close" ng-click="removeCity($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-
-			<h2 style="margin-top:20px;"><small>Select Skills</small></h2>
-			<input type="text" ng-model="skillSearchStr" typeahead-on-select="selectSkill($item, $model, $label, $event)" uib-typeahead="skill.name for skill in getSkills($viewValue)" class="form-control">
-			<div class="col-md-12 text-center " ng-repeat="skill in selectedSkills track by $index" style="background-color: #EAEFF2; margin: 5px">
-                <label >{{skill}}</label>
-                <button type="button" class="close" ng-click="removeSkill($index)" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>	
-
-
-			<h2 style="margin-top:20px;"><small>Type Of Employment</small></h2>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpEmplType['fulltime']" ng-change="emplTypeChanged('fulltime')">
-					Fulltime
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpEmplType['underemployment']" ng-change="emplTypeChanged('underemployment')">
-					Underemployment
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpEmplType['distant_work']" ng-change="emplTypeChanged('distant_work')">
-					Distant Work
-				</label>
-			</div>
-
-
-			<h2 style="margin-top:20px;"><small>Salary / Grants</small></h2>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpPaid['true']" ng-change="paidChanged('true')">
-					Have
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpPaid['false']" ng-change="paidChanged('false')">
-					Don`t Have
-				</label>
-			</div>
-
-
-			<h2 style="margin-top:20px;"><small>Course</small></h2>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpNeedPay['false']" ng-change="needPayChanged('false')">
-					Free
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpNeedPay['true']" ng-change="needPayChanged('true')">
-					Not Free
-				</label>
-			</div>
-
-
-			<h2 style="margin-top:20px;"><small>Number Of Hours Per Week</small></h2>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpHoursPerWeek['more_than_30']" ng-change="hoursPerWeekChanged('more_than_30')">
-					More Than 30
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpHoursPerWeek['less_than_30']" ng-change="hoursPerWeekChanged('less_than_30')">
-					Less Than 30
-				</label>
-			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" ng-model="tmpHoursPerWeek['of_necessity']" ng-change="hoursPerWeekChanged('of_necessity')">
-					Of Necessity
-				</label>
-			</div> 
-			<button ng-click="applyFilter()" style="margin-top:25px" class="btn btn-primary btn-block">Search</button>
-		</div>
-		<div class="col-md-8" style="background-color: #fefeeb">
-			<div class="row" ng-repeat="advert in adverts">
-				<div class="col-xs-12">
-					<div class="row">
-						<div class="col-md-12">
-							<h2>{{advert.title}}</h2>
-						</div>
-					</div>
-					<div class="row">
-						<h3 class="col-md-3"><strong>Company`s Name</strong></h3>
-						<h3 class="col-md-offset-8">{{advert.emplType}} - {{advert.hoursPerWeek}}</h3>
-					</div>
-					<div class="row col-md-12">
-						<h4>
-							{{advert.description}}
-						</h4>
-					</div>
-					<div class="row col-md-12">
-						<h4>Cities: <strong><span ng-repeat="city in advert.cities">{{city}} </span></strong></h4>
-					</div>
-					<div class="row">
-						<h4 class="col-md-1">Skills:</h4>
-						<h4 ng-repeat="skill in advert.skills" class="label label-default col-md-1">{{skill}}</h4>
-					</div>
+		<div class="col-xs-10 col-centered">
+			<div class="row">
+				<div class="col-xs-11  page-title">
+					Proposals List
 				</div>
 			</div>
-			<hr>
-			
-			<button ng-click="showMore()" type="button" style="float:right; margin-top:150px;" class="btn btn-link btn-sm">Show more</button>
+			<div class="row">
+				<div class="col-xs-3 search-filter">
+							<!-- Category -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select Categories</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<button ng-click="openSelectCategoryModal()" class="btn btn-grey full-width">Add category</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="categ in selectedCategories" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{categ}}
+									</div>
+								</div>
+							</div>
+
+							<!-- Cities -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select City</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<input type="text" ng-model="citySearchStr" typeahead-on-select="selectCity($item, $model, $label, $event)" uib-typeahead="city for city in cities | filter:$viewValue" class="full-width input-grey" placeholder="Add city...">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="city in selectedCities track by $index" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{city}}
+										<span ng-click="removeCity($index)" class="glyphicon glyphicon-remove"></span>
+									</div>
+								</div>
+							</div>
+
+							<!-- Skills -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select Skills</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<input type="text" ng-model="skillSearchStr" typeahead-on-select="selectSkill($item, $model, $label, $event)" uib-typeahead="skill.name for skill in getSkills($viewValue)" class="full-width input-grey" placeholder="Add skill...">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="skill in selectedSkills track by $index" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{skill}}
+										<span ng-click="removeSkill($index)" class="glyphicon glyphicon-remove"></span>
+									</div>
+								</div>
+							</div>
+
+							<!-- Employment type -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Type Of Employment</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpEmplType['fulltime']" ng-change="emplTypeChanged('fulltime')" id="fulltime">
+						                    
+											<label for="fulltime">
+												<span>Fulltime</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpEmplType['underemployment']" ng-change="emplTypeChanged('underemployment')" id="underemployment">
+						                    
+											<label for="underemployment">
+												<span>Underemployment</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpEmplType['distant_work']" ng-change="emplTypeChanged('distant_work')" id="distant_work">
+						                    
+											<label for="distant_work">
+												<span>Distant Work</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Paid -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Salary / Grants</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpPaid['true']" ng-change="paidChanged('true')" id="paid_true">
+						                    
+											<label for="paid_true">
+												<span>Have</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpPaid['false']" ng-change="paidChanged('false')" id="paid_false">
+						                    
+											<label for="paid_false">
+												<span>Don`t Have</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Need pay -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Course</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpNeedPay['true']" ng-change="needPayChanged('true')" id="need_pay_true">
+						                    
+											<label for="need_pay_true">
+												<span>Free</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpNeedPay['false']" ng-change="needPayChanged('false')" id="need_pay_false">
+						                    
+											<label for="need_pay_false">
+												<span>Not Free</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Hours Per Week -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Number Of Hours Per Week</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpHoursPerWeek['more_than_30']" ng-change="hoursPerWeekChanged('more_than_30')" id="more_than_30">
+						                    
+											<label for="more_than_30">
+												<span>More Than 30</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpHoursPerWeek['less_than_30']" ng-change="hoursPerWeekChanged('less_than_30')" id="less_than_30">
+						                    
+											<label for="less_than_30">
+												<span>Less Than 30</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpHoursPerWeek['of_necessity']" ng-change="hoursPerWeekChanged('of_necessity')" id="of_necessity">
+						                    
+											<label for="of_necessity">
+												<span>Of Necessity</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<button ng-click="applyFilter()" class="btn btn-blue search-btn full-width">Search</button>
+								</div>
+							</div>
+				</div>
+
+				<div class="col-xs-9">
+					<div class="row">
+						<div class="col-xs-11 col-centered">					
+							<div class="row search-header">
+									Search Result
+							</div>				
+							<div class="row" style="background-color:#fafdfe">
+								<div class="col-xs-12 search-list">
+
+									<div ng-repeat="advert in adverts" class="row search-res">
+										<div class="col-xs-12">
+											<div class="row">
+												<div class="col-xs-12 title">{{advert.title}}</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-6 company">Company name</div>
+												<div class="col-xs-6 empl-type">{{advert.emplType}} - {{advert.hoursPerWeek}}</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 descr">
+													{{advert.description}}
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 cities">
+													<span>Cities:</span>
+													<span ng-repeat="city in advert.cities" class="city">{{city}}</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 skills">
+													<span>Skills:</span>
+													<span ng-repeat="skill in advert.skills" class="skill">{{skill}}</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 bottom-border">
+													<hr>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="row" style="margin-top:100px;">
-		<button type="button" class="btn btn-link btn-xs" style="color:black;" >About us</button>|<button type="button" class="btn btn-link btn-xs" style="color:black;">Contact Us</button>
 	</div>
 </div>
