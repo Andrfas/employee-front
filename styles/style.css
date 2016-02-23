@@ -1,0 +1,212 @@
+html {
+    min-height:100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7fbfd+29,e5e6dc+64,e5e6dc+100 */
+    background: #f7fbfd; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f7fbfd 29%, #e5e6dc 64%, #e5e6dc 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #f7fbfd 29%,#e5e6dc 64%,#e5e6dc 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #f7fbfd 29%,#e5e6dc 64%,#e5e6dc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfd', endColorstr='#e5e6dc',GradientType=0 ); /* IE6-9 */
+}
+
+body {
+    background:initial;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.full-width {
+    width:100%;
+}
+
+.input-grey {
+    height: 30px;
+    padding: 5px;
+    font-family: Euphemia;
+    font-size: 17px;
+    color: #4e4e4e;
+    background: #dce1e3;
+    border: 0;
+}
+
+.btn-grey {
+    height: 33px;
+    padding: 0;
+    border-radius: 0;
+    font-family: Euphemia;
+    font-size: 17px;
+    color: #5d6163;
+    background: #dce1e3;
+}
+
+.btn-grey:hover, .btn-grey:visited, .btn-grey:active, .btn-grey:focus {
+    color: #5d6163;
+}
+
+.btn-blue {
+    height: 33px;
+    padding: 0;
+    border-radius: 0;
+    font-family: Euphemia;
+    font-size: 17px;
+    color: #fafdfe;
+    background: #3b4e6f;
+}
+
+.btn-blue:hover, .btn-blue:visited, .btn-blue:active, .btn-blue:focus {
+    color: #fafdfe;
+}
+
+.label-grey {
+    height: 25px;
+    padding: 0;
+    margin:3px 0;
+    border-radius: 0;
+    background-color: #e9edef; 
+    line-height: 25px;
+    font-family: Calibri;
+    font-weight: bold;
+    font-size: 14px;
+    color: #3D7592;
+}
+
+.label-grey .glyphicon {
+    font-size:12px;
+    color: #7e7e7f;
+}
+
+.label-grey .glyphicon-remove {
+    float: right;
+    padding: 0px 3px;
+    font-size: 12px;
+    color: #7e7e7f;
+    cursor: pointer;
+}
+
+.search-filter .section-name {
+    margin-top: 7px;
+    margin-bottom: 4px;
+    color: #4e4e4e;
+    font-family: Euphemia;
+}
+
+.search-filter .checkboxes {
+    padding: 2px 7px 3px;
+    font-family: Calibri;
+    font-size: 18px;
+    color: #4e4e4e;
+    background: #f2f3f1;
+}
+
+.search-filter .checkboxes .checkbox {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.checkbox label span {
+    margin-left:10px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.checkbox input[type="checkbox"] {
+    display:none;
+}
+.checkbox input[type="checkbox"] + label  {
+    display: inline-block;
+    /*width: 19px;*/
+    /*height: 19px;*/
+    margin: 0px 0px 0 0;
+    vertical-align: middle;
+    background: url('../images/checkbox_empty.png') 0px 5px no-repeat;
+    cursor: pointer;
+}
+.checkbox input[type="checkbox"]:checked + label {
+    background: url('../images/checkbox_checked.png') 0px 5px no-repeat;
+}
+
+.search-filter .search-btn {
+    margin-top:20px;
+}
+
+.page-title {
+    font-size:24px;
+    font-family:Calibri;
+    color:#4e4e4e;
+}
+
+.search-header {
+    margin:0 0 15px;
+    font-size:24px;
+    font-weight:bold;
+    font-family:Calibri;
+    color:#4e4e4e;
+}
+
+.search-list {
+    padding-bottom:10px;
+}
+
+
+.search-list .search-res {
+    padding: 10px 10px;
+}
+
+.search-list .search-res .bottom-border hr {
+    margin:15px 0 0 0;
+    background-color:#b0b4b6;
+}
+
+.search-list .search-res .title {
+    font-size: 22px;
+    font-family: Euphemia;
+    color: #576d93;
+}
+
+.search-list .search-res .company {
+    font-size: 18px;
+    font-family: Calibri;
+    font-weight: bold;
+    color: #828383;
+}
+
+.search-list .search-res .empl-type {
+    text-align: right;
+    font-size: 16px;
+    font-family: Calibri;
+    color: #8c8d87;
+}
+
+.search-list .search-res .descr {
+    text-align:justify;
+    font-size:15px;
+    font-family:Calibri;
+}
+
+.search-list .search-res .cities, .search-list .search-res .skills {
+    margin-top: 7px;
+    font-size: 16px;
+    font-family: Calibri;
+    color: #4e4e4e;
+}
+
+.search-list .search-res .city {
+    margin: 0 2px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Calibri;
+    color: #345566;
+}
+
+.search-list .search-res .skill {
+    margin: 0 1px;
+    padding: 3px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Calibri;
+    color: #576d93;
+    background-color: #ecf0f1;
+}
