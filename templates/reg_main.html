@@ -254,6 +254,7 @@
 				<div class="container col-md-12">
 					<div class="panel panel-default" style="background-color: #C0C0C0">
 						<div class="panel-body">
+							<form name="regStudPage2" id="regStudPage2" novalidate ng-submit="regStudPage2.$valid && changePage(3)">
 							<div class="row">
 								<div class="progress col-md-offset-2 col-md-8" style="margin-top: 10px;">
 							  		<div class="progress-bar progress-bar-striped active" role="progressbar"
@@ -263,59 +264,53 @@
 								</div>
 							</div>
 							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-4">Birth Date</h3>
+								<div class="col-md-offset-1 col-md-5"><h3 >Birth Date</h3></div>
+								<div class="col-md-5"><h3 >City you live now</h3></div>
 							</div>
 							<div class="row">
-								<div class="col-md-4 col-md-offset-1">
+								<div class="col-md-5 col-md-offset-1" ng-class="{ 'has-error' : (regStudPage2.$submitted || regStudPage2.inputDate.$touched) && regStudPage2.inputDate.$error.required }">
 									<div class="input-group">
-								      <div class="input-group-btn">
-								      	<input type="text" class="form-control" aria-label="..." placeholder="Month">
-								        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-								      </div>
-								    </div>
-								 </div>
-								 <div class="col-md-3 col-md-offset-1">
-								    <div class="input-group">
-								      <input type="text" class="form-control" aria-label="..." placeholder="Day">
-								      <div class="input-group-btn">
-								        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-								      </div>
-								    </div>
+										<input type="text" class="form-control" name="inputDate"
+											 required
+										  	 uib-datepicker-popup="dd-MMMM-yyyy"
+										  	 datepicker-mode="datepickerConf.mode"
+											 datepicker-options="datepickerConf.options"
+										  	 ng-model="studInfo.birthDate"
+											 close-text="close"
+										  	 is-open="datepickerConf.opened" />
+										<span class="input-group-btn">
+                            				<button class="btn btn default1" type="button" ng-click="datepickerConf.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        				</span>
+									</div>
+									<p ng-show="(regStudPage2.$submitted || regStudPage2.inputDate.$touched) && regStudPage2.inputDate.$error.required " class="help-block">
+										Input Birth Date
+									</p>
 								</div>
-								<div class="col-md-2">
-								    <div class="input-group">
-								      <input type="text" class="form-control" aria-label="..." placeholder="Year">
-								      <div class="input-group-btn">
-								        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-								      </div>
-								    </div>
-								</div>
-							</div>
-							<div class="row" style="line-height: 0px;">
-								<h3 class="col-md-offset-1 col-md-6">City you live now</h3>
-							</div>
-							<div class="row">
-								<div class="col-md-offset-1 col-md-10">
-									<div class="input-group">
-								      <input type="text" class="form-control" aria-label="..." placegolder="Year">
-								      <div class="input-group-btn">
-								        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-								      </div>
-								    </div>
+								<div class="col-md-5" ng-class="{ 'has-error' : (regStudPage2.$submitted || regStudPage2.inputCity.$touched) && regStudPage2.inputCity.$error.required }">
+									<input type="text" class="form-control" ng-model="studInfo.currentCity" placeholder="Input city you live in" name="inputCity"
+										   required
+										   uib-typeahead="city for city in cities | filter:$viewValue | limitTo:8"
+										   typeahead-no-results="citySelectConf.noResFound">
+									<div ng-show="citySelectConf.noResFound">
+										<i class="glyphicon glyphicon-remove"></i>{{citySelectConf.noResMessage}}
+									</div>
+									<p ng-show="(regStudPage2.$submitted || regStudPage2.inputCity.$touched) && regStudPage2.inputCity.$error.required " class="help-block">
+										Input Birth Date
+									</p>
 								</div>
 							</div>
 							<div class="row" style="margin-top: 25px;">
-								<div class="col-md-offset-2 col-md-4">
+								<div class="col-md-offset-1 col-md-5">
 									<button type="button" class="btn btn-default btn-block" ng-click="openSelectLanguageWindow()">Add Language</button>
 								</div>
-								<div class="col-md-offset-1 col-md-4">
+								<div class="col-md-5">
 									<button type="button" class="btn btn-default btn-block" ng-click="openSelectEducationWindow()">Add Higher Education</button>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6"> <!--для виводу мов-->
-									<h5 ng-repeat="language in languages">
-										<label class="col-md-offset-4 col-md-8 label label-default" style="margin-top: 10px" >
+									<h5 ng-repeat="language in studInfo.languagesArr">
+										<label class="col-md-offset-2 col-md-10 label label-default" style="margin-top: 10px" >
                       						<span >
                         						{{language.name}} : {{language.level}}
 												<button type="button" class="close" ng-click="removeLanguage($index)" aria-label="Close">
@@ -326,8 +321,8 @@
 									</h5>
 								</div>
 								<div class="col-md-6"> <!--для виводу освіти -->
-									<h5 ng-repeat="education in educations">
-										<span class="col-md-offset-2 col-md-8 label label-default" style="margin-top: 10px" >
+									<h5 ng-repeat="education in studInfo.educationsArr">
+										<span class="col-md-10 label label-default" style="margin-top: 10px" >
                       						<span style="width: 100%; word-wrap:break-word">
                         						{{education.institution}}, {{education.faculty}}, {{education.degree}}
 												<button type="button" class="close" ng-click="removeEducation($index)" aria-label="Close">
@@ -339,12 +334,15 @@
 									</h5>
 								</div>
 							</div>
+							</form>
+						</div>
+
 							<div class="row" style="margin-top:25px;">
 								<div class="col-xs-3 col-xs-offset-5">
 									<button type="button" class="btn btn-primary btn-lg" ng-click="changePage(1)">Prev Step</button>
 								</div>
 								<div class="col-xs-3">
-									<button type="submit" ng-click="changePage(3)" class="btn btn-primary  btn-lg">Next step</button>
+									<button type="submit" form="regStudPage2" class="btn btn-primary  btn-lg">Next step</button>
 							</div>
 						</div>
 					</div>
@@ -353,7 +351,6 @@
 					<button type="button" class="btn btn-link btn-xs" style="color:black;" >About us</button>|<button type="button" class="btn btn-link btn-xs" style="color:black;">Contact Us</button>
 				</div>
 			</div>
-		</div>
 		<div ng-show="page==3">
 			<div class="container col-md-12">
 				<div class="panel panel-default" style="background-color: #C0C0C0">

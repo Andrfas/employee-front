@@ -1,14 +1,16 @@
 app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc) {
-    $scope.languages = []; //fields name, level
-    $scope.educations = [];
+    $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',
         lastName: '',
         email: '',
         password: '',
         repeatPass:'',
+        birthDate: null,
+        currentCity:'',
         languagesArr:[],
-        educationsArr: []
+        educationsArr: [],
+
     };
 
     $scope.isConfirmPasswordMatch = function() {
@@ -40,14 +42,34 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
     $scope.page = 1;
     $scope.changePage = function(page) {
         $scope.page = page;
+        console.log($scope.studInfo);
     }
     $scope.removeLanguage = function(index){
-        StaticDataSrvc.languages.push($scope.languages[index].name);
-        $scope.languages.splice(index,1);
+        StaticDataSrvc.languages.push($scope.studInfo.languagesArr[index].name);
+        $scope.studInfo.languagesArr.splice(index,1);
     }
 
     $scope.removeEducation = function(index){
-        $scope.educations.splice(index,1);
+        $scope.studInfo.educationsArr.splice(index,1);
+    }
+
+    $scope.citySelectConf = {
+        noResFound: false,
+        noResMessage: 'No results'
+    }
+
+    $scope.datepickerConf = {
+        mode: 'year',
+        opened: false,
+        options:{
+            minDate: new Date(1960, 1, 1),
+            maxDate: new Date(2003, 1, 1),
+            initDate: new Date(1993, 1, 1),
+            showWeeks: false,
+        },
+        open: function(){
+            this.opened = true;
+        }
     }
     //opening modals
     $scope.openSelectLanguageWindow = function(){
@@ -60,7 +82,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
 
         });
         instance.result.then(function (languages) {
-            $scope.languages = $scope.languages.concat(languages);
+            $scope.studInfo.languagesArr = $scope.studInfo.languagesArr.concat(languages);
         }, function () {//dismiss
         });
     }
@@ -74,7 +96,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             controller: 'SelEducationModalCntrl'
         });
         instance.result.then(function (education){
-            $scope.educations.push(education);
+            $scope.studInfo.educationsArr.push(education);
         })
     }
     $scope.openAddSkillWindow = function() {
