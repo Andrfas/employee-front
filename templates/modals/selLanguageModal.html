@@ -4,39 +4,52 @@
         <h3 class="modal-title">Add Language</h3>
     </div>
     <div class="modal-body">
-         <div class="form-group col-md-12">
+        <div class="input-group col-md-12">
+         <form name="selLangForm" id="selLangForm" novalidate>
+         <div class="input-group col-md-12"  ng-class="{'has-error' : (submitted || selLangForm.selLangForm.$touched) && selLangForm.inputDate.$error.required }">
              <h3>Language</h3>
-             <autocomplete get-search-res="getLanguages(searchStr)" on-select="selectLanguage()" selected-data="selectedLanguage" search-str="searchStr" no-res-msg="No languages found!" delay="0" autofocus="true" class="col-md-10"></autocomplete>
-             <button class="btn btn-default btn-large col-md-2" ng-click="add()" type="button">Add</button>
-
-             <label class="col-md-12" style="margin-top: 15px; text-align: center" ng-repeat="language in selectedLanguages">
-                 {{language.name}}: {{language.level}}
-             </label>
-
+             <div class="input-group">
+                <input type="text" class="form-control" ng-model="language.name" placeholder="Input language" name="inputLang"
+                    required
+                    uib-typeahead="language for language in availableLanguages | filter:$viewValue | limitTo:8"
+                    typeahead-no-results="noResFound">
+                <span class="input-group-btn" >
+                    <button class="btn btn-default" type="button" ng-click="submit(true)&& selLangForm.$valid && add()">Add</button>
+                </span>
+             </div>
+             <p ng-show="submitted && selLangForm.inputLang.$error.required " class="help-block">
+                 Input language
+             </p>
+             <div ng-show="noResFound">
+                 <i class="glyphicon glyphicon-remove"></i>{{noResMsg}}
+             </div>
          </div>
-        <h3 style="margin-top: 70px">Proficienty</h3>
+        <h3>Proficienty</h3>
         <div class="radio">
-            <label><input type="radio" name="optradio" ng-model="language.level" value="Basic">Basic</label><br>
+            <label><input type="radio" name="optradio" ng-model="language.level" value="Basic" required >Basic</label><br>
             <label>I'm only able to communicate in this language through written communication</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="optradio" ng-model="language.level" value="Conversational">Conversational</label><br>
+            <label><input type="radio" name="optradio" ng-model="language.level" value="Conversational" required >Conversational</label><br>
             <label>I know this language well enough to verbally discuss project details with client</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="optradio" unchecked="" ng-model="language.level" value="Fluent">Fluent</label><br>
+            <label><input type="radio" name="optradio" ng-model="language.level" value="Fluent" required>Fluent</label><br>
             <label>I have complete command of this language with perfect grammar</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="optradio" ng-model="language.level" value="Native">Native or Bilingual</label><br>
+            <label><input type="radio" name="optradio" ng-model="language.level" value="Native" required >Native or Bilingual</label><br>
             <label>I have complete command of this language, including breadth of vocabulary, idioms and colloquialisms</label>
         </div>
-
+        <p ng-show="submitted && !language.level" class="help-block" ng-class="{'has-error' : submitted  && selLangForm.optradio.$error.required}">
+            Select your level
+        </p>
+        </form>
+        </div>
     </div>
     <div class="modal-footer">
       <div class="row">
-        <button class="btn btn-success col-md-offset-1 col-md-2" type="button" ng-click="save()">Save</button>
-
+        <button class="btn btn-success col-md-offset-1 col-md-2" type="button" ng-click="submit(true) && selLangForm.$valid && save()">Save</button>
         <button class="btn btn-link col-md-offset-5 col-md-4" type="button" ng-click="cancel()">Cancel</button>
       </div>
     </div>
