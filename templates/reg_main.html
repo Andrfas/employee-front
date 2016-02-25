@@ -38,41 +38,41 @@
 									</div>
 								</div>
 								<!-- NAME -->
-								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.name.$invalid && !regCompanyStep1.name.$pristine }">			
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.name.$invalid && !regCompanyStep1.name.$pristine }">
 									<div class="row" style="line-height: 0px;">
 										<h3 class="col-md-offset-1 col-md-1">Name*</h3>
 									</div>
 									<div class="row">
 										<input name="name" type="text" class="col-md-10 col-md-offset-1" id="Name" ng-model="company.name" required>
-										<p ng-show="regCompanyStep1.name.$invalid && !regCompanyStep1.name.$pristine" 
+										<p ng-show="regCompanyStep1.name.$invalid && !regCompanyStep1.name.$pristine"
 											class="help-block" style="margin-bottom:-10px;">Company Name is required.</p>
 									</div>
 								</div>
 								<!-- WEBSITE -->
-								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.website.$invalid && !regCompanyStep1.website.$pristine }">			
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.website.$invalid && !regCompanyStep1.website.$pristine }">
 									<div class="row" style="line-height: 0px;">
 										<h3 class="col-md-offset-1 col-md-1">Website*</h3>
 									</div>
 									<div class="row">
 										<input name="website" type="url" class="col-md-10 col-md-offset-1" id="Website" ng-model="company.website" required>
-										<p ng-show="regCompanyStep1.website.$invalid && !regCompanyStep1.website.$pristine"  
+										<p ng-show="regCompanyStep1.website.$invalid && !regCompanyStep1.website.$pristine"
 											class="help-block col-md-6 col-md-offset-1" style="margin-bottom:-10px;">Enter a valid Company Website.</p>
 									</div>
 								</div>
 								<!-- EMAIL -->
-								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.email.$invalid && !regCompanyStep1.email.$pristine }">			
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep1.email.$invalid && !regCompanyStep1.email.$pristine }">
 									<div class="row" style="line-height: 0px;">
 										<h3 class="col-md-offset-1 col-md-1">Email*</h3>
 									</div>
 									<div class="row">
 										<input name="email" type="email" class="col-md-10 col-md-offset-1" id="Email" ng-model="company.email" required>
-										<p ng-show="regCompanyStep1.email.$invalid && !regCompanyStep1.email.$pristine" 
+										<p ng-show="regCompanyStep1.email.$invalid && !regCompanyStep1.email.$pristine"
 											class="help-block col-md-6 col-md-offset-1" style="margin-bottom:-10px;">Enter a valid Company Email.</p>
 									</div>
 								</div>
 								<!-- PASSWORD -->
-								<div class="form-group" ng-class="{ 
-									'has-error' : (regCompanyStep1.password.$invalid && !regCompanyStep1.password.$pristine) 
+								<div class="form-group" ng-class="{
+									'has-error' : (regCompanyStep1.password.$invalid && !regCompanyStep1.password.$pristine)
 												|| (regCompanyStep1.passAgain.$invalid && !regCompanyStep1.passAgain.$pristine)}">
 									<div class="row" style="line-height: 0px;">
 										<h3 class="col-md-offset-1 col-md-4">Password</h3>
@@ -82,11 +82,11 @@
 										<input name="password" type="password" ng-minlength="6" class="col-md-5 col-md-offset-1" id="Pass" ng-model="company.password" required>
 										<input name="passAgain" type="password" class="col-md-5 col-md-offset-0.7" id="PassAgain" ng-model="company.passAgain" required>
 									</div>
-									<div class="row">	
+									<div class="row">
 										<p ng-show="regCompanyStep1.password.$error.minlength"class="help-block col-md-5 col-md-offset-1" style="color:#737373;">Enter at least 6 symbols.</p>
-										<p ng-show="regCompanyStep1.password.$invalid && !regCompanyStep1.password.$pristine && !regCompanyStep1.password.$error.minlength" 
+										<p ng-show="regCompanyStep1.password.$invalid && !regCompanyStep1.password.$pristine && !regCompanyStep1.password.$error.minlength"
 											class="help-block col-md-5 col-md-offset-1" style="margin-bottom:-10px;">Enter valid password.</p>
-										<p ng-show="!checkPassword() && !regCompanyStep1.passAgain.$pristine" 
+										<p ng-show="!checkPassword() && !regCompanyStep1.passAgain.$pristine"
 											class="help-block col-md-5 col-md-offset-1" style="margin-bottom:-10px;">Passwords didn't matched.</p>
 									</div>
 									<div class="row" style="margin-top:20px;">
@@ -136,14 +136,14 @@
 									</div>
 								</div>
 								<!-- DESCRIPTION -->
-								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep2.description.$invalid && !regCompanyStep2.description.$pristine }">	
+								<div class="form-group" ng-class="{ 'has-error' : regCompanyStep2.description.$invalid && !regCompanyStep2.description.$pristine }">
 									<div class="row" style="line-height: 0px;">
 										<h3 class="col-md-offset-1 col-md-4">Description</h3>
 									</div>
 									<div class="row">
 										<div class="col-md-offset-1 col-md-10">
 											<textarea name="description" type="text" class="form-control" rows="5" ng-model="company.description" required></textarea>
-											<p ng-show="regCompanyStep2.description.$invalid && !regCompanyStep2.description.$pristine"  
+											<p ng-show="regCompanyStep2.description.$invalid && !regCompanyStep2.description.$pristine"
 												class="help-block" style="margin-bottom:-10px;">Company Description is required.</p>
 										</div>
 									</div>
@@ -346,9 +346,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row" style="margin-top:100px;">
-					<button type="button" class="btn btn-link btn-xs" style="color:black;" >About us</button>|<button type="button" class="btn btn-link btn-xs" style="color:black;">Contact Us</button>
+          <div class="row" style="margin-top:100px;">
+            <button type="button" class="btn btn-link btn-xs" style="color:black;" >About us</button>|<button type="button" class="btn btn-link btn-xs" style="color:black;">Contact Us</button>
+          </div>
 				</div>
 			</div>
 		<div ng-show="page==3">
