@@ -24,9 +24,5 @@ app.service('StaticDataSrvc', [function() {
     this.emplTypes = ['fulltime', 'underemployment', 'distant_work'];
     this.hoursPerWeek = ['more_than_30', 'less_than_30 ', 'of_necessity'];
     this.languages = ['Ukrainian', 'Russian', 'English', 'German', 'French'];
-    this.removeLanguage = function(index){
-        if (index >= 0)
-            this.languages.splice(index, 1);
-    }
     
 }]);

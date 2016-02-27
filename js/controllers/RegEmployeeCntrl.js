@@ -34,12 +34,12 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
                 if(res.success) {
                     PopUpSrvc.success('Registration', 'Activation link has been sent to your email')
                 } else {
-                    PopUpSrvc.error('Registration', res.msg);               
+                    PopUpSrvc.error('Registration', res.msg);
                 }
             })
             .catch(function(err) {
                 console.error('createEmployee', err);
-                PopUpSrvc.error('Registration', err); 
+                PopUpSrvc.error('Registration', err);
             })
     }
 
@@ -49,7 +49,6 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         console.log($scope.studInfo);
     }
     $scope.removeLanguage = function(index){
-        StaticDataSrvc.languages.push($scope.studInfo.languagesArr[index].name);
         $scope.studInfo.languagesArr.splice(index,1);
     }
 
@@ -82,12 +81,13 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             backdrop: 'static',
             keyboard:true,
             templateUrl: '../templates/modals/selLanguageModal.html',
-            controller: 'SelLanguageModalCntrl'
+            controller: 'SelLanguageModalCntrl',
+            resolve: {
+              selectedLanguages: function(){
+                return $scope.studInfo.languagesArr;
+              }
+            }
 
-        });
-        instance.result.then(function (languages) {
-            $scope.studInfo.languagesArr = $scope.studInfo.languagesArr.concat(languages);
-        }, function () {//dismiss
         });
     }
 
