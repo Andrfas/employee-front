@@ -13,6 +13,10 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
 
     };
 
+    $scope.$watchCollection('studInfo.languagesArr', function (items) {
+        $scope.regStudPage2.$setValidity('languages', $scope.studInfo.languagesArr.length > 0);
+    });
+
     $scope.isConfirmPasswordMatch = function() {
         return $scope.studInfo.password === $scope.studInfo.repeatPass;
     }
