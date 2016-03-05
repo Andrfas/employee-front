@@ -5,20 +5,23 @@
 
   </div>
   <div class="modal-body">
+    <form name="skillModalForm" id="skillModalForm" ng-submit="skillModalForm.$valid && save()" novalidate>
     <div class="input-group col-md-12">
       <h3>Your Skill</h3>
-      <input type="text" class="form-control"  >
+      <input type="text" class="form-control"  ng-model="skill.name" required
+              uib-typeahead="skill.name for skill in getSkills($viewValue)"
+              typeahead-on-select="selectSkill($item.name, false)">
     </div>
     <div class="input-group col-md-12">
       <h3>Skill Description*</h3>
-      <textarea  class="form-control"></textarea>
+      <textarea  class="form-control" ng-model="skill.description" required></textarea>
     </div>
+    </form>
 
   </div>
 
   <div class="modal-footer">
-    <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>
-    <button class="btn btn-default col-md-5" type="button">Save And Add More</button>
+    <button class="btn btn-success col-md-2" type="submit" form="skillModalForm">Save</button>
     <button class="btn btn-link col-md-4" type="button" ng-click="cancel()">Cancel</button>
   </div>
 </div>

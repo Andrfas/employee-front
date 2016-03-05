@@ -10,6 +10,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         currentCity:'',
         languagesArr:[],
         educationsArr: [],
+        skillsArr: []
 
     };
 
@@ -50,6 +51,10 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
 
     $scope.removeEducation = function(index){
         $scope.studInfo.educationsArr.splice(index,1);
+    }
+
+    $scope.removeSkill = function(index){
+        $scope.studInfo.skillsArr.splice(index,1);
     }
 
     $scope.citySelectConf = {
@@ -107,7 +112,10 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             templateUrl: '../templates/modals/addSkillModal.html',
             controller: 'AddSkillModalCntrl'
 
-        })
+        });
+        instance.result.then(function(skill){
+            $scope.studInfo.skillsArr.push(skill);
+      })
     };
 
     $scope.openAddExperienceWindow = function() {

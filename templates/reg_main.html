@@ -371,15 +371,18 @@
 								<button class="btn btn-block btn-default" ng-click="openAddSkillWindow()">Add Skill</button>
 							</div>
 						</div>
+
 						<div class="row">
-							<div class="col-md-offset-1 col-md-2">
-								<h3><span class="label label-default">JavaScript</span></h3>
-							</div>
-							<div class="col-md-offset-1 col-md-2">
-								<h3><span class="label label-default">HTML</span></h3>
-							</div>
-							<div class="col-md-offset-1 col-md-1">
-								<h3><span class="label label-default">Objective-C</span></h3>
+							<div class="col-md-3 col-md-offset-1" ng-repeat="skill in studInfo.skillsArr"> <!--для виводу skills -->
+								<h5 class="label label-default col-md-12">
+									<button type="button" class="close" ng-click="removeSkill($index)" style="float:left" aria-label="Close">
+										<span aria-hidden="true">&times</span>
+									</button>
+									{{skill.name}}
+									<button type="button" class="close" aria-label="Show-details">
+										<span aria-hidden="true">&or;</span>
+									</button>
+								</h5>
 							</div>
 						</div>
 						<div class="row" style="line-height: 0px;">
