@@ -1,8 +1,9 @@
 html {
     min-height:100%;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7fbfd+29,e5e6dc+64,e5e6dc+100 */
+    /*background: #e5e6dc; /* Old browsers */*/
     background: #f7fbfd; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f7fbfd 29%, #e5e6dc 64%, #e5e6dc 100%); /* FF3.6-15 */
+    background: -moz-linear-gradient(top,  #f7fbfd 29%, #e5e6dc 64%, #e5e6dc 100%);  FF3.6-15 
     background: -webkit-linear-gradient(top,  #f7fbfd 29%,#e5e6dc 64%,#e5e6dc 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  #f7fbfd 29%,#e5e6dc 64%,#e5e6dc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfd', endColorstr='#e5e6dc',GradientType=0 ); /* IE6-9 */
@@ -19,6 +20,36 @@ body {
 
 .full-width {
     width:100%;
+}
+
+.navbar-brown {
+    min-height:55px;
+    margin:0;
+    background-color:#4e4e4e;
+    border:0;
+    border-radius:0;
+}
+
+.navbar-default .navbar-brand {
+    color:#f7fbfd;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color:#E0E5E8;
+}
+
+
+.navbar-brown .navbar-nav>li>a {
+    font-size:20px;
+    font-weight:lighter;
+    font-family:Calibri;
+    color:#f7fbfd;    
+}
+
+.navbar-brown .navbar-nav>li>a:hover, 
+.navbar-brown .navbar-nav>li>a:focus {
+    color:#E0E5E8;
 }
 
 .input-grey {
@@ -85,6 +116,10 @@ body {
     cursor: pointer;
 }
 
+.search-filter {
+    margin-top:10px;
+}
+
 .search-filter .section-name {
     margin-top: 7px;
     margin-bottom: 4px;
@@ -133,13 +168,14 @@ body {
 }
 
 .page-title {
+    margin-top: 35px;
     font-size:24px;
     font-family:Calibri;
     color:#4e4e4e;
 }
 
 .search-header {
-    margin:0 0 15px;
+    margin: 20px 0 7px 10px;
     font-size:24px;
     font-weight:bold;
     font-family:Calibri;
@@ -202,11 +238,141 @@ body {
 }
 
 .search-list .search-res .skill {
-    margin: 0 1px;
-    padding: 3px 5px;
+    min-width: 39px;
+    text-align: center;
+    margin: 0px 4px;
+    padding: 1px 5px;
     font-size: 14px;
     font-weight: bold;
     font-family: Calibri;
     color: #576d93;
     background-color: #ecf0f1;
+    display: inline-block;
+}
+
+
+
+
+
+.head-text {
+    text-align:center;
+}
+
+.head-text h1 {
+    font-size:38px;
+    font-family:Calibri;
+    color:#131313;
+}
+
+.head-text h3 {
+    margin-top:0;
+    margin-bottom: 25px;
+    font-size:26px;
+    font-family:Calibri;
+    color:#4d4d4d;
+}
+
+
+.reg-mens-img, .reg-mens-text {
+    text-align:center;
+    cursor:pointer;
+}
+
+.reg-mens-text {
+    margin:0;
+    font-size:30px;
+    font-family:Calibri;
+    color:#345566;
+}
+
+.reg-mens-img img {
+    margin-left: 32px;
+}
+
+.reg-form {
+    margin: 15px 0 40px;
+    padding: 15px 40px 0;
+    background-color:#d6d7cd;
+}
+
+.reg-form .progress-line .line {
+    margin: 11px 0 0;
+    padding: 0;
+}
+
+.reg-form .progress-line .progress {
+    height:11px;
+    border-radius:0;
+}
+
+.reg-form .progress-line .progress-bar {
+    background-color:#345566;
+}
+
+.reg-form .progress-line .text {
+    font-size:22px;
+    font-family:Calibri;
+    color:#345566;
+}
+
+.reg-form .form-group label {
+    font-size:20px;
+    font-family:Calibri;
+    color:#1d1d1d;
+}
+
+.reg-form .btn-dark-grey {
+    height: 34px;
+    background-color: #8c8d87;
+    font-size: 20px;
+    font-family: Calibri;
+    line-height: 17px;
+    color: #f5fbfd;
+    border-radius: 0;
+}
+
+.reg-form .lang-educ {
+    margin-top: 20px;
+}
+
+.reg-form .lang-educ-list {
+    margin-top: 10px;
+}
+
+.reg-form .lang-educ-list span {
+    margin-top: 5px;
+    display: inline-block;
+    font-size:18px;
+    font-family:Calibri;
+    color:#2e2e2e;
+}
+
+.reg-form .form-group:not(.has-error) .form-control {
+    border-radius:0;
+    border-color:#eeefe4;
+}
+
+.reg-form .form-group p {
+    transition: all linear 0.1s;
+    opacity:1;    
+}
+
+.reg-form .form-group p.ng-hide {
+    opacity:0;
+}
+
+.reg-form .paging-buttons {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.reg-form .paging-buttons .btn-blue {
+    height: 40px;
+    padding: 0px 23px;
+    line-height: 0px;
+    font-size: 22px;
+    font-family: Euphemia;
+    color: #fafafa;
+    background-color: #00879b;
 }
