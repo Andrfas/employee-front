@@ -1,9 +1,9 @@
 html {
     min-height:100%;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f7fbfd+29,e5e6dc+64,e5e6dc+100 */
-    /*background: #e5e6dc; /* Old browsers */*/
+    /*background: #e5e6dc; /* Old browsers */
     background: #f7fbfd; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f7fbfd 29%, #e5e6dc 64%, #e5e6dc 100%);  FF3.6-15 
+    background: -moz-linear-gradient(top,  #f7fbfd 29%, #e5e6dc 64%, #e5e6dc 100%);  FF3.6-15
     background: -webkit-linear-gradient(top,  #f7fbfd 29%,#e5e6dc 64%,#e5e6dc 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  #f7fbfd 29%,#e5e6dc 64%,#e5e6dc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfd', endColorstr='#e5e6dc',GradientType=0 ); /* IE6-9 */
@@ -44,10 +44,10 @@ body {
     font-size:20px;
     font-weight:lighter;
     font-family:Calibri;
-    color:#f7fbfd;    
+    color:#f7fbfd;
 }
 
-.navbar-brown .navbar-nav>li>a:hover, 
+.navbar-brown .navbar-nav>li>a:hover,
 .navbar-brown .navbar-nav>li>a:focus {
     color:#E0E5E8;
 }
@@ -95,12 +95,13 @@ body {
     padding: 0;
     margin:3px 0;
     border-radius: 0;
-    background-color: #e9edef; 
+    background-color: #e9edef;
     line-height: 25px;
     font-family: Calibri;
     font-weight: bold;
     font-size: 14px;
     color: #3D7592;
+    text-align: center;
 }
 
 .label-grey .glyphicon {
@@ -354,7 +355,7 @@ body {
 
 .reg-form .form-group p {
     transition: all linear 0.1s;
-    opacity:1;    
+    opacity:1;
 }
 
 .reg-form .form-group p.ng-hide {

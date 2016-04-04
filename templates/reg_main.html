@@ -56,7 +56,7 @@
 										    <label for="exampleInputEmail1">First Name</label>
 										    <input type="text" name="name" ng-model="studInfo.name" class="form-control" required="" placeholder="First Name">
 										    <p ng-show="(regStudForm1.$submitted || regStudForm1.name.$touched) && regStudForm1.name.$error.required" class="help-block">Your name is required.</p>
-										</div>										
+										</div>
 									</div>
 									<div class="col-xs-6">
 										<div class="form-group" ng-class="{ 'has-error' : (regStudForm1.$submitted || regStudForm1.lastName.$touched) && regStudForm1.lastName.$error.required }">
@@ -64,7 +64,7 @@
 										    <input type="text" name="lastName" ng-model="studInfo.lastName" required="" class="form-control" placeholder="Last Name">
 										    <p ng-show="(regStudForm1.$submitted || regStudForm1.lastName.$touched) && regStudForm1.lastName.$error.required" class="help-block">Your last name is required.
                                         </p>
-										</div>										
+										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -74,8 +74,8 @@
 										    <input type="email" name="email" ng-model="studInfo.email" required="" class="form-control" placeholder="Email">
 										    <p ng-show="(regStudForm1.$submitted || regStudForm1.email.$touched) && regStudForm1.email.$error.required" class="help-block">Email is required</p>
 	                                        <p ng-show="(regStudForm1.$submitted || regStudForm1.email.$touched) && regStudForm1.email.$error.email" class="help-block">Input valid email</p>
-										</div>										
-									</div>									
+										</div>
+									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-6">
@@ -84,19 +84,19 @@
 										    <input type="password" name="pass" ng-model="studInfo.password" required="" ng-minlength="6" class="form-control" placeholder="Password">
 										    <p ng-show="(regStudForm1.$submitted || regStudForm1.pass.$touched) && regStudForm1.pass.$error.minlength" class="help-block">Enter at least 6 symbols.</p>
 	                                        <p ng-show="(regStudForm1.$submitted || regStudForm1.pass.$touched) && regStudForm1.pass.$error.required" class="help-block">Password is required</p>
-										</div>										
+										</div>
 									</div>
 									<div class="col-xs-6">
 										<div class="form-group" ng-class="{ 'has-error' : (regStudForm1.$submitted || regStudForm1.repPass.$touched) && !isConfirmPasswordMatch() }">
 										    <label for="exampleInputEmail1">Password Again</label>
 										    <input type="password" name="repPass" ng-model="studInfo.repeatPass" required="" class="form-control" placeholder="Password Again">
 										    <p ng-show="(regStudForm1.$submitted || regStudForm1.repPass.$touched) && !isConfirmPasswordMatch()" class="help-block">Passwords didn't matched.</p>
-										</div>										
+										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-4 col-xs-offset-8 paging-buttons">
-										<button type="submit" ng-click="" class="btn btn-blue">Next Step</button>									
+										<button type="submit" ng-click="" class="btn btn-blue">Next Step</button>
 									</div>
 								</div>
 							</form>
@@ -124,7 +124,7 @@
 		                                    </div>
 		                                    <p ng-show="(regStudPage2.$submitted || regStudPage2.inputDate.$touched) && regStudPage2.inputDate.$error.required " class="help-block">Birth Date is required</p>
 		                                    <p ng-show="(regStudPage2.$submitted || regStudPage2.inputDate.$touched) && regStudPage2.inputDate.$error.date " class="help-block">Date is invalid</p>
-										</div>										
+										</div>
 									</div>
 								</div>
 								<div class="row">
@@ -136,8 +136,8 @@
 												<i class="glyphicon glyphicon-remove"></i>{{citySelectConf.noResMessage}}
 											</div>
 											<p ng-show="(regStudPage2.$submitted || regStudPage2.inputCity.$touched) && regStudPage2.inputCity.$error.required " class="help-block">City is required</p>
-										</div>										
-									</div>									
+										</div>
+									</div>
 								</div>
 								<div class="row lang-educ">
 									<div class="col-xs-6">
@@ -146,31 +146,31 @@
 												<button type="button" ng-click="openSelectLanguageWindow()" class="btn btn-dark-grey full-width">Add language</button>
 												<p ng-show="(regStudPage2.$submitted) && regStudPage2.$error.languages" class="help-block">At least one language is required</p>
 											</div>
-										</div>	
+										</div>
 										<div class="row">
 											<div class="col-xs-12 lang-educ-list">
 												<span ng-repeat="language in studInfo.languagesArr">{{language.name}} : {{language.level}}</span>
 											</div>
-										</div>								
+										</div>
 									</div>
 									<div class="col-xs-6">
 										<div class="row">
 											<div class="col-xs-12">
 												<button type="button" ng-click="openSelectEducationWindow()" class="btn btn-dark-grey full-width">Add Higher Education</button>
 											</div>
-										</div>	
+										</div>
 										<div class="row">
 											<div class="col-xs-12 lang-educ-list">
 												<span ng-repeat="education in studInfo.educationsArr">{{education.institution}}, {{education.faculty}}, {{education.degree}} - {{education.startYear}} - {{education.finishYear}}</span>
 											</div>
-										</div>									
+										</div>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-xs-4 col-xs-offset-4 paging-buttons">		
-										<button ng-click="changePage(1)" class="btn btn-blue">Previous Step</button>		
+									<div class="col-xs-4 col-xs-offset-4 paging-buttons">
+										<button ng-click="changePage(1)" class="btn btn-blue">Previous Step</button>
 									</div>
-									<div class="col-xs-4 paging-buttons">	
+									<div class="col-xs-4 paging-buttons">
 										<button type="submit" class="btn btn-blue">Create Account</button>
 									</div>
 								</div>
@@ -179,6 +179,145 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+      <div ng-show="clientType=='company'" ng-controller="RegCompanyCntrl">
+        <div class="col-xs-12 reg-form">
+          <div class="row">
+            <div class="col-xs-12 progress-line">
+              <div class="row">
+                <div class="col-xs-11 line">
+                <uib-progressbar value="55"></uib-progressbar>
+                </div>
+              <div class="col-xs-1 text">55%</div>
+              </div>
+            </div>
+          </div>
+
+        <div ng-show="page==1">
+          <div class="col-xs-12">
+            <form name="regCompanyStep1" novalidate ng-submit="regCompanyStep1.$valid && changePage(2)">
+              <!-- NAME -->
+              <div class="row">
+              <div class="col-xs-12 form-group" ng-class="{ 'has-error' : (regCompanyStep1.$submitted || regCompanyStep1.name.$touched) && regCompanyStep1.name.$error.required}">
+                <label for="CompanyName">Name*</label>
+                <input id="CompanyName" name="name" type="text" class="form-control" id="Name" ng-model="company.name" required="" placeholder="Company Name">
+                <p ng-show="(regCompanyStep1.name.$touched || regCompanyStep1.$submitted) && regCompanyStep1.name.$error.required"
+                   class="help-block">Company Name is required.</p>
+              </div>
+              </div>
+              <!-- WEBSITE -->
+              <div class="row">
+                <div class="col-xs-12 form-group" ng-class="{ 'has-error' : (regCompanyStep1.$submitted || regCompanyStep1.website.$touched) &&
+                                                           (regCompanyStep1.website.$error.required || regCompanyStep1.website.$invalid)}">
+                  <label for="CompanyWebsite">Website*</label>
+                  <input name="website" type="url" class="form-control" id="CompanyWebsite" ng-model="company.website" required="" placeholder="Company Website">
+                  <p ng-show="(regCompanyStep1.website.$touched || regCompanyStep1.$submitted) &&
+                              regCompanyStep1.website.$error.required"
+                     class="help-block">Company Website is required.</p>
+                  <p ng-show="(regCompanyStep1.website.$touched || regCompanyStep1.$submitted) &&
+                                regCompanyStep1.$error.url && regCompanyStep1.website.$dirty"
+                     class="help-block">Enter a valid Company Website.</p>
+                </div>
+              </div>
+              <!-- EMAIL -->
+              <div class="row">
+                <div class="col-xs-12 form-group" ng-class="{ 'has-error' : (regCompanyStep1.$submitted || regCompanyStep1.email.$touched) &&
+                                                            (regCompanyStep1.email.$error.required || regCompanyStep1.$error.email) }">
+                  <label for="CompanyEmail">Email*</label>
+                  <input name="email" type="email" class="form-control" id="CompanyEmail" ng-model="company.email" required="" placeholder="Company Email">
+                  <p ng-show="(regCompanyStep1.email.$touched || regCompanyStep1.$submitted) && regCompanyStep1.email.$error.required"
+                     class="help-block">Company Email is required.</p>
+                  <p ng-show="(regCompanyStep1.email.$touched || regCompanyStep1.$submitted) && regCompanyStep1.email.$error.email && regCompanyStep1.email.$dirty"
+                     class="help-block">Enter a valid Company Email.</p>
+                </div>
+              </div>
+              <!-- PASSWORD -->
+              <div class="row">
+                <div class="col-xs-6 form-group" ng-class="{'has-error' : (regCompanyStep1.$submitted || regCompanyStep1.password.$touched) &&
+                                                            (regCompanyStep1.password.$error.minlength || regCompanyStep1.password.$error.required)}">
+                  <label for="pass">Password</label>
+                  <input type="password" name="password" id="pass" ng-model="company.password" class="form-control" required="" placeholder="Password">
+                  <p ng-show="(regCompanyStep1.$submitted || regCompanyStep1.password.$touched) && regCompanyStep1.password.$error.minlength"
+                    class="help-block">Enter at least 6 symbols</p>
+                </div>
+                <div class="col-xs-6 form-group" ng-class="{'has-error' : regCompanyStep1.$submitted || regCompanyStep1.passAgain.$touched}">
+                  <label for="PassAgain">Password Again</label>
+                  <input type="password" name="passAgain" id="PassAgain" ng-model="company.passAgain" class="form-control" required="" placeholder="Repeat Password">
+                  <p ng-show="(regCompanyStep1.$submitted || regCompanyStep1.passAgain.$touched) && !checkPassword()"
+                     class="help-block">Password doesn't match</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-4 col-xs-offset-8 paging-buttons">
+                  <button type="submit" ng-click="" class="btn btn-blue">Next Step</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div ng-show="page==2" class="row">
+          <div class="col-xs-12">
+            <form name="regCompanyStep2" novalidate ng-submit="regCompanyStep2.$valid && submit()">
+              <!-- City -->
+              <div class="row">
+                <div class="col-xs-6 form-group">
+                  <label for="CompanyCity">Add City*</label>
+                  <button id="CompanyCity" class="btn btn-dark-grey form-control" ng-click="openSelectCityWindow()">Add City</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-4" ng-repeat="city in cities" ng-model="company.cityArr">
+                  <span class="col-xs-12 label-grey">{{city}}<span class="glyphicon glyphicon-remove" ng-click="removeCity($index)"></span></span>
+                </div>
+              </div>
+
+              <!-- description-->
+              <div class="row">
+                <div class="col-xs-12 form-group" ng-class="{ 'has-error' : (regCompanyStep2.description.$touched || regCompanyStep2.$submitted)&&regCompanyStep2.description.$error.required}">
+                  <label for="description">Description</label>
+                  <textarea id="description" type="text" rows="4" ng-model="company.description" class="form-control" required></textarea>
+                  <p class="help-block" ng-show="(regCompanyStep2.description.$touched || regCompanyStep2.$submitted)&&regCompanyStep2.description.$error.required">Company Description is required.</p>
+                </div>
+              </div>
+
+              <!-- logo -->
+              <div class="row">
+                <label for="logoInput" class="col-xs-4">Upload Logo</label>
+                <div class="col-xs-12" id="logoInput">
+                  <div class="col-xs-4">
+                    <img src="../images/img-not-found.png">
+                  </div>
+                  <div class="col-xs-8">
+                    <div class="input-group">
+                      <ul>
+                        <li ng-repeat="item in uploader.queue">
+                          <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                        </li>
+                      </ul>
+                      <span class="input-group-btn">
+                        <input class="btn btn-dark-grey" type="file" nv-file-select uploader="uploader">Browse...</input>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-4 paging-buttons">
+                  <button type="button" class="btn btn-blue " ng-click="changePage(1)">Prev Step</button>
+                </div>
+                <div class="col-xs-4 col-xs-offset-4 paging-buttons">
+                  <button type="submit" class="btn btn-blue">
+                    Get Started</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
