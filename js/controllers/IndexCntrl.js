@@ -8,7 +8,6 @@ app.controller('IndexCntrl', ['$scope', 'FileUploader', 'PopUpSrvc', function($s
     ]
 
 
-
     $scope.selectCity = function($item, $model, $label, $event) {
         console.log('city', $item)
     }

@@ -4,7 +4,7 @@ app.controller('SelectCategoriesModalCntrl', ['$scope', '$uibModalInstance', 'se
 
     $scope.categories = StaticDataSrvc.categories;
     $scope.selectedCat = selectedCategories;
-    for (var i = 0; i < $scope.selectedCat.length; i++) {
+    for (var i = 0, x = $scope.selectedCat.length; i < x; i++) {
         $scope.tmpCategories[$scope.selectedCat[i]] = true;
     };
 

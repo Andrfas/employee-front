@@ -18,6 +18,7 @@ app.controller('HeaderCntrl', ['$scope', '$uibModal', 'AuthorizationSrvc', funct
         });
     }
 
+    //ToDo
     $scope.signout = function() {
         AuthorizationSrvc.signOut()
             .then(function(res) {})

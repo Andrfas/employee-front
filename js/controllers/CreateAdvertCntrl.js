@@ -65,8 +65,6 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
     }
     $scope.cities = ['Киев','Днепропетровск','Донецк','Запорожье','Кривой Рог','Львов','Луганск','Мариуполь','Николаев','Одесса','Севастополь','Симферополь','Харьков','Винница','Чернигов', 'Луцк'];
 
-
-
     $scope.searchSkillStr;
     $scope.advertData.skills = [];
     $scope.getSkills = function(searchStr) {

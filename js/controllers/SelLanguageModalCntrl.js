@@ -16,7 +16,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalI
         name : '',
         level : ''
         }
-      for (var i = 0; i<$scope.selLanguages.length; i++){
+      for (var i = 0, x = $scope.selLanguages.length; i < x; i++){
           $scope.availableLanguages.splice($scope.availableLanguages.indexOf($scope.selLanguages[i].name),1);
 
       }
