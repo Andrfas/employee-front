@@ -1,4 +1,4 @@
-app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCompanySrvc', 'ConfigSrvc', function($scope, $uibModal, FileUploader, RegCompanySrvc, ConfigSrvc) {
+app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCompanySrvc', 'ConfigSrvc', '$location', 'PopUpSrvc', function($scope, $uibModal, FileUploader, RegCompanySrvc, ConfigSrvc, $location, PopUpSrvc) {
     $scope.cities = [];
 
 
@@ -75,11 +75,13 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         RegCompanySrvc.createCompany($scope.company)
             .then(function(res) {
                 console.log('createCompany', res);
-                if(res.success) {
-                    PopUpSrvc.success('Registration', 'Activation link has been sent to your email')
+                if(res.status == 200) {
+                    PopUpSrvc.success('Registration', 'Activation link has been sent to your email');
+                    $location.path('/');
                 } else {
                     PopUpSrvc.error('Registration', res.msg);
                 }
+
             })
             .catch(function(err) {
                 console.error('createEmployee', err);
