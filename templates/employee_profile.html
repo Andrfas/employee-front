@@ -11,10 +11,12 @@
                 <h4>Availability</h4>
             </div>
             <div class="row">
-                <a href="" ng-click="setAvailability()" ng-if="!isAvailable">(Set availability)</a>
-                <div ng-if="isAvailable">
-                    <h4>{{available}} <a href="">(Change)</a></h4>
+                <a href="" ng-click="setAvailability()" ng-show="isAvailable">(Set availability)</a>
+                <div ng-if="setAvailable1">
+                    <a href="" ng-click="setAvailability('yes')">Set Available</a>
+                    <a href="" ng-click="setAvailability('no')">Set Not Available</a>
                 </div>
+                <h4 ng-if="setAvailable2">{{available}} <a href="" ng-click="changeAvailability()">(Change)</a></h4>
             </div>
             <div class="row">
                 
