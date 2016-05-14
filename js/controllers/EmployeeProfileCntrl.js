@@ -51,7 +51,7 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     		.then(function(res){
     			RegEmployeeSrvc.getEmployee($scope.employeeId)
     				.then(function(res) {
-            			console.log(res);
+            			// console.log(res);
     			})
     		})
     		.catch(function(err) {

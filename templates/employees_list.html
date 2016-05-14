@@ -204,11 +204,11 @@
 							<div class="row search-header">
 									Search Result
 							</div>				
-							<div class="row" style="background-color:#fafdfe" >
-								<div class="col-xs-12 search-list" >
-
-									<div ng-repeat="employee in employees" class="row search-res" infinite-scroll="$parent.showMore()"
+							<div class="row" style="background-color:#fafdfe" infinite-scroll="showMore()"
                          infinite-scroll-immediate-check="false" infinite-scroll-disabled="isInfiniteDisabled">
+								<div class="col-xs-12 search-list">
+
+									<div ng-repeat="employee in employees" class="row search-res">
 										<div class="col-xs-12">
 											<div class="row">
 												<div class="col-xs-12 title"><a ng-href="#/employee/{{employee._id}}">{{employee.firstName}} {{employee.lastName}}</a></div>
