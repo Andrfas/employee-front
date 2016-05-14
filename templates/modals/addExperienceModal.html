@@ -7,26 +7,45 @@
     <div class="input-group col-md-12" >
       <label for="title">Title</label>
       <div class="input-group col-md-12" id="title" style="margin-bottom: 25px">
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" ng-model="experience.title">
       </div>
-
       <label for="yearsOfWork"><span>Period</span></label>
-      <div class="input-group col-md-12" id="yearsOfWork" style="margin-bottom: 15px">
-        <select class="form-inline col-md-5" >
-          <option disabled selected>Start</option>
-          <option>2012</option>
-          <option>2013</option>
-        </select>
-        <select class="form-inline col-md-5 col-md-offset-1">
-          <option disabled selected>End</option>
-          <option>2017</option>
-          <option>2018</option>
-        </select>
+      <div class="row">
+        <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" name="inputDate"
+               required
+               uib-datepicker-popup="MMMM-yyyy"
+               datepicker-mode="datepickerConf.mode"
+               datepicker-options="datepickerConf.options"
+               ng-model="experience.yearsFrom"
+               close-text="close"
+               is-open="datepickerConf.opened" />
+          <span class="input-group-btn">
+              <button class="btn btn default1" type="button" ng-click="datepickerConf.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div>
+        </div>
+        <div class="col-md-6">
+          <div class="input-group">
+          <input type="text" class="form-control" name="inputDate2"
+               required
+               uib-datepicker-popup="MMMM-yyyy"
+               datepicker-mode="datepickerConf2.mode"
+               datepicker-options="datepickerConf2.options"
+               ng-model="experience.yearsTo"
+               close-text="close"
+               is-open="datepickerConf2.opened" />
+          <span class="input-group-btn">
+              <button class="btn btn default1" type="button" ng-click="datepickerConf2.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div>
+        </div>
+        </div>
       </div>
-
-      <label for="description">Degree</label>
+      <label for="degree">Degree</label>
       <div class="input-group col-md-12" id="description" style="margin-bottom: 15px">
-        <textarea class="form-control"></textarea>
+       <input type="text" class="form-control" ng-model="experience.degree"></textarea>
       </div>
 
 
@@ -34,7 +53,6 @@
   </div>
   <div class="modal-footer">
     <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>
-    <button class="btn btn-default col-md-5" type="button">Save And Add More</button>
     <button class="btn btn-link col-md-4" type="button" ng-click="cancel()">Cancel</button>
   </div>
 </div>
