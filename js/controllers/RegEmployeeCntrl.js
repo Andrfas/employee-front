@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', 'FileUploader', 'ConfigSrvc', '$location', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, FileUploader, ConfigSrvc, $location) {
     $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',
@@ -11,7 +11,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         languagesArr:[],
         educationsArr: [],
         skillsArr: [],
-        availability: null
+        availability: null,
+        image: null
     };
 
     $scope.$watchCollection('studInfo.languagesArr', function (items) {
@@ -31,7 +32,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             birthDate: $scope.studInfo.birthDate,
             currentCity: $scope.studInfo.currentCity,
             availability: $scope.studInfo.availability,
-            languages: $scope.studInfo.languages
+            languages: $scope.studInfo.languages,
+            image: $scope.studInfo.image
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
@@ -148,5 +150,26 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
 
         })
     }
+
+    // for uploading images
+    var uploader = $scope.uploader = new FileUploader({
+        url: ConfigSrvc.API_URL+'/image',
+        method: 'PUT',
+        autoUpload: true,
+        queueLimit: 1
+    });
+
+    uploader.onSuccessItem = function(item, response, status, headers) {
+        $scope.studInfo.image = response.file[0].fd;
+        console.log($scope.studInfo.image);
+    }
+
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
 
 }])
