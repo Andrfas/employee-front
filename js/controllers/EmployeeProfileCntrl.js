@@ -122,5 +122,25 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             $scope.updateProfile($scope.employeeId, $scope.profile);
         });
     }
+
+    $scope.openPortfolioModal = function(){
+    	var selectedPortfolio = null;
+    	var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addPortfolioModal.html',
+            controller: 'AddPortfolioModalCntrl',
+            resolve: {
+                portfolio: function () {
+                    return selectedPortfolio;
+                }
+            }
+        });
+        instance.result.then(function (portfolio) {
+        	// console.log(portfolio);
+            $scope.profile.portfolio.push(portfolio);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
+    }
 }])
 
