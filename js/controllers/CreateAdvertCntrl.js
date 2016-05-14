@@ -1,4 +1,4 @@
-app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'AdvertSrvc', '$uibModal', function($scope, SkillsSrvc, PopUpSrvc, AdvertSrvc, $uibModal){
+app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'AdvertSrvc', '$uibModal', 'StaticDataSrvc', function($scope, SkillsSrvc, PopUpSrvc, AdvertSrvc, $uibModal, StaticDataSrvc){
     $scope.advertData = {
         company: localStorage.getItem('clientId'),
         category:null,
@@ -63,7 +63,7 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
     $scope.removeCity = function($index) {
         $scope.advertData.cities.splice($index, 1);
     }
-    $scope.cities = ['Киев','Днепропетровск','Донецк','Запорожье','Кривой Рог','Львов','Луганск','Мариуполь','Николаев','Одесса','Севастополь','Симферополь','Харьков','Винница','Чернигов', 'Луцк'];
+    $scope.cities = StaticDataSrvc.cities;
 
     $scope.searchSkillStr;
     $scope.advertData.skills = [];

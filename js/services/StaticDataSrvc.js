@@ -19,7 +19,9 @@ app.service('StaticDataSrvc', [function() {
         }        
     ]
 
-    this.cities = ['Киев','Днепропетровск','Донецк','Запорожье','Кривой Рог','Львов','Луганск','Мариуполь','Николаев','Одесса','Севастополь','Симферополь','Харьков','Винница','Чернигов', 'Луцк'];
+    this.cities = ['Kyiv','Dnepropetrovsk','Donetsk','Zaporozh\'e','Krivoy Rog','L\'vov',
+            'Luhansk','Mariupol','Nikolaev','Odessa',
+            'Sevastopl','Simferopl','Kharkiv','Vinnitsya','Chernihiv', 'Lutsk'];
 
     this.emplTypes = ['fulltime', 'underemployment', 'distant_work'];
     this.hoursPerWeek = ['more_than_30', 'less_than_30 ', 'of_necessity'];

@@ -12,12 +12,16 @@
                 <div class="col-xs-9">
                     <div class="row">{{profile.name}}</div>
                     <div class="row">
-                        Website: {{profile.site}} Site should be here
+                        Website: {{profile.website}}
                     </div>
-                    <div class="row">
-                        Cities should be here
-                        {{profile.cities}}
-                    </div>
+                    <div class="row" ng-show="profile.cities">
+                        Cities
+                        <div class="row">
+                            <div class="col-xs-4" ng-repeat="city in profile.cities" ng-model="company.cities">
+                              <span class="col-xs-12 label-grey">{{city}}</span>
+                            </div>
+                          </div>
+                        </div>
                     <div class="row">
                         <div class="panel panel-default">
                           <div class="panel-heading">Description</div>
@@ -27,6 +31,20 @@
                         </div>
                     </div>
                     <div class="row">proposals</div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            Filters
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row" ng-repeat="advert in adverts">
+                                <div class="col-xs-12">
+                                    {{advert.title}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
