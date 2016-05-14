@@ -33,6 +33,7 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
             .then(function(res) {
                 console.log('adverts', res);
                 $scope.adverts = $scope.adverts.concat(res.data);
+                $scope.isInfiniteDisabled = false;
             })
     }
     $scope.getAdverts();

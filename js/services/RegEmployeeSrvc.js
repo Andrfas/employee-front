@@ -39,6 +39,21 @@ app.service('RegEmployeeSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrv
                     call.reject(err);
                 })
             return call.promise;
+        },
+
+        getEmployees : function(){
+            var url = '/employees';
+            var call = $q.defer();
+            ReqHandlingSrvc.get(url)
+                .then(function(res) {
+                    console.log(res);
+                    call.resolve(res);
+                })
+                .catch(function(err) {
+                    console.log(err);
+                    call.reject(err);
+                })
+            return call.promise;            
         }
     }
 }]);
