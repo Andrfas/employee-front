@@ -22,6 +22,17 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         });
     }
 
+
+   $scope.company = {
+        name: '',
+        website: '',
+        email: '',
+        password: '',
+        passAgain: '',
+        cities: [],
+        description: '',
+    };
+
     $scope.removeCity = function(index) {
         $scope.cities.splice(index, 1);
     }
@@ -43,20 +54,17 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         }
     });
 
+    // $scope.validHost = function(){
+    //     console.log($scope.company)
+    //     console.log(/^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/.test($scope.company.website))
+    //     if (/^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/.test($scope.company.website) ||
+    //         /^[http://]+[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/.test($scope.company.website)) {}
+    //     return /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/.test($scope.company.website)
+    // }
     $scope.page = 1;
     $scope.changePage = function(page) {
         $scope.page = page;
     }
-
-   $scope.company = {
-        name: '',
-        website: '',
-        email: '',
-        password: '',
-        passAgain: '',
-        cities: [],
-        description: '',
-    };
 
     $scope.checkPassword = function(){
         return $scope.company.password === $scope.company.passAgain; 	
