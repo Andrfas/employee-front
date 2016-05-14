@@ -10,8 +10,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         currentCity:'',
         languagesArr:[],
         educationsArr: [],
-        skillsArr: []
-
+        skillsArr: [],
+        availability: null
     };
 
     $scope.$watchCollection('studInfo.languagesArr', function (items) {
@@ -27,7 +27,10 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             firstName: $scope.studInfo.name,
             lastName: $scope.studInfo.lastName,
             email: $scope.studInfo.email,
-            password: $scope.studInfo.password
+            password: $scope.studInfo.password,
+            birthDate: $scope.studInfo.birthDate,
+            currentCity: $scope.studInfo.currentCity,
+            availability: $scope.studInfo.availability
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
