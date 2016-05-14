@@ -1,50 +1,105 @@
 <div class="container">
-    <div class="row">
+    <div class="row profile">
         <div class="col-xs-8 col-xs-offset-2">
             <div class="row">
                 <div class="col-xs-3">
-                <div class="row">Company</div>
-                <div class="row"><img src="http://lorempixel.com/image_output/abstract-q-g-150-150-7.jpg" alt="company logo"></div>
-                <div class="row">
-                    <a href="/#/create/adwert"><button class="btn btn-info">Add proposals</button></a>
-                </div>
+                    <div class="row title"><span>Company</span></div>
+                    <div class="row text-center"><img class="image" src="http://lorempixel.com/image_output/abstract-q-g-150-150-7.jpg" alt="company logo"></div>
+                    <div class="row text-center">
+                        <a href="/#/create/adwert"><button class="btn btn-blue add-advert">Add proposals</button></a>
+                    </div>
                 </div>
                 <div class="col-xs-9">
-                    <div class="row">{{profile.name}}</div>
                     <div class="row">
-                        Website: {{profile.website}}
+                        <div class="col-xs-12 company-name">
+                            {{profile.name}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            Website: {{profile.website}}
+                        </div>
                     </div>
                     <div class="row" ng-show="profile.cities">
-                        Cities
-                        <div class="row">
-                            <div class="col-xs-4" ng-repeat="city in profile.cities" ng-model="company.cities">
-                              <span class="col-xs-12 label-grey">{{city}}</span>
-                            </div>
-                          </div>
-                        </div>
-                    <div class="row">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Description</div>
-                          <div class="panel-body">
-                            {{profile.description}}
-                          </div>
-                        </div>
-                    </div>
-                    <div class="row">proposals</div>
-                    <div class="row">
                         <div class="col-xs-12">
-                            Filters
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="row" ng-repeat="advert in adverts">
-                                <div class="col-xs-12">
-                                    {{advert.title}}
+                            Cities
+                            <div class="row">
+                                <div class="col-xs-4" ng-repeat="city in profile.cities" ng-model="company.cities">
+                                    <span class="col-xs-12 label-grey">{{city}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row section-heading">
+                        <div class="col-xs-12">
+                            <div class="">Description</div>
+                        </div>
+                    </div>
+                    <div class="row section-body">
+                        <div class="col-xs-12">
+                            <div>{{profile.description}}</div>
+                        </div>
+                    </div>
+                    <div class="row section-heading">
+                        <div class="col-xs-12">
+                            <div class="">Adverts</div>
+                        </div>
+                    </div>
+                    <div class="row section-body">
+                        <div class="col-xs-12">                            
+                            <div class="row">
+                                Filters    
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div><button ng-click="openSelectCategoryModal()">Add category</button></div> 
+                                    <div>categories</div> 
+                                </div>
+                                <div class="col-xs-6">
+                                    <lable><input type="checkbox">Active</lable>
+                                    <lable><input type="checkbox">Not active</lable>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 search-list">
+                                    <div ng-repeat="advert in adverts" class="row search-res">
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-xs-12 title"><a ng-href="#/advert/{{advert._id}}">{{advert.title}}</a></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-6 company"><a href="#/company/{{advert.company}}" style="color: grey;text-decoration: underline;">{{advert.companyName}}</a></div>
+                                                <div class="col-xs-6 empl-type">{{advert.emplType}} - {{advert.hoursPerWeek}}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 descr">
+                                                    {{advert.description}}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 cities">
+                                                    <span>Cities:</span>
+                                                    <span ng-repeat="city in advert.cities" class="city">{{city}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 skills">
+                                                    <span>Skills:</span>
+                                                    <span ng-repeat="skill in advert.skills" class="skill">{{skill}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 bottom-border">
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
