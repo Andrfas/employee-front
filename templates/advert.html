@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-3 search-filter">
-                    <!-- Category -->
+                    <!-- Company -->
                     <div class="row">
                         <div class="col-xs-12 section-name">
                             <h4>Company</h4>
@@ -16,7 +16,79 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <span>Company name</span>
+                            <span>{{advert.company.name}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Closing date -->
+                    <div class="row">
+                        <div class="col-xs-12 section-name">
+                            <h4>Closing date</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.dateSelEnd}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Cities -->
+                    <div class="row">
+                        <div class="col-xs-12 section-name">
+                            <h4>Cities</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span ng-repeat="city in advert.cities">{{city}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Is free -->
+                    <div class="row">
+                        <div class="col-xs-12 section-name">
+                            <h4>Is free</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.needPay}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Type of employment -->
+                    <div class="row">
+                        <div class="col-xs-12 section-name">
+                            <h4>Type of employment</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.emplType}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Hours per week -->
+                    <div class="row">
+                        <div class="col-xs-12 section-name">
+                            <h4>Hours per week</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.hoursPerWeek}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Salary / Grants -->
+                    <div class="row">
+                        <div class="col-xs-12 section-name">
+                            <h4>Salary / Grants</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.paid}}</span>
                         </div>
                     </div>
 
@@ -25,48 +97,23 @@
 
                 <div class="col-xs-9">
                     <div class="row">
-                        <div class="col-xs-11 col-centered">                    
-                            <div class="row search-header">
-                                    Search Result
-                            </div>              
-                            <div class="row" style="background-color:#fafdfe">
-                                <div class="col-xs-12 search-list">
-
-                                    <div ng-repeat="advert in adverts" class="row search-res">
-                                        <div class="col-xs-12">
-                                            <div class="row">
-                                                <div class="col-xs-12 title">{{advert.title}}</div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-6 company">Company name</div>
-                                                <div class="col-xs-6 empl-type">{{advert.emplType}} - {{advert.hoursPerWeek}}</div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 descr">
-                                                    {{advert.description}}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 cities">
-                                                    <span>Cities:</span>
-                                                    <span ng-repeat="city in advert.cities" class="city">{{city}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 skills">
-                                                    <span>Skills:</span>
-                                                    <span ng-repeat="skill in advert.skills" class="skill">{{skill}}</span>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 bottom-border">
-                                                    <hr>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-xs-12">
+                            <span>{{advert.title}}</span>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.subcategory}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>{{advert.description}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <span>Skills: </span><span ng-repeat="skill in advert.skills">{{skill}}</span>
                         </div>
                     </div>  
                 </div>
