@@ -52,8 +52,13 @@
             </div>
             <div class="row" ng-repeat="experience in profile.workExperience">
                 <div class="row">
-                    <h5 class="col-xs-3"><strong>{{}}</strong></h5>
-                    <h6 class="col-xs-9">{{}}</h6>
+                    <h5 class="col-xs-3"><strong>{{experience.title}}</strong></h5>
+                </div>
+                <div class="row col-xs-12">
+                    <h6>{{experience.yearsFrom | date:'MMM yyyy'}} - {{experience.yearsTo | date:'MMM yyyy'}}</h6>
+                </div>
+                <div class="row col-xs-12">
+                    <h6>{{experience.degree}}</h6>
                 </div>
             </div>
             <div class="row">

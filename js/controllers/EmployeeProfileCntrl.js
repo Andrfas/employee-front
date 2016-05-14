@@ -99,9 +99,8 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             }
         });
         instance.result.then(function (exp) {
-        	console.log(exp);
-            // $scope.profile.workExperience.push(exp);
-            // $scope.updateProfile($scope.employeeId, $scope.profile);
+            $scope.profile.workExperience.push(exp);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
         });
     }
 }])
