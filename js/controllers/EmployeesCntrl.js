@@ -1,4 +1,4 @@
-app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc', function($scope, RegEmployeeSrvc, StaticDataSrvc){
+app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc', 'SkillsSrvc', function($scope, RegEmployeeSrvc, StaticDataSrvc, SkillsSrvc){
 
     $scope.employees = [];
     $scope.availability = {
@@ -6,6 +6,8 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc',
         no: false
     };
     $scope.selectedCities = [];
+    $scope.selectedSkills = [];
+    $scope.selectedLanguages = [];
     $scope.isInfiniteDisabled = false;
 
     $scope.pager = {
@@ -16,7 +18,11 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc',
     $scope.getEmployees = function() {
         var reqObj = {
             page:$scope.pager.page,
-            count:$scope.pager.count
+            count:$scope.pager.count,
+            availability:$scope.availability,
+            selectedCities:$scope.selectedCities,
+            selectedSkills:$scope.selectedSkills,
+            selectedLanguages:$scope.selectedLanguages
         }
         console.log('reqObj', reqObj);
         RegEmployeeSrvc.getEmployees(reqObj)
@@ -37,9 +43,40 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc',
         $scope.selectedCities.splice($index, 1);
     }
 
+    $scope.skillSearchStr;
+    $scope.getSkills = function(searchStr) {
+        return SkillsSrvc.getSkills(searchStr)
+            .then(function(res) {
+                return res.data;
+            })
+    }
+    $scope.selectSkill = function($item, $model, $label, $event) {
+        $scope.selectedSkills.push($item.name);
+        $scope.skillSearchStr = '';
+    }
+    $scope.removeSkill = function($index) {
+        $scope.selectedSkills.splice($index, 1);
+    }
+
+    $scope.languages = StaticDataSrvc.languages;
+    $scope.languageSearchStr = '';
+    $scope.selectLanguage = function($item, $model, $label, $event) {
+        $scope.selectedLanguages.push($item);
+        $scope.languageSearchStr = '';
+    }
+    $scope.removeLanguage = function($index) {
+        $scope.selectedCities.splice($index, 1);
+    }
+
     $scope.showMore = function() {
         $scope.isInfiniteDisabled = true;
         $scope.pager.page++;
+        $scope.getEmployees();
+    }
+
+    $scope.applyFilter = function() {
+        $scope.pager.page = 1;
+        $scope.employees = [];
         $scope.getEmployees();
     }
 
