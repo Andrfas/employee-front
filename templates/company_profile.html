@@ -4,16 +4,28 @@
             <div class="row">
                 <div class="col-xs-3">
                 <div class="row">Company</div>
-                <div class="row">Image</div>
+                <div class="row"><img src="http://lorempixel.com/image_output/abstract-q-g-150-150-7.jpg" alt="company logo"></div>
                 <div class="row">
-                    <a href="/#/create/adwert"><button class="btn btn-info">Create adwert</button></a>
+                    <a href="/#/create/adwert"><button class="btn btn-info">Add proposals</button></a>
                 </div>
                 </div>
                 <div class="col-xs-9">
                     <div class="row">{{profile.name}}</div>
-                    <div class="row">{{profile.site}}</div>
-                    <div class="row">{{profile.cities}}</div>
-                    <div class="row">{{profile.description}}</div>
+                    <div class="row">
+                        Website: {{profile.site}} Site should be here
+                    </div>
+                    <div class="row">
+                        Cities should be here
+                        {{profile.cities}}
+                    </div>
+                    <div class="row">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">Description</div>
+                          <div class="panel-body">
+                            {{profile.description}}
+                          </div>
+                        </div>
+                    </div>
                     <div class="row">proposals</div>
                 </div>
             </div>
