@@ -1,11 +1,12 @@
 <div class="container employee-profile">
-    <div class="row">
+    <div class="row profile">
         <div class="col-xs-2 col-xs-offset-1">
             <div class="row">
                 <h3>My profile</h3>
             </div>
-            <div class="row">
-                <img src="http://lh6.ggpht.com/-p4GeIyllIqA/Tfu4E7ZvvQI/AAAAAAAA3G4/29sS60a9vHI/41519815_b34328250cb1_thumb%25255B6%25255D.jpg?imgmax=800" class="img-responsive imagino">
+            <div class="row text-center"><img class="image" ng-src="http://localhost:1337/image/{{profile.image}}" alt="employee photo"></div>
+            <div class="row text-center">
+                <a href="" ng-click="">Change Image</a>
             </div>
             <div class="row texto">
                 <h4 class="lang-marging">Availability</h4>
@@ -21,8 +22,8 @@
             <div class="row texto">
                 <h4>Languages</h4>
             </div>
-            <div class="row size-lang" ng-repeat="lang in profile.languages">
-                <strong>{{lang.name}}</strong>:  {{lang.level}}
+            <div class="row size-lang" ng-repeat="lang in profile.languages track by $index">
+                <strong>{{lang.name}}</strong>:  {{lang.level}} <span class="glyphicon glyphicon-remove height" ng-click="removeLang($index)"></span>
             </div>
             <div class="row" ng-click="openLanguagesModal()">
                 <a href="">Add languages</a>

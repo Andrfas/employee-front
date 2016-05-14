@@ -163,7 +163,7 @@ body {
     user-select: none;
 }
 .checkbox input[type="checkbox"] {
-    /*display:none;*/
+    display:none;
 }
 .checkbox input[type="checkbox"] + label  {
     display: inline-block;
@@ -477,7 +477,7 @@ body {
 }
 
 .employee-profile .href-size{
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .employee-profile .lang-marging{
@@ -523,4 +523,16 @@ body {
 
 .employee-profile .img-padd{
     padding-left: 15px;
+}
+
+.employee-profile .height{
+    float: right;
+    padding: 0px 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.employee-profile .center{
+    float: none;
+    margin: 0 auto;
 }

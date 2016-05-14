@@ -46,6 +46,11 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     		$scope.setAvailable1 = true;
     	}
     }
+
+    $scope.removeLang = function(index){
+    	$scope.profile.languages.splice(index, 1);
+    	$scope.updateProfile($scope.employeeId, $scope.profile);
+    }
     
     $scope.updateProfile = function(id, profile){
     	RegEmployeeSrvc.updateEmployee(id, profile)
@@ -65,8 +70,8 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     	$scope.setAvailable1 = true;
     	$scope.setAvailable2 = false;
     }
-
     $scope.openLanguagesModal = function(){
+
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
@@ -76,6 +81,9 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             resolve: {
               selectedLanguages: function(){
                 return $scope.profile.languages;
+              },
+              employeeId: function(){
+                return ($scope.employeeId) ? $scope.employeeId : 'null';
               }
             }
         });

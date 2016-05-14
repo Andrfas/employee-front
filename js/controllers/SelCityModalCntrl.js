@@ -5,7 +5,9 @@ app.controller('SelCityModalCntrl', ['$scope', '$uibModalInstance', 'StaticDataS
 
     $scope.selectedCity;
     $scope.selectCity = function($item, $model, $label, $event) {
-        $scope.selectedCities.push($item);
+        if ($scope.selectedCities.length>0 && $scope.selectedCities.indexOf($item) === -1){
+            $scope.selectedCities.push($item);
+        }
         $scope.searchStr = '';
     }
 

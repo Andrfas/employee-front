@@ -1,4 +1,9 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc) {
+<<<<<<< HEAD
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', '$location', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, $location) {
+=======
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', 'FileUploader', 'ConfigSrvc', '$location', 'FacebookLoginSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, FileUploader, ConfigSrvc, $location, FacebookLoginSrvc) {
+
+>>>>>>> 0de60932594779f033d342e49eff0fc770a7d52f
     $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',
@@ -11,7 +16,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         languagesArr:[],
         educationsArr: [],
         skillsArr: [],
-        availability: null
+        availability: null,
+        image: null
     };
 
     $scope.$watchCollection('studInfo.languagesArr', function (items) {
@@ -23,6 +29,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
     }
 
     $scope.createEmployee = function() {
+        console.log($scope.studInfo)
         var data = {
             firstName: $scope.studInfo.name,
             lastName: $scope.studInfo.lastName,
@@ -31,7 +38,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             birthDate: $scope.studInfo.birthDate,
             currentCity: $scope.studInfo.currentCity,
             availability: $scope.studInfo.availability,
-            languages: $scope.studInfo.languages
+            languages: $scope.studInfo.languagesArr,
+            image: $scope.studInfo.image
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
@@ -95,6 +103,9 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             resolve: {
               selectedLanguages: function(){
                 return $scope.studInfo.languagesArr;
+              },
+              employeeId: function(){
+                return 'null';
               }
             }
 
@@ -147,6 +158,37 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             controller: 'AddPortfolioModalCntrl'
 
         })
+    }
+
+    // for uploading images
+    var uploader = $scope.uploader = new FileUploader({
+        url: ConfigSrvc.API_URL+'/image',
+        method: 'PUT',
+        autoUpload: true,
+        queueLimit: 1
+    });
+
+    uploader.onSuccessItem = function(item, response, status, headers) {
+        $scope.studInfo.image = response.file[0].fd;
+        console.log($scope.studInfo.image);
+    }
+
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
+
+    $scope.fbSignUp = function() {
+        FacebookLoginSrvc.signIn()
+            .then(function(res) {
+                console.log('fbSignUp', res);
+                FB.api('/me', function(response) {
+                    console.log('user', response);
+                });
+            })
     }
 
 }])

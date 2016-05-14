@@ -10,7 +10,8 @@
                     <h3>{{category.name}}</h3>
                     <div class="form-group">
                         <div class="checkbox" ng-repeat="subCat in category.subcategories">
-                            <label><input type="checkbox" ng-model="tmpCategories[subCat.subCateg]" ng-change="categChanged(subCat.subCateg)">{{subCat.subCateg}}</label>
+                            <input type="checkbox" ng-model="tmpCategories[subCat.subCateg]" ng-change="categChanged(subCat.subCateg)" id="{{subCat.subCateg}}">
+                            <label for="{{subCat.subCateg}}"><span>{{subCat.subCateg}}</span></label>
                         </div>
                     </div>
                 </div>
