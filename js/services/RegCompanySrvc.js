@@ -6,10 +6,10 @@ app.service('RegCompanySrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrvc
             console.log('in service')
             ReqHandlingSrvc.put(url, data)
                 .then(function(res) {
-                    console.log(res);
+                    call.resolve(res);
                 })
                 .catch(function(err) {
-                    console.error();
+                    call.reject(err);
                 })
             return call.promise;
         },

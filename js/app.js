@@ -1,4 +1,4 @@
-var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload', 'toaster', 'ngAnimate']);
+var app = angular.module('EmployeeApp', ['ngRoute', 'ui.bootstrap', 'angularFileUpload', 'toaster', 'ngAnimate', 'infinite-scroll']);
 
 app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
     function($routeProvider, $controllerProvider, $locationProvider) {
@@ -84,6 +84,9 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                     deps: app.resolveScriptDeps([
                         'js/controllers/AdvertCntrl.js'
                 ])}
+            })
+            .when('/confirmed', {
+                templateUrl: '/templates/emailConfirmed.html'
             })
 
         //$locationProvider.html5Mode({

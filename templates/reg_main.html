@@ -96,7 +96,7 @@
 								</div>
 								<div class="row">
 									<div class="col-xs-4 col-xs-offset-8 paging-buttons">
-										<button type="submit" ng-click="" class="btn btn-blue">Next Step</button>
+										<button class="btn btn-blue">Next Step</button>
 									</div>
 								</div>
 							</form>
@@ -209,13 +209,13 @@
                 <div class="col-xs-12 form-group" ng-class="{ 'has-error' : (regCompanyStep1.$submitted || regCompanyStep1.website.$touched) &&
                                                            (regCompanyStep1.website.$error.required || regCompanyStep1.website.$invalid)}">
                   <label for="CompanyWebsite">Website*</label>
-                  <input name="website" type="url" class="form-control" id="CompanyWebsite" ng-model="company.website" required="" placeholder="Company Website">
+                  <input name="website" class="form-control" id="CompanyWebsite" ng-model="company.website" required="" placeholder="Company Website">
                   <p ng-show="(regCompanyStep1.website.$touched || regCompanyStep1.$submitted) &&
                               regCompanyStep1.website.$error.required"
                      class="help-block">Company Website is required.</p>
-                  <p ng-show="(regCompanyStep1.website.$touched || regCompanyStep1.$submitted) &&
-                                regCompanyStep1.$error.url && regCompanyStep1.website.$dirty"
-                     class="help-block">Enter a valid Company Website.</p>
+<!--                   <p ng-show="(regCompanyStep1.website.$touched || regCompanyStep1.$submitted) &&
+                                (regCompanyStep1.website.$error.url) && regCompanyStep1.website.$dirty"
+                     class="help-block">Enter a valid Company Website.</p> -->
                 </div>
               </div>
               <!-- EMAIL -->
@@ -249,7 +249,7 @@
 
               <div class="row">
                 <div class="col-xs-4 col-xs-offset-8 paging-buttons">
-                  <button type="submit" ng-click="" class="btn btn-blue">Next Step</button>
+                  <button class="btn btn-blue">Next Step</button>
                 </div>
               </div>
             </form>
