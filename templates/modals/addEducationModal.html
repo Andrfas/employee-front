@@ -7,9 +7,9 @@
         <div class="input-group col-md-12" >
           <form id="eduForm" name="eduForm" novalidate ng-submit="eduForm.$valid && save()">
             <label for="eduInst">Educational Institution</label>
-            <div class="input-group col-md-12" id="eduInst" style="margin-bottom: 25px" ng-class="{ 'has-error' : (eduForm.$submitted || eduForm.institution.$touched) && eduForm.institution.$error.required }">
-                <input type="text" name="institution" ng-model="education.institution" class="form-control" required>
-                <p ng-show="(eduForm.$submitted || eduForm.institution.$touched) && eduForm.institution.$error.required" class="help-block">
+            <div class="input-group col-md-12" id="eduInst" style="margin-bottom: 25px" ng-class="{ 'has-error' : (eduForm.$submitted || eduForm.uni.$touched) && eduForm.uni.$error.required }">
+                <input type="text" name="uni" ng-model="education.uni" class="form-control" required>
+                <p ng-show="(eduForm.$submitted || eduForm.uni.$touched) && eduForm.uni.$error.required" class="help-block">
                     Enter institution
                 </p>
             </div>
@@ -22,7 +22,7 @@
                                uib-datepicker-popup="yyyy"
                                min-mode="mode"
                                date-disabled="startDisabled(date,mode)"
-                               ng-model="startYear"
+                               ng-model="yearsFrom"
                                close-text="close"
                                is-open="startPopup.opened" />
                         <span class="input-group-btn">
@@ -36,7 +36,7 @@
                                uib-datepicker-popup="yyyy"
                                min-mode="mode"
                                date-disabled="finishDisabled(date,mode)"
-                               ng-model="finishYear"
+                               ng-model="yearsTo"
                                close-text="close"
                                is-open="finishPopup.opened" />
                         <span class="input-group-btn">
