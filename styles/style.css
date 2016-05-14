@@ -163,7 +163,7 @@ body {
     user-select: none;
 }
 .checkbox input[type="checkbox"] {
-    /*display:none;*/
+    display:none;
 }
 .checkbox input[type="checkbox"] + label  {
     display: inline-block;
