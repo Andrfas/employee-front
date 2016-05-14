@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', '$location', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, $location) {
+=======
 app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', 'FileUploader', 'ConfigSrvc', '$location', 'FacebookLoginSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, FileUploader, ConfigSrvc, $location, FacebookLoginSrvc) {
 
+>>>>>>> 0de60932594779f033d342e49eff0fc770a7d52f
     $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',
@@ -25,6 +29,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
     }
 
     $scope.createEmployee = function() {
+        console.log($scope.studInfo)
         var data = {
             firstName: $scope.studInfo.name,
             lastName: $scope.studInfo.lastName,
@@ -33,7 +38,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             birthDate: $scope.studInfo.birthDate,
             currentCity: $scope.studInfo.currentCity,
             availability: $scope.studInfo.availability,
-            languages: $scope.studInfo.languages,
+            languages: $scope.studInfo.languagesArr,
             image: $scope.studInfo.image
         };
         RegEmployeeSrvc.createEmployee(data)
@@ -98,6 +103,9 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             resolve: {
               selectedLanguages: function(){
                 return $scope.studInfo.languagesArr;
+              },
+              employeeId: function(){
+                return 'null';
               }
             }
 

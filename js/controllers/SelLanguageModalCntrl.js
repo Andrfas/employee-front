@@ -1,5 +1,5 @@
-app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalInstance', 'selectedLanguages',
-  function($scope, StaticDataSrvc, $uibModalInstance, selectedLanguages) {
+app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalInstance', 'selectedLanguages', 'employeeId', 'RegEmployeeSrvc',
+  function($scope, StaticDataSrvc, $uibModalInstance, selectedLanguages, employeeId, RegEmployeeSrvc) {
       $scope.noResMsg = 'No languages found';
       $scope.noResFound = false;
       $scope.selLanguages = selectedLanguages; //name, level
@@ -26,6 +26,16 @@ app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalI
           $scope.language = {};
           if ($scope.selLanguages.indexOf(langTemp) === -1){
             $scope.selLanguages.push(langTemp);
+          }
+          console.log(employeeId)
+          if (employeeId != 'null'){
+            RegEmployeeSrvc.updateEmployee(employeeId, {languages: $scope.selLanguages})
+              .then(function(res){
+              })
+              .catch(function(err) {
+                console.log('here');
+                    PopUpSrvc.error('Error', err);
+                })            
           }
           $scope.submit(false);
       }

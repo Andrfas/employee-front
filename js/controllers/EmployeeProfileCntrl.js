@@ -65,8 +65,8 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     	$scope.setAvailable1 = true;
     	$scope.setAvailable2 = false;
     }
-
     $scope.openLanguagesModal = function(){
+
         var instance = $uibModal.open({
             animation: true,
             backdrop: 'static',
@@ -76,6 +76,9 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             resolve: {
               selectedLanguages: function(){
                 return $scope.profile.languages;
+              },
+              employeeId: function(){
+                return ($scope.employeeId) ? $scope.employeeId : 'null';
               }
             }
         });
