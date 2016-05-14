@@ -1,6 +1,11 @@
-app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', function($scope, RegEmployeeSrvc){
+app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc', function($scope, RegEmployeeSrvc, StaticDataSrvc){
 
     $scope.employees = [];
+    $scope.availability = {
+        yes: true,
+        no: false
+    };
+    $scope.selectedCities = [];
     $scope.isInfiniteDisabled = false;
 
     $scope.pager = {
@@ -22,9 +27,17 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', function($scope, 
             })
     }
 
+    $scope.cities = StaticDataSrvc.cities;
+    $scope.citySearchStr = '';
+    $scope.selectCity = function($item, $model, $label, $event) {
+        $scope.selectedCities.push($item);
+        $scope.citySearchStr = '';
+    }
+    $scope.removeCity = function($index) {
+        $scope.selectedCities.splice($index, 1);
+    }
 
     $scope.showMore = function() {
-        console.log('asdakjsdhkajsdh')
         $scope.isInfiniteDisabled = true;
         $scope.pager.page++;
         $scope.getEmployees();
