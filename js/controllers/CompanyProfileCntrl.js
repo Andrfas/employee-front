@@ -5,6 +5,7 @@ app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc
     RegCompanySrvc.getCompany($scope.companyId)
         .then(function(res) {
             if(res.success) {
+                console.log(res.data)
                 $scope.profile = res.data;
                 $scope.profile.cities = $scope.profile.cities.join('-');
             } else {
