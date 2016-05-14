@@ -156,9 +156,8 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             }
         });
         instance.result.then(function (course) {
-        	console.log(course);
-            // $scope.profile.achievements.push(course);
-            // $scope.updateProfile($scope.employeeId, $scope.profile);
+            $scope.profile.achievements.push(course);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
         });
     }
 }])
