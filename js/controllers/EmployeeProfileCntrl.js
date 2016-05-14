@@ -137,8 +137,26 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             }
         });
         instance.result.then(function (portfolio) {
-        	// console.log(portfolio);
             $scope.profile.portfolio.push(portfolio);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
+    }
+
+    $scope.openCoursesModal = function(){
+    	var selectedCourse = null;
+    	var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addCourseModal.html',
+            controller: 'AddCourseModalCntrl',
+            resolve: {
+                course: function () {
+                    return selectedCourse;
+                }
+            }
+        });
+        instance.result.then(function (course) {
+            $scope.profile.achievements.push(course);
             $scope.updateProfile($scope.employeeId, $scope.profile);
         });
     }

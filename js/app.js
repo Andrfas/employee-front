@@ -66,7 +66,7 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 resolve: {
                     deps: app.resolveScriptDeps([
                         'js/controllers/CompanyProfileCntrl.js',
-                        'js/controllers/SelectCategoryModalCntrl.js'
+                        'js/controllers/SelectCategoriesModalCntrl.js'
                 ])}
             })
             .when('/employee/:profileId', {
@@ -78,7 +78,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/AddSkillModalCntrl.js',
                         'js/controllers/AddExperienceModalCntrl.js',
                         'js/controllers/SelEducationModalCntrl.js',
-                        'js/controllers/AddPortfolioModalCntrl.js'
+                        'js/controllers/AddPortfolioModalCntrl.js',
+                        'js/controllers/AddCourseModalCntrl.js'
                 ])}
             })
             .when('/create/adwert', {
