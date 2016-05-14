@@ -90,25 +90,38 @@
         <toaster-container></toaster-container>
         <ng-view></ng-view>
         <script type="text/ng-template" id="signInModal.html">
-        <div class="myModal">
+        <div class="myModal login-form">
             <div class="modal-header">
                 <h3 class="modal-title">Sign in</h3>
             </div>
-            <div class="modal-body row">
+            <div class="modal-body row body-padd">
                 <form name="signInFrom" novalidate id="signinForm" class="form-group">
                     <div class="row">
-                        <div class="col-md-12 col-md-offset-2">
-                            <input type="email" ng-model="mail" name="mail" ng-class="{'has-error' : signInFrom.$submitted || signInFrom.mail.$touched}"  placeholder="email" required=""></input>
-                            <div ng-show="signInFrom.$submitted || signInFrom.mail.$touched">
-                                <div ng-show="signInFrom.mail.$error.required">Tell us your name.</div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 field-lable">
+                                    Enter Email
+                                </div>
+                                <div class="col-md-8">
+                                    <input  class="form-control" type="email" ng-model="mail" name="mail" ng-class="{'has-error' : signInFrom.$submitted || signInFrom.mail.$touched}"  placeholder="email" required=""></input>
+                                    <div ng-show="signInFrom.$submitted || signInFrom.mail.$touched">
+                                        <div ng-show="signInFrom.mail.$error.required">Tell us your name.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10 col-md-offset-2">
-                            <input type="password" ng-model="password" class="form-control" placeholder="password" required=""></input>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 field-lable">
+                                    Enter Password
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="password" ng-model="password" class="form-control" placeholder="password" required=""></input>
+                                </div>
+                            </div>
                         </div>
-                        
                     </div>
                 </form>
             </div>

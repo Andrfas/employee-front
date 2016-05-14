@@ -14,7 +14,7 @@ app.controller('HeaderCntrl', ['$scope', '$uibModal', 'AuthorizationSrvc', funct
             keyboard: true,
             templateUrl: 'signInModal.html',
             controller: 'SignInCntrl',
-            size: 'sm'
+            size: 'md'
         });
     }
 
