@@ -103,5 +103,24 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             $scope.updateProfile($scope.employeeId, $scope.profile);
         });
     }
+
+    $scope.openEducationModal = function(){
+    	var selectedEducatiobn = null;
+    	var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addEducationModal.html',
+            controller: 'SelEducationModalCntrl',
+            resolve: {
+                education: function () {
+                    return selectedEducatiobn;
+                }
+            }
+        });
+        instance.result.then(function (education) {
+            $scope.profile.education.push(education);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
+    }
 }])
 
