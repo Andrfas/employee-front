@@ -1,15 +1,256 @@
-emloyees_list.html
-a
-a
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-centered">
+			<div class="row">
+				<div class="col-xs-11  page-title">
+					Employees List
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3 search-filter">
+							<!-- Category -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select Categories</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<button ng-click="openSelectCategoryModal()" class="btn btn-grey full-width">Add category</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="categ in selectedCategories" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{categ}}
+									</div>
+								</div>
+							</div>
 
-a
-a
-a
-a
-a
-a
-a
-a
+							<!-- Cities -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select City</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<input type="text" ng-model="citySearchStr" typeahead-on-select="selectCity($item, $model, $label, $event)" uib-typeahead="city for city in cities | filter:$viewValue" class="full-width input-grey" placeholder="Add city...">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="city in selectedCities track by $index" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{city}}
+										<span ng-click="removeCity($index)" class="glyphicon glyphicon-remove"></span>
+									</div>
+								</div>
+							</div>
 
-a
-a
+							<!-- Skills -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select Skills</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<input type="text" ng-model="skillSearchStr" typeahead-on-select="selectSkill($item, $model, $label, $event)" uib-typeahead="skill.name for skill in getSkills($viewValue)" class="full-width input-grey" placeholder="Add skill...">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="skill in selectedSkills track by $index" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{skill}}
+										<span ng-click="removeSkill($index)" class="glyphicon glyphicon-remove"></span>
+									</div>
+								</div>
+							</div>
+
+							<!-- Employment type -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Type Of Employment</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpEmplType['fulltime']" ng-change="emplTypeChanged('fulltime')" id="fulltime">
+						                    
+											<label for="fulltime">
+												<span>Fulltime</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpEmplType['underemployment']" ng-change="emplTypeChanged('underemployment')" id="underemployment">
+						                    
+											<label for="underemployment">
+												<span>Underemployment</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpEmplType['distant_work']" ng-change="emplTypeChanged('distant_work')" id="distant_work">
+						                    
+											<label for="distant_work">
+												<span>Distant Work</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Paid -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Salary / Grants</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpPaid['true']" ng-change="paidChanged('true')" id="paid_true">
+						                    
+											<label for="paid_true">
+												<span>Have</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpPaid['false']" ng-change="paidChanged('false')" id="paid_false">
+						                    
+											<label for="paid_false">
+												<span>Don`t Have</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Need pay -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Course</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpNeedPay['true']" ng-change="needPayChanged('true')" id="need_pay_true">
+						                    
+											<label for="need_pay_true">
+												<span>Free</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpNeedPay['false']" ng-change="needPayChanged('false')" id="need_pay_false">
+						                    
+											<label for="need_pay_false">
+												<span>Not Free</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Hours Per Week -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Number Of Hours Per Week</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="checkboxes">
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpHoursPerWeek['more_than_30']" ng-change="hoursPerWeekChanged('more_than_30')" id="more_than_30">
+						                    
+											<label for="more_than_30">
+												<span>More Than 30</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpHoursPerWeek['less_than_30']" ng-change="hoursPerWeekChanged('less_than_30')" id="less_than_30">
+						                    
+											<label for="less_than_30">
+												<span>Less Than 30</span>
+											</label>
+										</div>
+										<div class="checkbox">
+						                    <input type="checkbox" ng-model="tmpHoursPerWeek['of_necessity']" ng-change="hoursPerWeekChanged('of_necessity')" id="of_necessity">
+						                    
+											<label for="of_necessity">
+												<span>Of Necessity</span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<button ng-click="applyFilter()" class="btn btn-blue search-btn full-width">Search</button>
+								</div>
+							</div>
+				</div>
+
+				<div class="col-xs-9">
+					<div class="row">
+						<div class="col-xs-11 col-centered">					
+							<div class="row search-header">
+									Search Result
+							</div>				
+							<div class="row" style="background-color:#fafdfe" >
+								<div class="col-xs-12 search-list" >
+
+									<div ng-repeat="employee in employees" class="row search-res" infinite-scroll="$parent.showMore()"
+                         infinite-scroll-immediate-check="false" infinite-scroll-disabled="isInfiniteDisabled">
+										<div class="col-xs-12">
+											<div class="row">
+												<div class="col-xs-12 title"><a ng-href="#/employee/{{employee._id}}">{{employee.firstName}} {{employee.lastName}}</a></div>
+											</div>
+											<div class="row">
+												<div class="col-xs-6 company">{{employee.currentCity}}</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 descr">
+													{{employee.education.uni[0]}}<div ng-show="employee.education.uni.length > 1"> and more..</div>
+												</div>
+												<div class="col-xs-6 empl-type">{{employee.education.yearsFrom[0]}} - {{employee.education.yearsTo[0]}}</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 descr">
+													{{employee.education.faculty[0]}}<div ng-show="employee.education.faculty.length > 1"> and more..</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 descr">
+													{{employee.education.degree[0]}}<div ng-show="employee.education.degree.length > 1"> and more..</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 skills">
+													<span>Skills:</span>
+													<span ng-repeat="skill in employee.skills" class="skill" data-toggle="tooltip" data-placement="bottom" title="{{skill.description}}">{{skill.title}}</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 bottom-border">
+													<hr>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
