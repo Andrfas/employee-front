@@ -52,6 +52,14 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/SelectCategoriesModalCntrl.js'
                 ])}
             })
+            .when('/employees', {
+                templateUrl: '/templates/employees_list.html',
+                controller: 'EmployeesCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/EmployeesCntrl.js'
+                ])}
+            })
             .when('/company/:profileId', {
                 templateUrl: '/templates/company_profile.html',
                 controller: 'CompanyProfileCntrl',
