@@ -210,7 +210,7 @@
 									<div ng-repeat="advert in adverts" class="row search-res">
 										<div class="col-xs-12">
 											<div class="row">
-												<div class="col-xs-12 title">{{advert.title}}</div>
+												<div class="col-xs-12 title"><a ng-href="#/advert/{{advert._id}}">{{advert.title}}</a></div>
 											</div>
 											<div class="row">
 												<div class="col-xs-6 company">Company name</div>
