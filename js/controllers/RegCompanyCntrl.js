@@ -1,4 +1,4 @@
-app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'ConfigSrvc', function($scope, $uibModal, FileUploader, ConfigSrvc) {
+app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCompanySrvc', 'ConfigSrvc', function($scope, $uibModal, FileUploader, RegCompanySrvc, ConfigSrvc) {
     $scope.cities = [];
 
 
@@ -54,16 +54,28 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'Confi
         email: '',
         password: '',
         passAgain: '',
-        cityArr: [],
+        cities: [],
         description: '',
     };
 
     $scope.checkPassword = function(){
         return $scope.company.password === $scope.company.passAgain; 	
     }
-
     $scope.submit = function(){
-        this.company.cityArr = this.cities;
-        console.log(this.company);
+        console.log('here')
+        console.log($scope.company)
+        RegCompanySrvc.createCompany($scope.company)
+            .then(function(res) {
+                console.log('createCompany', res);
+                if(res.success) {
+                    PopUpSrvc.success('Registration', 'Activation link has been sent to your email')
+                } else {
+                    PopUpSrvc.error('Registration', res.msg);
+                }
+            })
+            .catch(function(err) {
+                console.error('createEmployee', err);
+                PopUpSrvc.error('Registration', err);
+            })
     }
 }])

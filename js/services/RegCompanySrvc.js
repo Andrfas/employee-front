@@ -3,6 +3,7 @@ app.service('RegCompanySrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrvc
         createCompany : function(data) {
             var url = '/company';
             var call = $q.defer();
+            console.log('in service')
             ReqHandlingSrvc.put(url, data)
                 .then(function(res) {
                     console.log(res);

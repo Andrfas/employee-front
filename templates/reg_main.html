@@ -261,13 +261,13 @@
               <!-- City -->
               <div class="row">
                 <div class="col-xs-6 form-group">
-                  <label for="CompanyCity">Add City*</label>
+                  <label for="CompanyCity">Add City</label>
                   <button id="CompanyCity" class="btn btn-dark-grey form-control" ng-click="openSelectCityWindow()">Add City</button>
                 </div>
               </div>
 
               <div class="row">
-                <div class="col-xs-4" ng-repeat="city in cities" ng-model="company.cityArr">
+                <div class="col-xs-4" ng-repeat="city in cities" ng-model="company.cities">
                   <span class="col-xs-12 label-grey">{{city}}<span class="glyphicon glyphicon-remove" ng-click="removeCity($index)"></span></span>
                 </div>
               </div>
@@ -275,7 +275,7 @@
               <!-- description-->
               <div class="row">
                 <div class="col-xs-12 form-group" ng-class="{ 'has-error' : (regCompanyStep2.description.$touched || regCompanyStep2.$submitted)&&regCompanyStep2.description.$error.required}">
-                  <label for="description">Description</label>
+                  <label for="description">Description*</label>
                   <textarea id="description" type="text" rows="4" ng-model="company.description" class="form-control" required></textarea>
                   <p class="help-block" ng-show="(regCompanyStep2.description.$touched || regCompanyStep2.$submitted)&&regCompanyStep2.description.$error.required">Company Description is required.</p>
                 </div>
@@ -308,7 +308,7 @@
                   <button type="button" class="btn btn-blue " ng-click="changePage(1)">Prev Step</button>
                 </div>
                 <div class="col-xs-4 col-xs-offset-4 paging-buttons">
-                  <button type="submit" class="btn btn-blue">
+                  <button class="btn btn-blue" type="submit">
                     Get Started</button>
                 </div>
               </div>
