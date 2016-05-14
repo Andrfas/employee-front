@@ -70,7 +70,6 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         return $scope.company.password === $scope.company.passAgain; 	
     }
     $scope.submit = function(){
-        console.log('here')
         console.log($scope.company)
         RegCompanySrvc.createCompany($scope.company)
             .then(function(res) {

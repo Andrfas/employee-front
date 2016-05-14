@@ -1,4 +1,4 @@
-app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'AdvertSrvc', '$uibModal', 'StaticDataSrvc', function($scope, SkillsSrvc, PopUpSrvc, AdvertSrvc, $uibModal, StaticDataSrvc){
+app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'AdvertSrvc', '$uibModal', 'StaticDataSrvc', '$location', function($scope, SkillsSrvc, PopUpSrvc, AdvertSrvc, $uibModal, StaticDataSrvc, $location){
     $scope.advertData = {
         company: localStorage.getItem('clientId'),
         category:null,
@@ -20,8 +20,8 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
         AdvertSrvc.createAdvert($scope.advertData)
             .then(function(res) {
                 if(res.success) {
-                    console.log('CreateAdvertSuccess', res);
-                    PopUpSrvc.success('Success', 'Avert is created');
+                    console.log('CreateAdvertSuccess!', res);
+                    $location.path('/advert/'+res.advertId);
                 } else {
                     PopUpSrvc.error('Creating advert failed', res.msg);
                 }

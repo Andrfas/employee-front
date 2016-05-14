@@ -38,7 +38,6 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.getAdverts();
 
     $scope.showMore = function() {
-        console.log('asdaksdjhasd')
         $scope.isInfiniteDisabled = true;
         $scope.pager.page++;
         $scope.getAdverts();
