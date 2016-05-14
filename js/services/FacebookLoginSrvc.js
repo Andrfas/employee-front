@@ -8,11 +8,11 @@ app.service('FacebookLoginSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingS
     });
     return {
 
-        signIn: function(data) {
+        signIn: function() {
             var call = $q.defer();
             FB.login(function(response) {
                 call.resolve(response);
-            });
+            }, {scope: 'public_profile'});
             return call.promise;
         },
 

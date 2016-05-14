@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', 'FacebookLoginSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, FacebookLoginSrvc) {
     $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',
@@ -147,6 +147,16 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             controller: 'AddPortfolioModalCntrl'
 
         })
+    }
+
+    $scope.fbSignUp = function() {
+        FacebookLoginSrvc.signIn()
+            .then(function(res) {
+                console.log('fbSignUp', res);
+                FB.api('/me', function(response) {
+                    console.log('user', response);
+                });
+            })
     }
 
 }])
