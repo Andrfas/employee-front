@@ -36,7 +36,9 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc',
     $scope.cities = StaticDataSrvc.cities;
     $scope.citySearchStr = '';
     $scope.selectCity = function($item, $model, $label, $event) {
-        $scope.selectedCities.push($item);
+        if ($scope.selectedCities && $scope.selectedCities.indexOf($item) === -1){
+            $scope.selectedCities.push($item);
+        }
         $scope.citySearchStr = '';
     }
     $scope.removeCity = function($index) {
@@ -51,7 +53,9 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc',
             })
     }
     $scope.selectSkill = function($item, $model, $label, $event) {
-        $scope.selectedSkills.push($item.name);
+        if ($scope.selectedSkills && $scope.selectedSkills.indexOf($item.name) === -1){
+            $scope.selectedSkills.push($item.name);
+        }
         $scope.skillSearchStr = '';
     }
     $scope.removeSkill = function($index) {
@@ -61,7 +65,9 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', 'StaticDataSrvc',
     $scope.languages = StaticDataSrvc.languages;
     $scope.languageSearchStr = '';
     $scope.selectLanguage = function($item, $model, $label, $event) {
-        $scope.selectedLanguages.push($item);
+        if ($scope.selectedLanguages && $scope.selectedLanguages.indexOf($item) === -1){
+            $scope.selectedLanguages.push($item);
+        }
         $scope.languageSearchStr = '';
     }
     $scope.removeLanguage = function($index) {

@@ -24,7 +24,9 @@ app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalI
           $scope.availableLanguages.splice($scope.availableLanguages.indexOf($scope.language.name),1);
           var langTemp = angular.copy($scope.language);
           $scope.language = {};
-          $scope.selLanguages.push(langTemp);
+          if ($scope.selLanguages.indexOf(langTemp) === -1){
+            $scope.selLanguages.push(langTemp);
+          }
           $scope.submit(false);
       }
 

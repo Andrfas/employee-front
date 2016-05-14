@@ -73,7 +73,9 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.cities = StaticDataSrvc.cities;
     $scope.citySearchStr = '';
     $scope.selectCity = function($item, $model, $label, $event) {
-        $scope.selectedCities.push($item);
+        if ($scope.selectedCities && $scope.selectedCities.indexOf($item) === -1){
+            $scope.selectedCities.push($item);
+        }
         $scope.citySearchStr = '';
     }
     $scope.removeCity = function($index) {
@@ -90,7 +92,10 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
             })
     }
     $scope.selectSkill = function($item, $model, $label, $event) {
-        $scope.selectedSkills.push($item.name);
+        console.log($item)
+        if ($scope.selectedSkills && $scope.selectedSkills.indexOf($item.name) === -1){
+            $scope.selectedSkills.push($item.name);
+        }
         $scope.skillSearchStr = '';
     }
     $scope.removeSkill = function($index) {

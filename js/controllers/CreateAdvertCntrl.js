@@ -55,10 +55,12 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
     }
 
 
-    $scope.searchCityStr;
+    $scope.searchCityStr = '';
     $scope.advertData.cities = [];
     $scope.selectCity = function($item, $model, $label, $event) {
-        $scope.advertData.cities.push($item);
+        if ($scope.advertData.cities && $scope.advertData.cities.indexOf($item) === -1){
+            $scope.advertData.cities.push($item);
+        }
         $scope.searchCityStr = '';
     }
     $scope.removeCity = function($index) {
@@ -75,11 +77,14 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
             })
     }
     $scope.selectSkill = function($item, isNew) {
+        console.log($scope.advertData.skills.map(function(x) {return x.name; }).indexOf($item))
+        if ($scope.advertData.skills && $scope.advertData.skills.map(function(x) {return x.name; }).indexOf($item) === -1){
+            $scope.advertData.skills.push({name: $item, isNew: isNew});
+        }
         if($item === '' || typeof $item === 'undefined') return;
         if(typeof isNew === 'undefined') {
             isNew = false;
         }
-        $scope.advertData.skills.push({name: $item, isNew: isNew});
         $scope.searchSkillStr = '';
     }
     $scope.removeSkill = function($index) {
