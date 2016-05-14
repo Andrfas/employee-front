@@ -1,6 +1,7 @@
 app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSrvc', 'PopUpSrvc', '$uibModal', function($scope, $routeParams, RegEmployeeSrvc, PopUpSrvc, $uibModal) {
     $scope.employeeId = $routeParams.profileId;
     $scope.isAvailable = true;
+    $scope.profile;
 
 
     RegEmployeeSrvc.getEmployee($scope.employeeId)
@@ -64,7 +65,22 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     	$scope.setAvailable1 = true;
     	$scope.setAvailable2 = false;
     }
-    
+
+    $scope.openLanguagesModal = function(){
+        var instance = $uibModal.open({
+            animation: true,
+            backdrop: 'static',
+            keyboard:true,
+            templateUrl: '../templates/modals/selLanguageModal.html',
+            controller: 'SelLanguageModalCntrl',
+            resolve: {
+              selectedLanguages: function(){
+                return $scope.profile.languages;
+              }
+            }
+        });
+    }
+
     $scope.openAddSkillsModal = function() {
         var selectedSkill = null;
         var instance = $uibModal.open({

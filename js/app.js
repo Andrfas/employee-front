@@ -79,7 +79,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/AddExperienceModalCntrl.js',
                         'js/controllers/SelEducationModalCntrl.js',
                         'js/controllers/AddPortfolioModalCntrl.js',
-                        'js/controllers/AddCourseModalCntrl.js'
+                        'js/controllers/AddCourseModalCntrl.js',
+                        'js/controllers/SelLanguageModalCntrl.js'
                 ])}
             })
             .when('/create/adwert', {

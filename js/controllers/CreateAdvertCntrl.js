@@ -27,6 +27,7 @@ app.controller('CreateAdvertCntrl',['$scope', 'SkillsSrvc', 'PopUpSrvc', 'Advert
                 }
             })
             .catch(function(err) {
+                console.log(err);
                 PopUpSrvc.error('Creating advert failed', err);
             })
     }

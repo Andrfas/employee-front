@@ -18,11 +18,9 @@ app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalI
         }
       for (var i = 0, x = $scope.selLanguages.length; i < x; i++){
           $scope.availableLanguages.splice($scope.availableLanguages.indexOf($scope.selLanguages[i].name),1);
-
       }
 
       $scope.add = function(){
-          //console.log($scope.language);
           $scope.availableLanguages.splice($scope.availableLanguages.indexOf($scope.language.name),1);
           var langTemp = angular.copy($scope.language);
           $scope.language = {};
@@ -35,7 +33,7 @@ app.controller('SelLanguageModalCntrl', ['$scope', 'StaticDataSrvc', '$uibModalI
       }
       $scope.save = function(){
           $scope.add();
-          $uibModalInstance.close();
+          $uibModalInstance.close($scope.language);
       }
 
 

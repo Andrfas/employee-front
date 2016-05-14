@@ -30,7 +30,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             password: $scope.studInfo.password,
             birthDate: $scope.studInfo.birthDate,
             currentCity: $scope.studInfo.currentCity,
-            availability: $scope.studInfo.availability
+            availability: $scope.studInfo.availability,
+            languages: $scope.studInfo.languages
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
