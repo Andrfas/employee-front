@@ -1,4 +1,4 @@
-app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc', 'PopUpSrvc', 'AdvertSrvc', function($scope, $routeParams, RegCompanySrvc, PopUpSrvc, AdvertSrvc) {
+app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc', 'PopUpSrvc', 'AdvertSrvc', '$uibModal', function($scope, $routeParams, RegCompanySrvc, PopUpSrvc, AdvertSrvc, $uibModal) {
     $scope.companyId = $routeParams.profileId;
     $scope.profile;
     $scope.adverts;
@@ -29,5 +29,27 @@ app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc
         .catch(function(err) {
             return console.error(err);
         })
+
+    $scope.openSelectCategoryModal = function() {
+        console.log('aaaaaaaaaaaaa');
+        var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/SelectCategoryModal.html',
+            controller: 'SelectCategoryModalCntrl',
+            resolve: {
+                category: function () {
+                    return selectedCategory;
+                }
+            }
+        });
+
+        instance.result.then(function (category) {
+            if(!category) return;
+            selectedCategory = category;
+            $scope.advertData.category = category.categ;
+            $scope.advertData.subcategory = category.subCateg;
+        });
+    }
 }])
 

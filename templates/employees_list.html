@@ -218,24 +218,24 @@
 											</div>
 											<div class="row">
 												<div class="col-xs-12 descr">
-													{{employee.education.uni[0]}}<div ng-show="employee.education.uni.length > 1"> and more..</div>
+													{{employee.education[0].uni}}<div ng-show="employee.education.length > 1"> and more..</div>
 												</div>
-												<div class="col-xs-6 empl-type">{{employee.education.yearsFrom[0]}} - {{employee.education.yearsTo[0]}}</div>
+												<div class="col-xs-6 empl-type">{{employee.education[0].yearsFrom}} - {{employee.education[0].yearsTo}}</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-12 descr">
-													{{employee.education.faculty[0]}}<div ng-show="employee.education.faculty.length > 1"> and more..</div>
+													{{employee.education[0].faculty}}<div ng-show="employee.education.length > 1"> and more..</div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-12 descr">
-													{{employee.education.degree[0]}}<div ng-show="employee.education.degree.length > 1"> and more..</div>
+													{{employee.education[0].degree}}<div ng-show="employee.education[0].length > 1"> and more..</div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-12 skills">
 													<span>Skills:</span>
-													<span ng-repeat="skill in employee.skills" class="skill" data-toggle="tooltip" data-placement="bottom" title="{{skill.description}}">{{skill.title}}</span>
+													<span ng-repeat="skill in employee.skills" class="skill" data-toggle="tooltip" data-placement="bottom" title="{{skill.description}}">{{skill.name}}</span>
 												</div>
 											</div>
 											<div class="row">

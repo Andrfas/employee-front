@@ -36,7 +36,8 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             .then(function(res) {
                 console.log('createEmployee', res);
                 if(res.success) {
-                    PopUpSrvc.success('Registration', 'Activation link has been sent to your email')
+                    PopUpSrvc.success('Registration', 'Activation link has been sent to your email');
+                    $location.path('/');
                 } else {
                     PopUpSrvc.error('Registration', res.msg);
                 }

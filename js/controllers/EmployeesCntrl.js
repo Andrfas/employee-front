@@ -1,6 +1,7 @@
 app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', function($scope, RegEmployeeSrvc){
 
     $scope.employees = [];
+    $scope.isInfiniteDisabled = false;
 
     $scope.pager = {
         page:1,
@@ -17,8 +18,17 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', function($scope, 
             .then(function(res) {
                 console.log('employees', res);
                 $scope.employees = $scope.employees.concat(res.data);
+                $scope.isInfiniteDisabled = false;
             })
     }
+
+
+    $scope.showMore = function() {
+        $scope.isInfiniteDisabled = true;
+        $scope.pager.page++;
+        $scope.getEmployees();
+    }
+
     $scope.getEmployees();
 
 }])
