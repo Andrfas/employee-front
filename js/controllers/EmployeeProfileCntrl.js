@@ -1,6 +1,7 @@
-app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $routeParams, RegEmployeeSrvc, PopUpSrvc) {
+app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSrvc', 'PopUpSrvc', '$uibModal', function($scope, $routeParams, RegEmployeeSrvc, PopUpSrvc, $uibModal) {
     $scope.employeeId = $routeParams.profileId;
     $scope.isAvailable = true;
+
 
     RegEmployeeSrvc.getEmployee($scope.employeeId)
         .then(function(res) {
@@ -32,20 +33,20 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     		$scope.setAvailable1 = false;
     		$scope.setAvailable2 = true;
     		$scope.available = "AVAILABLE";
-    		$scope.setProfileAvailability($scope.employeeId, $scope.profile);
+    		$scope.updateProfile($scope.employeeId, $scope.profile);
     	} else if (choice === 'no') {
     		$scope.profile.availability = false;
     		$scope.setAvailable1 = false;
     		$scope.setAvailable2 = true;
     		$scope.available = "NOT AVAILABLE";
-    		$scope.setProfileAvailability($scope.employeeId, $scope.profile);
+    		$scope.updateProfile($scope.employeeId, $scope.profile);
     	} else {
     		$scope.isAvailable = false;
     		$scope.setAvailable1 = true;
     	}
     }
     
-    $scope.setProfileAvailability = function(id, profile){
+    $scope.updateProfile = function(id, profile){
     	RegEmployeeSrvc.updateEmployee(id, profile)
     		.then(function(res){
     			RegEmployeeSrvc.getEmployee($scope.employeeId)
@@ -53,11 +54,55 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             			console.log(res);
     			})
     		})
+    		.catch(function(err) {
+    			console.log('here');
+            	PopUpSrvc.error('Error', err);
+       		})
     }	
 
     $scope.changeAvailability = function(){
     	$scope.setAvailable1 = true;
     	$scope.setAvailable2 = false;
+    }
+    
+    $scope.openAddSkillsModal = function() {
+        var selectedSkill = null;
+        var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addSkillModal.html',
+            controller: 'AddSkillModalCntrl',
+            resolve: {
+                skills: function () {
+                    return selectedSkill;
+                }
+            }
+        });
+
+        instance.result.then(function (skills) {
+            $scope.profile.skills.push(skills);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
+    };
+
+    $scope.openWorkExperienceModal = function(){
+    	var selectedExperience = null;
+    	var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addExperienceModal.html',
+            controller: 'AddExperienceModalCntrl',
+            resolve: {
+                exp: function () {
+                    return selectedExperience;
+                }
+            }
+        });
+        instance.result.then(function (exp) {
+        	console.log(exp);
+            // $scope.profile.workExperience.push(exp);
+            // $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
     }
 }])
 

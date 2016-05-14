@@ -19,10 +19,13 @@
                 <h4 ng-if="setAvailable2">{{available}} <a href="" ng-click="changeAvailability()">(Change)</a></h4>
             </div>
             <div class="row">
-                
+                <h4>Languages</h4>
+            </div>
+            <div class="row" ng-repeat="lang in profile.languages">
+
             </div>
             <div class="row">
-                
+                <a href="">Edit languages</a>
             </div>
         </div>
         <div class="col-xs-7 col-xs-offset-1">
@@ -30,16 +33,28 @@
                 <h3>{{profile.firstName}} {{profile.lastName}}</h3>
             </div>
             <div class="row">
-                <h5>{{profile.birthDate}}</h5>
+                <h5>{{profile.birthDate | date:'yyyy-MM-dd'}}</h5>
             </div>
             <div class="row">
                 <h4>{{profile.currentCity}}, Ukraine</h4>
             </div>
             <div class="row">
-                <h4 style="background-color: #dbc7c7;">Skills <a href="">Add Skills</a></h4>
+                <h4 style="background-color: #dbc7c7;">Skills <a href="" ng-click="openAddSkillsModal()">Add Skills</a></h4>
+            </div>
+            <div class="row" ng-repeat="skill in profile.skills">
+                <div class="row">
+                    <h5 class="col-xs-3"><strong>{{skill.name}}</strong></h5>
+                    <h6 class="col-xs-9">{{skill.description}}</h6>
+                </div>
             </div>
             <div class="row">
-                <h4 style="background-color: #dbc7c7;">Work Experience <a href="">Add </a></h4>
+                <h4 style="background-color: #dbc7c7;">Work Experience <a href="" ng-click="openWorkExperienceModal()">Add</a></h4>
+            </div>
+            <div class="row" ng-repeat="experience in profile.workExperience">
+                <div class="row">
+                    <h5 class="col-xs-3"><strong>{{}}</strong></h5>
+                    <h6 class="col-xs-9">{{}}</h6>
+                </div>
             </div>
             <div class="row">
                 <h4 style="background-color: #dbc7c7;">Education <a href="">Add </a></h4>
