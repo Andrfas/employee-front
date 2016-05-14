@@ -66,7 +66,7 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 resolve: {
                     deps: app.resolveScriptDeps([
                         'js/controllers/CompanyProfileCntrl.js',
-                        'js/controllers/SelectCategoryModalCntrl.js'
+                        'js/controllers/SelectCategoriesModalCntrl.js'
                 ])}
             })
             .when('/employee/:profileId', {

@@ -2,6 +2,7 @@ app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc
     $scope.companyId = $routeParams.profileId;
     $scope.profile;
     $scope.adverts;
+    $scope.selectedCategories = [];
 
     RegCompanySrvc.getCompany($scope.companyId)
         .then(function(res) {
@@ -17,38 +18,40 @@ app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc
             PopUpSrvc.error('Error', err);
         })
 
-    var advertsReqObj = {
+    $scope.advertsReqObj = {
         page: 1,
         count: 10,
-        company: $scope.companyId
+        company: $scope.companyId,
+        subcategory: []
     }
-    AdvertSrvc.getAdverts(advertsReqObj)
-        .then(function(res) {
-            $scope.adverts = res.data;
-        })
-        .catch(function(err) {
-            return console.error(err);
-        })
-
+    $scope.getAdverts = function() {
+        AdvertSrvc.getAdverts($scope.advertsReqObj)
+            .then(function(res) {
+                $scope.adverts = res.data;
+            })
+            .catch(function(err) {
+                return console.error(err);
+            })
+    }
+    $scope.getAdverts();
+        
     $scope.openSelectCategoryModal = function() {
-        console.log('aaaaaaaaaaaaa');
         var instance = $uibModal.open({
             animation: true,
             keyboard:true,
-            templateUrl: '../templates/modals/SelectCategoryModal.html',
-            controller: 'SelectCategoryModalCntrl',
+            templateUrl: '../templates/modals/SelectCategoriesModal.html',
+            controller: 'SelectCategoriesModalCntrl',
             resolve: {
-                category: function () {
-                    return selectedCategory;
+                selectedCategories: function () {
+                    return $scope.advertsReqObj.subcategory;
                 }
             }
         });
 
-        instance.result.then(function (category) {
-            if(!category) return;
-            selectedCategory = category;
-            $scope.advertData.category = category.categ;
-            $scope.advertData.subcategory = category.subCateg;
+        instance.result.then(function (categories) {
+            if(!categories) return;
+            $scope.advertsReqObj.subcategory = categories;
+            $scope.getAdverts();
         });
     }
 }])
