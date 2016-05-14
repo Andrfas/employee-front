@@ -1,7 +1,8 @@
 app.controller('AddPortfolioModalCntrl', ['$scope', '$uibModalInstance', 'FileUploader', 'ConfigSrvc', function($scope, $uibModalInstance, FileUploader, ConfigSrvc) {
     $scope.portfolio = {
     	title: '',
-    	description: ''
+    	description: '',
+        image: null
     }
 
     $scope.save = function(){
@@ -19,6 +20,11 @@ app.controller('AddPortfolioModalCntrl', ['$scope', '$uibModalInstance', 'FileUp
         autoUpload: true,
         queueLimit: 1
     });
+
+    uploader.onSuccessItem = function(item, response, status, headers) {
+        $scope.portfolio.image = response.file[0].fd;
+        console.log($scope.portfolio.image);
+    }
 
     uploader.filters.push({
         name: 'imageFilter',
