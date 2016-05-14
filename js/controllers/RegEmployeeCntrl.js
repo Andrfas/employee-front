@@ -153,8 +153,13 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         FacebookLoginSrvc.signIn()
             .then(function(res) {
                 console.log('fbSignUp', res);
-                FB.api('/me', function(response) {
-                    console.log('user', response);
+                FB.api('/me', {fields:'first_name,last_name,email,birthday,hometown,location'}, function(response) {
+                    $scope.studInfo.name = response.first_name;
+                    $scope.studInfo.lastName = response.last_name;
+                    $scope.studInfo.email = response.email;
+                    $scope.studInfo.birthDate = new Date(response.birthday);
+                    $scope.studInfo.fbId = response.id;
+                    $scope.createEmployee();
                 });
             })
     }
