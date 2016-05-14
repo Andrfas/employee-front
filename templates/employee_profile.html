@@ -22,10 +22,10 @@
                 <h4>Languages</h4>
             </div>
             <div class="row" ng-repeat="lang in profile.languages">
-
+                <strong>{{lang.name}}</strong>:  {{lang.level}}
             </div>
-            <div class="row" ng-if="isLanguage">
-                <a href="">Edit languages</a>
+            <div class="row" ng-click="openLanguagesModal()">
+                <a href="">Add languages</a>
             </div>
         </div>
         <div class="col-xs-7 col-xs-offset-1">
