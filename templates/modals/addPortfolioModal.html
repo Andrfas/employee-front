@@ -2,34 +2,31 @@
     <div class="modal-header">
         <button type="button" class="close" ng-click="cancel()">&times;</button>
         <h3 class="modal-title">Add Portfolio</h3>
-
     </div>
     <div class="modal-body">
         <div class="input-group col-md-12">
             <h3>Tittle</h3>
-            <input type="text" class="form-control"  >
+            <input type="text" class="form-control" ng-model="portfolio.title">
         </div>
         <div class="input-group col-md-12">
             <h3>Description*</h3>
-            <textarea  class="form-control"></textarea>
+            <textarea  class="form-control" ng-model="portfolio.description"></textarea>
         </div>
         <div class="row" style="margin-top: 20px">
-            <div class="col-md-3">
-                <h4>Upload Image</h4>
-                <img src="">
-            </div>
-            <div class="col-md-9" >
-                <input type="text" class="form-inline col-md-8">
-                <!--<button type="button" class="btn btn-default col-md-3">Browse</button>-->
-                <input type="file" class="btn btn-default col-md-4">
+            <div class="input-group">
+              <ul>
+                <li ng-repeat="item in uploader.queue">
+                  <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+                </li>
+              </ul>
+              <span class="input-group-btn">
+                <input class="btn btn-dark-grey" type="file" nv-file-select uploader="uploader">Browse...</input>
+              </span>
             </div>
         </div>
-
     </div>
-
     <div class="modal-footer">
         <button class="btn btn-success col-md-2" type="button" ng-click="save()">Save</button>
-        <button class="btn btn-default col-md-5" type="button">Save And Add More</button>
         <button class="btn btn-link col-md-4" type="button" ng-click="cancel()">Cancel</button>
     </div>
 </div>

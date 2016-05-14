@@ -1,11 +1,11 @@
 app.controller('SelEducationModalCntrl', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
-    $scope.startYear = new Date();
-    $scope.finishYear = new Date();
+    $scope.yearsFrom = new Date();
+    $scope.yearsTo = new Date();
 
     $scope.education = {
-        institution: '',
-        startYear: '',
-        finishYear: '',
+        uni: '',
+        yearsFrom: '',
+        yearsTo: '',
         faculty: '',
         degree: ''
     }
@@ -13,8 +13,8 @@ app.controller('SelEducationModalCntrl', ['$scope', '$uibModalInstance', functio
     $scope.mode = 'year'; //mode of datepicker
 
     $scope.pack = function(){ //creates education object
-        $scope.education.startYear = $scope.startYear.getFullYear();
-        $scope.education.finishYear = $scope.finishYear.getFullYear();
+        $scope.education.yearsFrom = $scope.yearsFrom.getFullYear();
+        $scope.education.yearsTo = $scope.yearsTo.getFullYear();
     }
     $scope.save = function(){
         $scope.pack();
@@ -34,7 +34,7 @@ app.controller('SelEducationModalCntrl', ['$scope', '$uibModalInstance', functio
     }
 
     $scope.finishDisabled = function(date, mode){
-        return mode === $scope.mode && date.getFullYear()<$scope.startYear.getFullYear();
+        return mode === $scope.mode && date.getFullYear()<$scope.yearsFrom.getFullYear();
     }
     $scope.startDisabled = function(date, mode){
         return mode === $scope.mode && date.getFullYear()>new Date().getFullYear();
