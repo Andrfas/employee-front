@@ -1,4 +1,4 @@
-app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc) {
+app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', '$location', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, $location) {
     $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',
@@ -23,6 +23,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
     }
 
     $scope.createEmployee = function() {
+        console.log($scope.studInfo)
         var data = {
             firstName: $scope.studInfo.name,
             lastName: $scope.studInfo.lastName,
@@ -31,7 +32,7 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             birthDate: $scope.studInfo.birthDate,
             currentCity: $scope.studInfo.currentCity,
             availability: $scope.studInfo.availability,
-            languages: $scope.studInfo.languages
+            languages: $scope.studInfo.languagesArr
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
@@ -95,6 +96,9 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             resolve: {
               selectedLanguages: function(){
                 return $scope.studInfo.languagesArr;
+              },
+              employeeId: function(){
+                return 'null';
               }
             }
 
