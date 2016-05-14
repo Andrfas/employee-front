@@ -1,1 +1,53 @@
-Employee profile
+<div class="container">
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-1">
+            <div class="row">
+                <h3>My profile</h3>
+            </div>
+            <div class="row">
+                <img src="http://lh6.ggpht.com/-p4GeIyllIqA/Tfu4E7ZvvQI/AAAAAAAA3G4/29sS60a9vHI/41519815_b34328250cb1_thumb%25255B6%25255D.jpg?imgmax=800" class="img-responsive">
+            </div>
+            <div class="row">
+                <h4>Availability</h4>
+            </div>
+            <div class="row">
+                <a href="" ng-click="setAvailability()" ng-if="!isAvailable">(Set availability)</a>
+                <div ng-if="isAvailable">
+                    <h4>{{available}} <a href="">(Change)</a></h4>
+                </div>
+            </div>
+            <div class="row">
+                
+            </div>
+            <div class="row">
+                
+            </div>
+        </div>
+        <div class="col-xs-7 col-xs-offset-1">
+            <div class="row">
+                <h3>{{profile.firstName}} {{profile.lastName}}</h3>
+            </div>
+            <div class="row">
+                <h5>{{profile.birthDate}}</h5>
+            </div>
+            <div class="row">
+                <h4>{{profile.currentCity}}, Ukraine</h4>
+            </div>
+            <div class="row">
+                <h4 style="background-color: #dbc7c7;">Skills <a href="">Add Skills</a></h4>
+            </div>
+            <div class="row">
+                <h4 style="background-color: #dbc7c7;">Work Experience <a href="">Add </a></h4>
+            </div>
+            <div class="row">
+                <h4 style="background-color: #dbc7c7;">Education <a href="">Add </a></h4>
+            </div>
+            <div class="row">
+                <h4 style="background-color: #dbc7c7;">Portfolios <a href="">Add </a></h4>
+            </div>
+            <div class="row">
+                <h4 style="background-color: #dbc7c7;">Cources <a href="">Add </a></h4>
+            </div>
+        </div>
+    </div>
+</div>

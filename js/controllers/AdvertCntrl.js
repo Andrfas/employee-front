@@ -2,17 +2,19 @@ app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', function(
     $scope.advertId = $routeParams.advertId;
     $scope.advert;
 
-    $scope.getAdvertData = function() {
+    $scope.getAdvertData = function(advertId) {
         var reqObj = {
-            advertId: $scope.advertId
+            advertId: advertId
         }
         AdvertSrvc.getAdvert(reqObj)
             .then(function(res) {
-                console.log('advert');
+                console.log('advert', res);
+                $scope.advert = res.data;
             })
             .catch(function(err){
                 return console.error(err);
             })
     }
+    $scope.getAdvertData($scope.advertId);
 }])
 
