@@ -7,12 +7,13 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.selectedPaid = [];
     $scope.selectedNeedPay = [];
     $scope.selectedHoursPerWeek = [];
+    $scope.isInfiniteDisabled = false;
 
     $scope.adverts = [];
 
     $scope.pager = {
         page:1,
-        count: 10
+        count: 5
     }
 
     $scope.getAdverts = function() {
@@ -37,6 +38,8 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.getAdverts();
 
     $scope.showMore = function() {
+        console.log('asdaksdjhasd')
+        $scope.isInfiniteDisabled = true;
         $scope.pager.page++;
         $scope.getAdverts();
     }
