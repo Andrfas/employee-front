@@ -51,7 +51,7 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     		.then(function(res){
     			RegEmployeeSrvc.getEmployee($scope.employeeId)
     				.then(function(res) {
-            			console.log(res);
+            			// console.log(res);
     			})
     		})
     		.catch(function(err) {
@@ -119,6 +119,44 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
         });
         instance.result.then(function (education) {
             $scope.profile.education.push(education);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
+    }
+
+    $scope.openPortfolioModal = function(){
+    	var selectedPortfolio = null;
+    	var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addPortfolioModal.html',
+            controller: 'AddPortfolioModalCntrl',
+            resolve: {
+                portfolio: function () {
+                    return selectedPortfolio;
+                }
+            }
+        });
+        instance.result.then(function (portfolio) {
+            $scope.profile.portfolio.push(portfolio);
+            $scope.updateProfile($scope.employeeId, $scope.profile);
+        });
+    }
+
+    $scope.openCoursesModal = function(){
+    	var selectedCourse = null;
+    	var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addCourseModal.html',
+            controller: 'AddCourseModalCntrl',
+            resolve: {
+                course: function () {
+                    return selectedCourse;
+                }
+            }
+        });
+        instance.result.then(function (course) {
+            $scope.profile.achievements.push(course);
             $scope.updateProfile($scope.employeeId, $scope.profile);
         });
     }

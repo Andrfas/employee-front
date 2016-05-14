@@ -24,7 +24,7 @@
             <div class="row" ng-repeat="lang in profile.languages">
 
             </div>
-            <div class="row">
+            <div class="row" ng-if="isLanguage">
                 <a href="">Edit languages</a>
             </div>
         </div>
@@ -81,10 +81,43 @@
                 </div>
             </div>
             <div class="row">
-                <h4 style="background-color: #dbc7c7;">Portfolios <a href="">Add </a></h4>
+                <h4 style="background-color: #dbc7c7;">Portfolios <a href="" ng-click="openPortfolioModal()">Add </a></h4>
+            </div>
+            <div class="row" ng-repeat="port in profile.portfolio">
+                <div class="col-xs-3">
+                    Image
+                </div>
+                <div class="col-xs-9">
+                    <div class="row">
+                        <h5><strong>{{port.title}}</strong></h5>
+                    </div>
+                    <div class="row">
+                        <h5>{{port.description}}</h5>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <h4 style="background-color: #dbc7c7;">Cources <a href="">Add </a></h4>
+                <h4 style="background-color: #dbc7c7;">Courses <a href="" ng-click="openCoursesModal()">Add </a></h4>
+            </div>
+            <div class="row" ng-repeat="course in profile.achievements">
+                <div class="row col-xs-12">
+                    <div class="col-xs-3">
+                        <div class="row">
+                            <h5>{{course.yearsFrom | date:'MMM yyyy'}} - {{course.yearsTo | date:'MMM yyyy'}}</h5>
+                        </div>
+                        <div class="row">
+                            Image
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <h5><strong>{{course.title}}</strong></h5>
+                        </div>
+                        <div class="row">
+                            <h5>{{course.description}}</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
