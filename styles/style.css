@@ -452,4 +452,75 @@ body {
     padding-left: 40px;
 }
 
+.employee-profile .back-col{
+    background-color: #dce1e3;
+    padding-left: 15px;
+}
 
+.employee-profile .back-col a{
+    float: right;
+    padding-right: 15px;
+}
+
+.employee-profile .back-col.special{
+    margin-top: 25px;
+}
+
+.employee-profile .imagino{
+    padding-left: 25px;
+}
+
+.employee-profile .texto{
+    color: #737373;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.employee-profile .href-size{
+    font-size: 10px;
+}
+
+.employee-profile .lang-marging{
+    margin-top: 0px;
+}
+
+.employee-profile .size-lang{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.employee-profile .top-name{
+    padding-top: 40px;
+}
+
+.employee-profile .top-name .no-margin{
+    margin-bottom: 0px;
+}
+
+.employee-profile .without-margin{
+    margin-top: 5px;
+    margin-bottom: 5px; 
+    color: #737373;
+}
+
+.employee-profile .white-screen{
+    background-color: #ffffff;
+    padding-left: 15px;
+}
+
+.employee-profile .white-screen .margin{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.employee-profile .white-screen .margin-grey{
+    color: #737373;
+}
+
+.employee-profile .grey-color{
+    color: #737373;
+}
+
+.employee-profile .img-padd{
+    padding-left: 15px;
+}
