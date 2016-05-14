@@ -31,6 +31,7 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         passAgain: '',
         cities: [],
         description: '',
+        image: null
     };
 
     $scope.removeCity = function(index) {
@@ -45,6 +46,10 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         autoUpload: true,
         queueLimit: 1
     });
+
+    uploader.onSuccessItem = function(item, response, status, headers) {
+        $scope.company.image = response.file[0].fd;
+    }
 
     uploader.filters.push({
         name: 'imageFilter',
