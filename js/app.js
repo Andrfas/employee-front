@@ -77,6 +77,14 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/SelectCategoryModalCntrl.js'
                 ])}
             })
+            .when('/advert/:advertId', {
+                templateUrl: '/templates/advert.html',
+                controller: 'AdvertCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/AdvertCntrl.js'
+                ])}
+            })
 
         //$locationProvider.html5Mode({
         //    enabled: true,
