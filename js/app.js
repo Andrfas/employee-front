@@ -85,6 +85,9 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/AdvertCntrl.js'
                 ])}
             })
+            .when('/confirmed', {
+                templateUrl: '/templates/emailConfirmed.html'
+            })
 
         //$locationProvider.html5Mode({
         //    enabled: true,
