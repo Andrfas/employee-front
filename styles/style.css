@@ -105,7 +105,7 @@ body {
     font-weight: bold;
     font-size: 14px;
     color: #3D7592;
-    text-align: center;
+    text-align: left;
 }
 
 .label-grey .glyphicon {
@@ -403,6 +403,12 @@ body {
     font-weight: bold;
 }
 
+.profile .company-website {
+    margin: 30px 0 0 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .profile .section-heading {
     padding: 6px 0 2px 0px;
     color:#345566;
@@ -413,6 +419,18 @@ body {
 .profile .section-body {
     padding: 5px;
     background-color: white;
+}
+
+
+.profile .company-advert-filters {
+    padding: 15px 0 40px;
+    background-color: #EDF2F6;
+    margin: -5px -20px 0;
+}
+
+.profile .search-list {
+    height:600px;
+    overflow-y: scroll;
 }
 
 
