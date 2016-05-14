@@ -73,7 +73,9 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 controller: 'EmployeeProfileCntrl',
                 resolve: {
                     deps: app.resolveScriptDeps([
-                        'js/controllers/EmployeeProfileCntrl.js'
+                        'js/controllers/EmployeeProfileCntrl.js',
+                        'js/controllers/AddSkillModalCntrl.js',
+                        'js/controllers/AddExperienceModalCntrl.js'
                 ])}
             })
             .when('/create/adwert', {
