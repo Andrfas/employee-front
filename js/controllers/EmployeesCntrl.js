@@ -24,6 +24,7 @@ app.controller('EmployeesCntrl', ['$scope', 'RegEmployeeSrvc', function($scope, 
 
 
     $scope.showMore = function() {
+        console.log('asdakjsdhkajsdh')
         $scope.isInfiniteDisabled = true;
         $scope.pager.page++;
         $scope.getEmployees();
