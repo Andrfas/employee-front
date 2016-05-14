@@ -41,10 +41,10 @@ app.service('RegEmployeeSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrv
             return call.promise;
         },
 
-        getEmployees : function(){
-            var url = '/employees';
+        getEmployees : function(data){
+            var url = '/employee';
             var call = $q.defer();
-            ReqHandlingSrvc.get(url)
+            ReqHandlingSrvc.post(url, data)
                 .then(function(res) {
                     console.log(res);
                     call.resolve(res);
