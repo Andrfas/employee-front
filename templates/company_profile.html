@@ -85,7 +85,7 @@
                                             <div class="row">
                                                 <div class="col-xs-12 skills">
                                                     <span>Skills:</span>
-                                                    <span ng-repeat="skill in advert.skills" class="skill">{{skill}}</span>
+                                                    <span ng-repeat="skill in advert.skills track by $index" class="skill">{{skill}}</span>
                                                 </div>
                                             </div>
                                             <div class="row">
