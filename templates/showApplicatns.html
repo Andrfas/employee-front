@@ -6,44 +6,45 @@
 			</div>				
 			<div class="row" style="background-color:#fafdfe">
 				<div class="col-xs-12 search-list">
+					<span ng-show="applicants.length == 0">No application</span>
 					<div ng-repeat="employee in applicants" class="row search-res">
 						<div class="col-xs-12">
 							<div class="row">
-								<div class="col-xs-12 title"><a ng-href="#/employee/{{employee.id}}">{{employee.firstName}} {{employee.lastName}}</a></div>
+								<div class="col-xs-12 title"><a ng-href="#/employee/{{employee.id}}">{{employee.employee.firstName}} {{employee.employee.lastName}}</a></div>
 							</div>
 							<div class="row" style="display:flex">
-								<div class="col-xs-6 company">{{employee.currentCity}}</div>
-								<div class="col-xs-6 empl-type" style="float:right" ng-show="employee.availability">Available</div>
-								<div class="col-xs-6 empl-type" style="float:right" ng-show="!employee.availability">Not Available</div>
+								<div class="col-xs-6 company">{{employee.employee.currentCity}}</div>
+								<div class="col-xs-6 empl-type" style="float:right" ng-show="employee.employee.availability">Available</div>
+								<div class="col-xs-6 empl-type" style="float:right" ng-show="!employee.employee.availability">Not Available</div>
 							</div>
 							<div class="row" style="display:flex">
 								<div class="col-xs-12 descr">
-									{{employee.education[0].uni}}<div ng-show="employee.education.length > 1"> and more..</div>
+									{{employee.employee.education[0].uni}}<div ng-show="employee.employee.education.length > 1"> and more..</div>
 								</div>
-								<div class="col-xs-6 empl-type" style="float:right" ng-show="employee.education[0].yearsFrom && employee.education[0].yearsTo">{{employee.education[0].yearsFrom | date:'yyyy'}} - {{employee.education[0].yearsTo | date:'yyyy'}}</div>
+								<div class="col-xs-6 empl-type" style="float:right" ng-show="employee.employee.education[0].yearsFrom && employee.education[0].yearsTo">{{employee.education[0].yearsFrom | date:'yyyy'}} - {{employee.education[0].yearsTo | date:'yyyy'}}</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-12 descr">
-									{{employee.education[0].faculty}}<div ng-show="employee.education.length > 1"> and more..</div>
+									{{employee.employee.education[0].faculty}}<div ng-show="employee.employee.education.length > 1"> and more..</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-12 descr">
-									{{employee.education[0].degree}}<div ng-show="employee.education[0].length > 1"> and more..</div>
+									{{employee.employee.education[0].degree}}<div ng-show="employee.employee.education[0].length > 1"> and more..</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-12 skills">
 									<span>Skills:</span>
-									<span ng-repeat="skill in employee.skills" class="skill" data-toggle="tooltip" data-placement="bottom" title="{{skill.description}}">{{skill.name}}</span>
+									<span ng-repeat="skill in employee.employee.skills" class="skill" data-toggle="tooltip" data-placement="bottom" title="{{skill.description}}">{{skill.name}}</span>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-3">
-									<button ng-click="setApplicationStatus('submitted')">Submit</button>
+									<button ng-click="setApplicationStatus(employee.application._id, 'submitted', $index)">Submit</button>
 								</div>
 								<div class="col-xs-3">
-									<button ng-click="setApplicationStatus('declined')">Decline</button>
+									<button ng-click="setApplicationStatus(employee.application._id, 'declined')">Decline</button>
 								</div>
 							</div>
 							<div class="row">
