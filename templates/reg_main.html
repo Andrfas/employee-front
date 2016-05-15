@@ -181,15 +181,14 @@
 					                <label for="logoInput" class="col-xs-4">Upload Logo</label>
 					                <div class="col-xs-12" id="logoInput">
 					                  <div class="col-xs-4">
-					                    <img src="../images/img-not-found.png">
-					                  </div>
-					                  <div class="col-xs-8">
-					                    <div class="input-group">
-					                      <ul>
+					                    <ul>
 					                        <li ng-repeat="item in uploader.queue">
 					                          <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
 					                        </li>
 					                      </ul>
+					                  </div>
+					                  <div class="col-xs-8">
+					                    <div class="input-group">
 					                      <span class="input-group-btn">
 					                        <input class="btn btn-dark-grey" type="file" nv-file-select uploader="uploader">Browse...</input>
 					                      </span>
@@ -317,15 +316,14 @@
                 <label for="logoInput" class="col-xs-4">Upload Logo</label>
                 <div class="col-xs-12" id="logoInput">
                   <div class="col-xs-4">
-                    <img src="../images/img-not-found.png">
+                    <ul>
+	                    <li ng-repeat="item in uploader.queue">
+	                      <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
+	                    </li>
+	                  </ul>
                   </div>
                   <div class="col-xs-8">
                     <div class="input-group">
-                      <ul>
-                        <li ng-repeat="item in uploader.queue">
-                          <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 100 }"></div>
-                        </li>
-                      </ul>
                       <span class="input-group-btn">
                         <input class="btn btn-dark-grey" type="file" nv-file-select uploader="uploader">Browse...</input>
                       </span>
