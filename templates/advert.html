@@ -119,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <button ng-if="companyType" class="btn btn-blue search-btn full-width respond-to-advert" ng-click="showAllApplyers()">Show Aplicants</button>
+                    <button ng-if="companyType" class="btn btn-blue search-btn full-width respond-to-advert" ng-click="showAllApplyers()" ng-show="isTheSameCompany">Show Aplicants</button>
                     <button ng-if="!companyType" ng-click="submitProposalModal(advert._id)" class="btn btn-blue search-btn full-width respond-to-advert">Apply</button>  
                 </div>
             </div>
