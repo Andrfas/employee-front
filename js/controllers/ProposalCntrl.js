@@ -145,5 +145,26 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
         }
     }
 
+    $scope.submitProposalModal = function(id){
+        var submittedProposal = null;
+        var instance = $uibModal.open({
+            animation: true,
+            keyboard:true,
+            templateUrl: '../templates/modals/addSubmitProposalModal.html',
+            controller: 'SubmitProposalCntrl',
+            resolve: {
+                prop: function () {
+                    return submittedProposal;
+                }
+            }
+        });
 
+        instance.result.then(function (prop) {
+            var toSend = {}
+            toSend.employeeId = localStorage.getItem('clientId');
+            toSend.letter = prop;
+            toSend.advertId = id;
+            AdvertSrvc.submitProposal(toSend);
+        });
+    }
 }])
