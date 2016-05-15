@@ -1,4 +1,4 @@
-app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'AdvertSrvc', 'SkillsSrvc', function($scope, $uibModal, StaticDataSrvc, AdvertSrvc, SkillsSrvc){
+app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'AdvertSrvc', 'SkillsSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, AdvertSrvc, SkillsSrvc, PopUpSrvc){
 
 	$scope.selectedCategories = [];
     $scope.selectedCities = [];
@@ -28,10 +28,10 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
             needPay: $scope.selectedNeedPay,
             hoursPerWeek: $scope.selectedHoursPerWeek
         }
-        console.log('reqObj', reqObj);
+        // console.log('reqObj', reqObj);
         AdvertSrvc.getAdverts(reqObj)
             .then(function(res) {
-                console.log('adverts', res);
+                // console.log('adverts', res);
                 $scope.adverts = $scope.adverts.concat(res.data);
                 $scope.isInfiniteDisabled = false;
             })
@@ -164,7 +164,10 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
             toSend.employeeId = localStorage.getItem('clientId');
             toSend.letter = prop;
             toSend.advertId = id;
-            AdvertSrvc.submitProposal(toSend);
+            AdvertSrvc.submitProposal(toSend)
+                .then(function(res){
+                    if (res.status === 200) PopUpSrvc.success('Proposal Submitted!', 'You successfully apply for this purpose');
+                })
         });
     }
 }])
