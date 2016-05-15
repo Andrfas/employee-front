@@ -2,7 +2,7 @@ app.service('FacebookLoginSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingS
     if(!FB) {
         $timeout(function(){
             FB.init({
-                appId: '1578676272429984',
+                appId: '1578674425763502',
                 cookie: true, // enable cookies to allow the server to access 
                 // the session
                 xfbml: true, // parse social plugins on this page
