@@ -74,7 +74,7 @@
                             <a href="/#/registration">Registration</a>
                         </li> -->
                         <li ng-hide="isLoggedIn">
-                            <a ng-click="openSignInModal()">SignIn</a>
+                            <a ng-click="openSignInModal()" style="cursor: pointer;">SignIn</a>
                         </li>
                         <li ng-show="isLoggedIn">                            
                             <a href="#" ng-click="signout()">SignOut</a>
@@ -150,7 +150,7 @@
         <script>
           window.fbAsyncInit = function() {
             FB.init({
-              appId      : '1578676272429984',
+              appId      : '1578674425763502',
               xfbml      : true,
               version    : 'v2.6'
             });

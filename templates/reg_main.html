@@ -46,7 +46,7 @@
                         <div class="col-xs-12">
                             <button type="button" ng-click="fbSignUp()">Sign up using Facebook</button>
                         </div>
-                    </div>
+                    </div><!-- 
 					<div class="row">
 						<div class="col-xs-12 progress-line">
 							<div class="row">
@@ -56,7 +56,7 @@
 								<div class="col-xs-1 text">55%</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div ng-show="page==1" class="row">
 						<div class="col-xs-12">
 							<form name="regStudForm1" novalidate ng-submit="regStudForm1.$valid && changePage(2)">
@@ -190,7 +190,7 @@
 					                  <div class="col-xs-8">
 					                    <div class="input-group">
 					                      <span class="input-group-btn">
-					                        <input class="btn btn-dark-grey" type="file" nv-file-select uploader="uploader">Browse...</input>
+					                        <input class="btn" type="file" nv-file-select uploader="uploader"></input>
 					                      </span>
 					                    </div>
 					                  </div>
@@ -198,7 +198,7 @@
 					              </div>
 								<div class="row">
 									<div class="col-xs-4 col-xs-offset-4 paging-buttons">
-										<a type="button" ng-click="changePage(1)" class="btn btn-blue">Previous Step</a>
+										<button ng-click="changePage(1)" class="btn btn-blue">Previous Step</button>
 									</div>
 									<div class="col-xs-4 paging-buttons">
 										<button type="submit" class="btn btn-blue">Create Account</button>
@@ -211,7 +211,7 @@
 			</div>
       <div ng-show="clientType=='company'" ng-controller="RegCompanyCntrl">
         <div class="col-xs-12 reg-form">
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-xs-12 progress-line">
               <div class="row">
                 <div class="col-xs-11 line">
@@ -220,7 +220,7 @@
               <div class="col-xs-1 text">55%</div>
               </div>
             </div>
-          </div>
+          </div> -->
 
         <div ng-show="page==1">
           <div class="col-xs-12">
@@ -325,7 +325,7 @@
                   <div class="col-xs-8">
                     <div class="input-group">
                       <span class="input-group-btn">
-                        <input class="btn btn-dark-grey" type="file" nv-file-select uploader="uploader">Browse...</input>
+                        <input class="btn" type="file" nv-file-select uploader="uploader"></input>
                       </span>
                     </div>
                   </div>
@@ -333,10 +333,10 @@
               </div>
 
               <div class="row">
-                <div class="col-xs-4 paging-buttons">
-                  <button type="button" class="btn btn-blue " ng-click="changePage(1)">Prev Step</button>
+                <div class="col-xs-offset-4 col-xs-4 paging-buttons">
+                  <button type="button" class="btn btn-blue " ng-click="changePage(1)">Previous Step</button>
                 </div>
-                <div class="col-xs-4 col-xs-offset-4 paging-buttons">
+                <div class="col-xs-4 paging-buttons">
                   <button class="btn btn-blue" type="submit">
                     Get Started</button>
                 </div>
