@@ -51,8 +51,7 @@ app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrv
     }
 
     $scope.showAllApplyers = function(){
-        $location.path('/applicants');
-        AdvertSrvc.advertId = $scope.advertId;
+        $location.path('/applicants/'+$scope.advertId);
     }
 }])
 

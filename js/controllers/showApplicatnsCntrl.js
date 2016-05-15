@@ -1,7 +1,7 @@
-app.controller('showApplicatnsCntrl', ['$scope', 'AdvertSrvc', '$location', function($scope, AdvertSrvc, $location){
+app.controller('ShowApplicatnsCntrl', ['$scope', 'AdvertSrvc', '$location', '$routeParams', function($scope, AdvertSrvc, $location, $routeParams){
 	$scope.applicants = [];
-	console.log(AdvertSrvc.advertId);
-	AdvertSrvc.getApplicants(AdvertSrvc.advertId)
+	$scope.advertId = $routeParams.advertId;
+	AdvertSrvc.getApplicants($scope.advertId)
 		.then(function(res){
 			angular.forEach(res, function(r){
 				$scope.applicants.push({id: r._id, firstName: r.firstName, lastName: r.lastName, coverLetter: r.letter})
@@ -10,5 +10,9 @@ app.controller('showApplicatnsCntrl', ['$scope', 'AdvertSrvc', '$location', func
 
 	$scope.goToEmployee = function(id){
 		$location.path('/employee/' + id)
+	}
+
+	$scope.setApplicationStatus = function(applicationId, status) {
+		AdvertSrvc.setApplicationStatus()
 	}
 }])
