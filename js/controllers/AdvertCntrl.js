@@ -1,6 +1,7 @@
 app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrvc', '$uibModal', '$location', function($scope, $routeParams, AdvertSrvc, PopUpSrvc, $uibModal, $location) {
     $scope.advertId = $routeParams.advertId;
     $scope.advert;
+    $scope.isTheSameCompany = false;
     if (localStorage.getItem('clientType') === 'company') $scope.companyType = true; else $scope.companyType = false;
     $scope.getAdvertData = function(advertId) {
         var reqObj = {
@@ -10,6 +11,9 @@ app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrv
             .then(function(res) {
                 console.log('advert', res);
                 $scope.advert = res.data;
+                if (localStorage.getItem('clientId') === $scope.advert.company._id) {
+                    $scope.isTheSameCompany = true;
+                }
             })
             .catch(function(err){
                 return console.error(err);
