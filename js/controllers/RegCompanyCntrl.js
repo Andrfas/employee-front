@@ -17,7 +17,7 @@ app.controller('RegCompanyCntrl', ['$scope', '$uibModal', 'FileUploader', 'RegCo
         });
 
         instance.result.then(function (cities) {
-            $scope.cities = cities.slice();
+            $scope.company.cities = cities.slice();
         }, function () {//dismiss
         });
     }

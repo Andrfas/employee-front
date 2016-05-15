@@ -2,7 +2,7 @@ app.controller('CompaniesCntrl', ['$scope', 'RegCompanySrvc', 'StaticDataSrvc', 
 
     $scope.companies = [];
     $scope.selectedCities = [];
-    $scope.name = [];
+    // $scope.name = [];
     $scope.isInfiniteDisabled = false;
 
     $scope.pager = {
@@ -14,13 +14,13 @@ app.controller('CompaniesCntrl', ['$scope', 'RegCompanySrvc', 'StaticDataSrvc', 
         var reqObj = {
             page:$scope.pager.page,
             count:$scope.pager.count,
-            cities:$scope.selectedCities
-            name:$scope.name
+            cities:$scope.selectedCities,
+            // name:$scope.name
         }
         console.log('reqObj', reqObj);
         RegCompanySrvc.getCompanies(reqObj)
             .then(function(res) {
-                console.log('employees', res);
+                console.log('companies', res);
                 $scope.companies = $scope.companies.concat(res.data);
                 $scope.isInfiniteDisabled = false;
             })
@@ -46,7 +46,7 @@ app.controller('CompaniesCntrl', ['$scope', 'RegCompanySrvc', 'StaticDataSrvc', 
 
     $scope.applyFilter = function() {
         $scope.pager.page = 1;
-        $scope.employees = [];
+        $scope.companies = [];
         $scope.getCompanies();
     }
 
