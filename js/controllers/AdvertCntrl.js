@@ -41,7 +41,7 @@ app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrv
             toSend.letter = prop;
             toSend.advertId = id;
             toSend.advertTitle = $scope.advert.title
-            toSend.companyName = $scope.advert.companyName
+            toSend.companyName = $scope.advert.company.name
             AdvertSrvc.submitProposal(toSend)
                 .then(function(res){
                     if (res.message) PopUpSrvc.error('Failed!', res.message);
