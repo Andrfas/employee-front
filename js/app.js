@@ -91,7 +91,7 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/SelLanguageModalCntrl.js'
                 ])}
             })
-            .when('/create/adwert', {
+            .when('/create/advert', {
                 templateUrl: '/templates/create_advert.html',
                 controller: 'CreateAdvertCntrl',
                 resolve: {

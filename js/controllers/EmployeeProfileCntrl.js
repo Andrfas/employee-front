@@ -46,6 +46,11 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     		$scope.setAvailable1 = true;
     	}
     }
+
+    $scope.removeLang = function(index){
+    	$scope.profile.languages.splice(index, 1);
+    	$scope.updateProfile($scope.employeeId, $scope.profile);
+    }
     
     $scope.updateProfile = function(id, profile){
     	RegEmployeeSrvc.updateEmployee(id, profile)

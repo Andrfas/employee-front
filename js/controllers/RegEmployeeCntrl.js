@@ -34,12 +34,12 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             birthDate: $scope.studInfo.birthDate,
             currentCity: $scope.studInfo.currentCity,
             availability: $scope.studInfo.availability,
+            fbId: $scope.studInfo.fbId,
             languages: $scope.studInfo.languagesArr,
             image: $scope.studInfo.image
         };
         RegEmployeeSrvc.createEmployee(data)
             .then(function(res) {
-                console.log('createEmployee', res);
                 if(res.success) {
                     PopUpSrvc.success('Registration', 'Activation link has been sent to your email');
                     $location.path('/');
@@ -181,8 +181,13 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
         FacebookLoginSrvc.signIn()
             .then(function(res) {
                 console.log('fbSignUp', res);
-                FB.api('/me', function(response) {
-                    console.log('user', response);
+                FB.api('/me', {fields:'first_name,last_name,email,birthday,hometown,location'}, function(response) {
+                    $scope.studInfo.name = response.first_name;
+                    $scope.studInfo.lastName = response.last_name;
+                    $scope.studInfo.email = response.email;
+                    $scope.studInfo.birthDate = new Date(response.birthday);
+                    $scope.studInfo.fbId = response.id;
+                    $scope.createEmployee();
                 });
             })
     }

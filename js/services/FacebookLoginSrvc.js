@@ -12,7 +12,7 @@ app.service('FacebookLoginSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingS
             var call = $q.defer();
             FB.login(function(response) {
                 call.resolve(response);
-            }, {scope: 'public_profile'});
+            }, {scope: 'public_profile,email,user_birthday,user_location,user_hometown'});
             return call.promise;
         },
 
