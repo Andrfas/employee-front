@@ -1,4 +1,4 @@
-app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc', 'PopUpSrvc', 'FacebookLoginSrvc', '$location', function($scope, $uibModalInstance, AuthorizationSrvc, PopUpSrvc, FacebookLoginSrvc, '$location') {
+app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc', 'PopUpSrvc', 'FacebookLoginSrvc', '$location', function($scope, $uibModalInstance, AuthorizationSrvc, PopUpSrvc, FacebookLoginSrvc, $location) {
     $scope.mail = '';
     $scope.password = '';
 
