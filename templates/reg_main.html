@@ -141,7 +141,7 @@
 									<div class="col-xs-12">
 										<div class="form-group" ng-class="{ 'has-error' : (regStudPage2.$submitted || regStudPage2.inputCity.$touched) && regStudPage2.inputCity.$error.required }">
 										    <label for="exampleInputEmail1">City you live now</label>
-										    <input type="text" name="inputCity"  ng-model="studInfo.currentCity" required="" placeholder="Input city you live in"  uib-typeahead="city for city in cities | filter:$viewValue | limitTo:8" typeahead-no-results="citySelectConf.noResFound" class="form-control">
+										    <input type="text" name="inputCity"  ng-model="citySearchStr" required="" placeholder="Input city you live in"  uib-typeahead="city for city in cities | filter:$viewValue | limitTo:8" typeahead-no-results="citySelectConf.noResFound" typeahead-on-select="selectCity($item, $model, $label, $event)" class="form-control">
 											<div ng-show="citySelectConf.noResFound">
 												<i class="glyphicon glyphicon-remove"></i>{{citySelectConf.noResMessage}}
 											</div>

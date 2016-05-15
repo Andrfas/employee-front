@@ -192,4 +192,11 @@ app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Re
             })
     }
 
+    $scope.citySearchStr = '';
+    $scope.selectCity = function($item, $model, $label, $event) {
+        $scope.studInfo.currentCity = $item;
+    }
+    $scope.removeCity = function($index) {
+        $scope.selectedCities.splice($index, 1);
+    }
 }])
