@@ -1,4 +1,4 @@
-app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc', 'PopUpSrvc', 'FacebookLoginSrvc', function($scope, $uibModalInstance, AuthorizationSrvc, PopUpSrvc, FacebookLoginSrvc) {
+app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc', 'PopUpSrvc', 'FacebookLoginSrvc', '$location', function($scope, $uibModalInstance, AuthorizationSrvc, PopUpSrvc, FacebookLoginSrvc, '$location') {
     $scope.mail = '';
     $scope.password = '';
 
@@ -8,6 +8,7 @@ app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc
                 if(res.success) {
                     $uibModalInstance.close();
                     PopUpSrvc.success('Hello', 'You signed in!');
+                    $location.path('/');
                 } else {
                     console.log('SignIn', res)
                     PopUpSrvc.error('SignIn failed', res.msg);
@@ -26,6 +27,7 @@ app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc
                         if(res.success) {
                             $uibModalInstance.close();
                             PopUpSrvc.success('Hello', 'You signed in!');
+                            $location.path('/');
                         } else {
                             console.log('SignIn', res)
                             PopUpSrvc.error('SignIn failed', res.msg);
