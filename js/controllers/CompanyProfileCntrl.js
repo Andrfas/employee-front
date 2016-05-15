@@ -9,7 +9,7 @@ app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc
             if(res.success) {
                 console.log(res.data)
                 $scope.profile = res.data;
-                $scope.profile.cities = $scope.profile.cities.join('-');
+                // $scope.profile.cities = $scope.profile.cities.join('-');
             } else {
                 PopUpSrvc.error('Error', res.msg);
             }
