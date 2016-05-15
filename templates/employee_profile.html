@@ -48,6 +48,7 @@
                     <h6 class="col-xs-9">{{skill.description}}</h6>
                 </div>
             </div>
+            <!-- Work experience -->
             <div class="row back-col">
                 <h4>Work Experience <a href="" ng-click="openWorkExperienceModal()">Add</a></h4>
             </div>
@@ -62,6 +63,7 @@
                     <h6 class="col-xs-8 margin-special">{{experience.degree}}</h6>
                 </div>
             </div>
+            <!-- Education -->
             <div class="row back-col">
                 <h4 style=>Education <a href="" ng-click="openEducationModal()">Add </a></h4>
             </div>
@@ -81,13 +83,14 @@
                     <h6 class="col-xs-offset-3 col-xs-9">{{edu.degree}}</h6>
                 </div>
             </div>
+            <!-- Potrfolio -->
             <div class="row back-col">
                 <h4>Portfolios <a href="" ng-click="openPortfolioModal()">Add </a></h4>
             </div>
             <div class="row white-screen" ng-repeat="port in profile.portfolio">
                 <div class="row">
                     <div class="col-xs-3">
-                        Image
+                        <img class="image" ng-src="http://localhost:1337/image/{{port.image}}" alt="portfolio image"></div>
                     </div>
                     <div class="col-xs-9">
                         <div class="row">
@@ -99,6 +102,7 @@
                     </div>
                 </div>
             </div>
+            <!--    Courses     -->
             <div class="row back-col">
                 <h4>Courses <a href="" ng-click="openCoursesModal()">Add </a></h4>
             </div>

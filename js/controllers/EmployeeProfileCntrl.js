@@ -55,10 +55,10 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     $scope.updateProfile = function(id, profile){
     	RegEmployeeSrvc.updateEmployee(id, profile)
     		.then(function(res){
-    			RegEmployeeSrvc.getEmployee($scope.employeeId)
-    				.then(function(res) {
-            			// console.log(res);
-    			})
+    			// RegEmployeeSrvc.getEmployee($scope.employeeId)
+    			// 	.then(function(res) {
+       //      			// console.log(res);
+    			// })
     		})
     		.catch(function(err) {
     			console.log('here');
@@ -161,6 +161,7 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
             }
         });
         instance.result.then(function (portfolio) {
+            console.log(portfolio);
             $scope.profile.portfolio.push(portfolio);
             $scope.updateProfile($scope.employeeId, $scope.profile);
         });
