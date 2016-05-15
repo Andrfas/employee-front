@@ -45,6 +45,7 @@ app.service('AdvertSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrvc, $q
             var call = $q.defer();
             ReqHandlingSrvc.put(url, data)
                 .then(function(res) {
+                    console.log(res);
                     call.resolve(res);
                 })
                 .catch(function(err) {
