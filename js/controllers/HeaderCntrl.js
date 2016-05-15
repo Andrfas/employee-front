@@ -1,4 +1,4 @@
-app.controller('HeaderCntrl', ['$scope', '$uibModal', 'AuthorizationSrvc', function($scope, $uibModal, AuthorizationSrvc) {
+app.controller('HeaderCntrl', ['$scope', '$uibModal', 'AuthorizationSrvc', '$location', function($scope, $uibModal, AuthorizationSrvc, $location) {
     console.log(AuthorizationSrvc)
     $scope.isLoggedIn = false;
     $scope.$watch(function(){
@@ -21,7 +21,9 @@ app.controller('HeaderCntrl', ['$scope', '$uibModal', 'AuthorizationSrvc', funct
     //ToDo
     $scope.signout = function() {
         AuthorizationSrvc.signOut()
-            .then(function(res) {})
+            .then(function(res) {
+                $location.path('/')
+            })
             .catch(function(err) {
                 
             });
