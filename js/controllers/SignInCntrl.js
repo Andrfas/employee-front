@@ -12,6 +12,7 @@ app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc
                 } else {
                     console.log('SignIn', res)
                     PopUpSrvc.error('SignIn failed', res.msg);
+                    $location.path('/');
                 }
             })
             .catch(function(err) {
@@ -31,6 +32,7 @@ app.controller('SignInCntrl', ['$scope', '$uibModalInstance', 'AuthorizationSrvc
                         } else {
                             console.log('SignIn', res)
                             PopUpSrvc.error('SignIn failed', res.msg);
+                            $location.path('/');
                         }
                     })
                     .catch(function(err) {
