@@ -58,9 +58,6 @@
                         <li>
                             <a href="/#/">Home</a>
                         </li>
-                        <li ng-hide="isLoggedIn">
-                            <a href="/#/registration">Registration</a>
-                        </li>
                         <li ng-show="isLoggedIn">
                             <a href="/#/proposal">Proposals</a>
                         </li>
@@ -93,10 +90,10 @@
         
         <toaster-container></toaster-container>
         <ng-view></ng-view>
-        <div class="footer">
+<!--         <div class="footer">
             <div class="container">
             </div>
-        </div>
+        </div> -->
 
         <script type="text/ng-template" id="signInModal.html">
         <div class="myModal login-form">
