@@ -31,7 +31,7 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
         // console.log('reqObj', reqObj);
         AdvertSrvc.getAdverts(reqObj)
             .then(function(res) {
-                // console.log('adverts', res);
+                console.log('adverts', res);
                 $scope.adverts = $scope.adverts.concat(res.data);
                 $scope.isInfiniteDisabled = false;
             })
