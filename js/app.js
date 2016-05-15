@@ -49,7 +49,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 resolve: {
                     deps: app.resolveScriptDeps([
                         'js/controllers/ProposalCntrl.js',
-                        'js/controllers/SelectCategoriesModalCntrl.js'
+                        'js/controllers/SelectCategoriesModalCntrl.js',
+                        'js/controllers/AddSubmitProposalModalCntrl.js'
                 ])}
             })
             .when('/employees', {
