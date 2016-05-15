@@ -532,7 +532,8 @@ body {
     cursor: pointer;
 }
 
-.employee-profile .center{
-    float: none;
-    margin: 0 auto;
+.employee-profile .image {
+    width: 90%;
+    margin-top: 15px;
+    border-radius: 50%;
 }
