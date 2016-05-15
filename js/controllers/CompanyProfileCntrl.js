@@ -3,6 +3,10 @@ app.controller('CompanyProfileCntrl', ['$scope', '$routeParams', 'RegCompanySrvc
     $scope.profile;
     $scope.adverts;
     $scope.selectedCategories = [];
+    $scope.isCompany = false;
+    if (localStorage.getItem('clientType') === 'company') {
+        $scope.isCompany = true;
+    }
 
     RegCompanySrvc.getCompany($scope.companyId)
         .then(function(res) {
