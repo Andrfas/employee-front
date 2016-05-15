@@ -27,6 +27,32 @@ app.service('AuthorizationSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingS
         return call.promise;
     }
 
+    self.signInViaFb = function(fbId, token) {
+        var url = '/signInFb';
+        var data = {
+            fb_user_id:fbId,
+            token: token
+        }
+        var call = $q.defer();
+        ReqHandlingSrvc.post(url, data)
+            .then(function(res) {
+                if(res.success) {
+                    localStorage.setItem('token', res.data.token);
+                    localStorage.setItem('clientId', res.data.client_id);
+                    localStorage.setItem('clientType', res.data.client_type);
+                    localStorage.setItem('clientStatus', res.data.client_status);
+                    self.isAuthorized = true;
+                    call.resolve(res);
+                } else {
+                    call.resolve(res);
+                }
+            })
+            .catch(function(err) {
+                call.reject(err);
+            });
+        return call.promise;
+    }
+
     this.signOut = function() {
         var url = '/signOut';
         var data = {};
