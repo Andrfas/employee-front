@@ -541,3 +541,65 @@ body {
 .employee-profile .portfolio{
     margin-bottom: 25px;
 }
+
+.advert {
+    margin: 30px 0 0 0;
+}
+
+.advert .filter {
+    padding: 20px 0 0 0;
+}
+
+.advert .filter .section-name {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #7c7c7c;
+    font-weight: bold;
+}
+
+.advert .filter .section-content{
+    font-size: 16px;
+    color: #4d5e78;
+}
+
+.advert .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4e4e4e;
+}
+
+.advert .white-section {
+    margin: 13px 0 0 0px;
+    padding: 0 0 10px 0;
+    background: white;
+}
+
+.advert .descr {
+    padding: 3px 10px 0 10px;
+}
+
+.advert .skills {
+    padding: 0 10px 0 10px;
+    margin: 20px 0 0 0;
+}
+
+.advert .skill {
+    margin: 0 3px;
+    padding: 3px 5px;
+    font-size: 15px;
+    background-color: #ECF0F1;
+    color: #485471;
+    font-weight: bold;
+}
+
+
+.advert .skills .title {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.advert .subcategory {
+    margin: 5px 0 0 0;
+    font-weight: bold;
+    color: #485471;
+}
