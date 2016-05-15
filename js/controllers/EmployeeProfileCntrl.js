@@ -4,11 +4,15 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     $scope.profile;
 	if (localStorage.getItem('clientType') === 'company') $scope.isCompany = true; else $scope.isCompany = false;
 
-
     RegEmployeeSrvc.getEmployee($scope.employeeId)
         .then(function(res) {
             if(res.success) {
-            	console.log(res);
+                if (localStorage.getItem('clientId') === $scope.employeeId){
+                    $scope.messages = res.messages
+                } else {
+                    delete res.data.messages;
+                }
+            	console.log($scope.messages);
                 $scope.profile = res.data;
                 if ($scope.profile.availability === null){
                 	$scope.isAvailable = true;

@@ -38,6 +38,8 @@ app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrv
             toSend.employeeId = localStorage.getItem('clientId');
             toSend.letter = prop;
             toSend.advertId = id;
+            toSend.advertTitle = $scope.advert.title
+            toSend.companyName = $scope.advert.companyName
             AdvertSrvc.submitProposal(toSend)
                 .then(function(res){
                     if (res.status === 200) PopUpSrvc.success('Proposal Submitted!', 'You successfully apply for this purpose');

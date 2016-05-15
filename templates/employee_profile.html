@@ -126,6 +126,26 @@
                     </div>
                 </div>
             </div>
+            <div class="row back-col">
+                <h4>Applies</h4>
+            </div>
+            <div class="row white-screen" ng-repeat="message in messages">
+                <div class="row" style="display: table">
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <h5 class="col-xs-12"><strong>{{message.advertTitle}}</strong></h5>
+                        </div>
+                    </div>                    
+                    <div class="col-xs-9">
+                            <strong>TO:</strong> {{message.companyName}}
+                    </div>
+                    <div class="col-xs-12">
+                            <strong>Cover Letter:</strong> {{message.letter}}
+                    </div>
+                </div>
+                <hr>
+            </div>
+
         </div>
     </div>
 </div>
