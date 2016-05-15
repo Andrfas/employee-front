@@ -1,9 +1,7 @@
 app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrvc', '$uibModal', '$location', function($scope, $routeParams, AdvertSrvc, PopUpSrvc, $uibModal, $location) {
     $scope.advertId = $routeParams.advertId;
     $scope.advert;
-
     if (localStorage.getItem('clientType') === 'company') $scope.companyType = true; else $scope.companyType = false;
-    console.log($scope.companyType);
     $scope.getAdvertData = function(advertId) {
         var reqObj = {
             advertId: advertId
@@ -40,6 +38,7 @@ app.controller('AdvertCntrl', ['$scope', '$routeParams', 'AdvertSrvc', 'PopUpSrv
             toSend.advertId = id;
             AdvertSrvc.submitProposal(toSend)
                 .then(function(res){
+                    if (res.message) PopUpSrvc.error('Failed!', res.message);
                     if (res.status === 200) PopUpSrvc.success('Proposal Submitted!', 'You successfully apply for this purpose');
                 })
         });
