@@ -1,5 +1,6 @@
 app.controller('showApplicatnsCntrl', ['$scope', 'AdvertSrvc', '$location', function($scope, AdvertSrvc, $location){
 	$scope.applicants = [];
+	console.log(AdvertSrvc.advertId);
 	AdvertSrvc.getApplicants(AdvertSrvc.advertId)
 		.then(function(res){
 			angular.forEach(res, function(r){

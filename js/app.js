@@ -49,8 +49,7 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 resolve: {
                     deps: app.resolveScriptDeps([
                         'js/controllers/ProposalCntrl.js',
-                        'js/controllers/SelectCategoriesModalCntrl.js',
-                        'js/controllers/AddSubmitProposalModalCntrl.js'
+                        'js/controllers/SelectCategoriesModalCntrl.js'
                 ])}
             })
             .when('/employees', {
@@ -106,7 +105,8 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                 controller: 'AdvertCntrl',
                 resolve: {
                     deps: app.resolveScriptDeps([
-                        'js/controllers/AdvertCntrl.js'
+                        'js/controllers/AdvertCntrl.js',
+                        'js/controllers/AddSubmitProposalModalCntrl.js'
                 ])}
             })
             .when('/confirmed', {

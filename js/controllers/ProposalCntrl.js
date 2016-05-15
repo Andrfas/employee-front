@@ -8,7 +8,6 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.selectedNeedPay = [];
     $scope.selectedHoursPerWeek = [];
     $scope.isInfiniteDisabled = false;
-    if (localStorage.getItem('clientType') === 'company') $scope.companyType = true; else $scope.companyType = false;
 
     $scope.adverts = [];
 
@@ -144,36 +143,5 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
         } else {
             $scope.selectedHoursPerWeek.splice(index, 1);
         }
-    }
-
-    $scope.submitProposalModal = function(id){
-        var submittedProposal = null;
-        var instance = $uibModal.open({
-            animation: true,
-            keyboard:true,
-            templateUrl: '../templates/modals/addSubmitProposalModal.html',
-            controller: 'SubmitProposalCntrl',
-            resolve: {
-                prop: function () {
-                    return submittedProposal;
-                }
-            }
-        });
-
-        instance.result.then(function (prop) {
-            var toSend = {}
-            toSend.employeeId = localStorage.getItem('clientId');
-            toSend.letter = prop;
-            toSend.advertId = id;
-            AdvertSrvc.submitProposal(toSend)
-                .then(function(res){
-                    if (res.status === 200) PopUpSrvc.success('Proposal Submitted!', 'You successfully apply for this purpose');
-                })
-        });
-    }
-
-    $scope.showAllApplyers = function(id){
-        $location.path('/applicants');
-        AdvertSrvc.advertId = id;
     }
 }])
