@@ -112,7 +112,15 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
             .when('/confirmed', {
                 templateUrl: '/templates/emailConfirmed.html'
             })
-
+            .when('/applicants', {
+                templateUrl: '/templates/showApplicatns.html',
+                controller: 'showApplicatnsCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/showApplicatnsCntrl.js'
+                    ])
+                }
+            })
         //$locationProvider.html5Mode({
         //    enabled: true,
         //    requireBase: false

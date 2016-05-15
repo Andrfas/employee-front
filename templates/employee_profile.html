@@ -5,7 +5,7 @@
                 <h3>My profile</h3>
             </div>
             <div class="row text-center"><img class="image" ng-src="http://localhost:1337/image/{{profile.image}}" alt="employee photo"></div>
-            <div class="row text-center">
+            <div class="row text-center" ng-hide="isCompany">
                 <a href="" ng-click="">Change Image</a>
             </div>
             <div class="row texto">
@@ -17,15 +17,15 @@
                     <a href="" ng-click="setAvailability('yes')">Set Available</a>
                     <a href="" ng-click="setAvailability('no')">Set Not Available</a>
                 </div>
-                <h4 ng-if="setAvailable2" class="lang-marging">{{available}} <a href="" ng-click="changeAvailability()" class="href-size">(Change)</a></h4>
+                <h4 ng-if="setAvailable2" class="lang-marging">{{available}} <a href="" ng-click="changeAvailability()" class="href-size" ng-hide="isCompany">(Change)</a></h4>
             </div>
             <div class="row texto">
                 <h4>Languages</h4>
             </div>
             <div class="row size-lang" ng-repeat="lang in profile.languages track by $index">
-                <strong>{{lang.name}}</strong>:  {{lang.level}} <span class="glyphicon glyphicon-remove height" ng-click="removeLang($index)"></span>
+                <strong>{{lang.name}}</strong>:  {{lang.level}} <span class="glyphicon glyphicon-remove height" ng-click="removeLang($index)" ng-hide="isCompany"></span>
             </div>
-            <div class="row" ng-click="openLanguagesModal()">
+            <div class="row" ng-click="openLanguagesModal()" ng-hide="isCompany">
                 <a href="">Add languages</a>
             </div>
         </div>
@@ -40,7 +40,7 @@
                 <h4 class="without-margin"><span class="glyphicon glyphicon-map-marker"></span>{{profile.currentCity}}, Ukraine</h4>
             </div>
             <div class="row back-col special">
-                <h4>Skills <a href="" ng-click="openAddSkillsModal()">Add Skills</a></h4>
+                <h4>Skills <a href="" ng-click="openAddSkillsModal()" ng-hide="isCompany">Add Skills</a></h4>
             </div>
             <div class="row white-screen" ng-repeat="skill in profile.skills">
                 <div class="row">
@@ -50,7 +50,7 @@
             </div>
             <!-- Work experience -->
             <div class="row back-col">
-                <h4>Work Experience <a href="" ng-click="openWorkExperienceModal()">Add</a></h4>
+                <h4>Work Experience <a href="" ng-click="openWorkExperienceModal()" ng-hide="isCompany">Add</a></h4>
             </div>
             <div class="row white-screen" ng-repeat="experience in profile.workExperience">
                 <div class="row">
@@ -65,7 +65,7 @@
             </div>
             <!-- Education -->
             <div class="row back-col">
-                <h4 style=>Education <a href="" ng-click="openEducationModal()">Add </a></h4>
+                <h4 style=>Education <a href="" ng-click="openEducationModal()" ng-hide="isCompany">Add </a></h4>
             </div>
             <div class="row white-screen" ng-repeat="edu in profile.education">
                 <div class="row">
@@ -85,7 +85,7 @@
             </div>
             <!-- Potrfolio -->
             <div class="row back-col">
-                <h4>Portfolios <a href="" ng-click="openPortfolioModal()">Add </a></h4>
+                <h4>Portfolios <a href="" ng-click="openPortfolioModal()" ng-hide="isCompany">Add </a></h4>
             </div>
             <div class="row white-screen" ng-repeat="port in profile.portfolio">
                 <div class="row">
@@ -104,7 +104,7 @@
             </div>
             <!--    Courses     -->
             <div class="row back-col">
-                <h4>Courses <a href="" ng-click="openCoursesModal()">Add </a></h4>
+                <h4>Courses <a href="" ng-click="openCoursesModal()" ng-hide="isCompany">Add </a></h4>
             </div>
             <div class="row white-screen" ng-repeat="course in profile.achievements">
                 <div class="row">

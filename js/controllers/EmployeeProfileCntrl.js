@@ -2,6 +2,7 @@ app.controller('EmployeeProfileCntrl', ['$scope', '$routeParams', 'RegEmployeeSr
     $scope.employeeId = $routeParams.profileId;
     $scope.isAvailable = true;
     $scope.profile;
+	if (localStorage.getItem('clientType') === 'company') $scope.isCompany = true; else $scope.isCompany = false;
 
 
     RegEmployeeSrvc.getEmployee($scope.employeeId)

@@ -1,4 +1,4 @@
-app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'AdvertSrvc', 'SkillsSrvc', 'PopUpSrvc', function($scope, $uibModal, StaticDataSrvc, AdvertSrvc, SkillsSrvc, PopUpSrvc){
+app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'AdvertSrvc', 'SkillsSrvc', 'PopUpSrvc', '$location', function($scope, $uibModal, StaticDataSrvc, AdvertSrvc, SkillsSrvc, PopUpSrvc, $location){
 
 	$scope.selectedCategories = [];
     $scope.selectedCities = [];
@@ -8,6 +8,7 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
     $scope.selectedNeedPay = [];
     $scope.selectedHoursPerWeek = [];
     $scope.isInfiniteDisabled = false;
+    if (localStorage.getItem('clientType') === 'company') $scope.companyType = true; else $scope.companyType = false;
 
     $scope.adverts = [];
 
@@ -169,5 +170,10 @@ app.controller('ProposalCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'Adver
                     if (res.status === 200) PopUpSrvc.success('Proposal Submitted!', 'You successfully apply for this purpose');
                 })
         });
+    }
+
+    $scope.showAllApplyers = function(id){
+        $location.path('/applicants');
+        AdvertSrvc.advertId = id;
     }
 }])

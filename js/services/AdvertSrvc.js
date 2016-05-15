@@ -1,6 +1,7 @@
 app.service('AdvertSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrvc, $q) {
-    return {
+    this.advertId = null;
 
+    return {
         createAdvert : function(data) {
             var url = '/advert';
             var call = $q.defer();
@@ -45,14 +46,25 @@ app.service('AdvertSrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrvc, $q
             var call = $q.defer();
             ReqHandlingSrvc.put(url, data)
                 .then(function(res) {
-                    console.log(res);
                     call.resolve(res);
                 })
                 .catch(function(err) {
                     call.reject(err);
                 })
             return call.promise;
+        },
+
+        getApplicants: function(id){
+            var url= '/applies/'+ id;
+            var call = $q.defer();
+            ReqHandlingSrvc.get(url)
+                .then(function(res) {
+                    call.resolve(res);
+                })
+                .catch(function(err) {
+                    call.reject(err);
+                })
+            return call.promise;  
         }
-        
     }
 }]);

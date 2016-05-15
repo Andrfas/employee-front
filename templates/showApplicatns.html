@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row" ng-repeat="app in applicants">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h2><a href="" ng-click="goToEmployee(app.id)">{{app.firstName}} {{app.lastName}}</a></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-offset-2 col-xs-8">
+				<h3>{{app.coverLetter}}</h3>
+			</div>
+		</div>
+	</div>
+</div>
