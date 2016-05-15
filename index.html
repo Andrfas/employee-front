@@ -54,9 +54,12 @@
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div uib-collapse="navCollapsed" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="/#/">Home</a>
+                        </li>
+                        <li ng-show="isLoggedIn">
+                            <a ng-href="{{getProfileLink()}}">Profile</a>
                         </li>
                         <li ng-show="isLoggedIn">
                             <a href="/#/proposal">Proposals</a>
@@ -66,18 +69,14 @@
                         </li>
                         <li ng-show="isLoggedIn">
                             <a href="/#/companies">Companies</a>
+                        </li>                        
+                        <li ng-hide="isLoggedIn">
+                            <a href="/#/registration">Registration</a>
                         </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-hide="isLoggedIn">
-                        <li>
+                        <li ng-hide="isLoggedIn">
                             <a href="#" ng-click="openSignInModal()">SignIn</a>
                         </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
-                        <li>
-                            <a ng-href="{{getProfileLink()}}">Profile</a>
-                        </li>
-                        <li>                            
+                        <li ng-show="isLoggedIn">                            
                             <a href="#" ng-click="signout()">SignOut</a>
                         </li>
                     </ul>
