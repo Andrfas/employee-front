@@ -25,6 +25,21 @@ app.service('RegCompanySrvc', ['ReqHandlingSrvc', '$q', function(ReqHandlingSrvc
                     call.reject(err);
                 })
             return call.promise;
+        },
+
+        getCompanies : function(data){
+            var url = '/company';
+            var call = $q.defer();
+            ReqHandlingSrvc.post(url, data)
+                .then(function(res) {
+                    console.log(res);
+                    call.resolve(res);
+                })
+                .catch(function(err) {
+                    console.log(err);
+                    call.reject(err);
+                })
+            return call.promise;            
         }
         
     }
