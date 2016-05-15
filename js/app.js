@@ -60,6 +60,14 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
                         'js/controllers/EmployeesCntrl.js'
                 ])}
             })
+            .when('/companies', {
+                templateUrl: '/templates/companies_list.html',
+                controller: 'CompaniesCntrl',
+                resolve: {
+                    deps: app.resolveScriptDeps([
+                        'js/controllers/CompaniesCntrl.js'
+                ])}
+            })
             .when('/company/:profileId', {
                 templateUrl: '/templates/company_profile.html',
                 controller: 'CompanyProfileCntrl',

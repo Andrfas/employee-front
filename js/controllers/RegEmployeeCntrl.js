@@ -1,4 +1,5 @@
 app.controller('RegEmployeeCntrl', ['$scope', '$uibModal', 'StaticDataSrvc', 'RegEmployeeSrvc', 'PopUpSrvc', 'FileUploader', 'ConfigSrvc', '$location', 'FacebookLoginSrvc', function($scope, $uibModal, StaticDataSrvc, RegEmployeeSrvc, PopUpSrvc, FileUploader, ConfigSrvc, $location, FacebookLoginSrvc) {
+
     $scope.cities = StaticDataSrvc.cities;
     $scope.studInfo = {
         name: '',

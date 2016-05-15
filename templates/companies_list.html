@@ -1,0 +1,87 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-centered">
+			<div class="row">
+				<div class="col-xs-11  page-title">
+					Companies List
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3 search-filter">
+							<!-- Cities -->
+							<div class="row">
+								<div class="col-xs-12 section-name">
+									<h4>Select City</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<input type="text" ng-model="citySearchStr" typeahead-on-select="selectCity($item, $model, $label, $event)" uib-typeahead="city for city in cities | filter:$viewValue" class="full-width input-grey" placeholder="Add city...">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<div ng-repeat="city in selectedCities track by $index" class="label-grey full-width">
+										<span class="glyphicon glyphicon-chevron-right"></span>
+										{{city}}
+										<span ng-click="removeCity($index)" class="glyphicon glyphicon-remove"></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<button ng-click="applyFilter()" class="btn btn-blue search-btn full-width">Search</button>
+								</div>
+							</div>
+				</div>
+
+				<div class="col-xs-9">
+					<div class="row">
+						<div class="col-xs-11 col-centered">					
+							<div class="row search-header">
+									Search Result
+							</div>				
+							<div class="row" style="background-color:#fafdfe" infinite-scroll="showMore()"
+                         infinite-scroll-immediate-check="false" infinite-scroll-disabled="isInfiniteDisabled">
+								<div class="col-xs-12 search-list">
+
+									<div ng-repeat="company in companies" class="row search-res">
+										<div class="col-xs-12">
+											<div class="row">
+												<div class="col-xs-12 title"><a ng-href="#/company/{{company._id}}">{{company.name}}</a></div>
+											</div>
+											<div class="row">
+												<div class="col-xs-6 company" style="color: grey;text-decoration: underline;">{{company.website}}</div>
+											</div>
+											<div class="row" style="display:flex" ng-show="company.cities.length > 0">
+												<div class="col-xs-12">
+													<span>Cities:</span>
+													<span ng-repeat="city in company.cities" class="skill">{{city}}</span>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-xs-12">{{company.description}}</div>
+											</div>
+
+											<div class="row">
+												<div class="col-xs-12">
+													<span>Active adverts: {{company.activeAdverts}}</span>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 bottom-border">
+													<hr>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
