@@ -1,14 +1,21 @@
-app.controller('showApplicatnsCntrl', ['$scope', 'AdvertSrvc', '$location', function($scope, AdvertSrvc, $location){
-	$scope.applicants = [];
-	console.log(AdvertSrvc.advertId);
-	AdvertSrvc.getApplicants(AdvertSrvc.advertId)
+app.controller('ShowApplicatnsCntrl', ['$scope', 'AdvertSrvc', '$location', '$routeParams', function($scope, AdvertSrvc, $location, $routeParams){
+	$scope.applicants;
+	$scope.advertId = $routeParams.advertId;
+	AdvertSrvc.getApplicants($scope.advertId, null)
 		.then(function(res){
-			angular.forEach(res, function(r){
-				$scope.applicants.push({id: r._id, firstName: r.firstName, lastName: r.lastName, coverLetter: r.letter})
-			})
+			$scope.applicants = res;
 		})
 
 	$scope.goToEmployee = function(id){
 		$location.path('/employee/' + id)
+	}
+
+	$scope.setApplicationStatus = function(applicationId, status, index) {
+		console.log('data', applicationId);
+		AdvertSrvc.setApplicationStatus(applicationId, status)
+			.then(function(res) {
+				console.log('applicationDecition', res);
+				$scope.applicants.splice(index, 1);
+			})
 	}
 }])

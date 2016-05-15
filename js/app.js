@@ -112,9 +112,9 @@ app.config(['$routeProvider', '$controllerProvider', '$locationProvider',
             .when('/confirmed', {
                 templateUrl: '/templates/emailConfirmed.html'
             })
-            .when('/applicants', {
+            .when('/applicants/:advertId', {
                 templateUrl: '/templates/showApplicatns.html',
-                controller: 'showApplicatnsCntrl',
+                controller: 'ShowApplicatnsCntrl',
                 resolve: {
                     deps: app.resolveScriptDeps([
                         'js/controllers/showApplicatnsCntrl.js'
